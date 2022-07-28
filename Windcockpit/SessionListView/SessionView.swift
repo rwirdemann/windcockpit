@@ -24,6 +24,7 @@ struct SessionView: View, EventServiceCallback {
     @State private var sport = "Wingding"
     @State private var date = Date()
     @State private var distance = 0.0
+    @State private var maxSpeed = 0.0
     @State private var showingAlert = false
     @State private var errorMessage = ""
 
@@ -31,7 +32,7 @@ struct SessionView: View, EventServiceCallback {
     
     fileprivate func saveSession() {
         let id = Int.random(in: 1..<1000)
-        let session = Session(id: id, location: spot, name: sport, date: date, distance: distance)
+        let session = Session(id: id, location: spot, name: sport, date: date, distance: distance, maxspeed: maxSpeed)
         sessionListViewModel.uploadSession(session: session, callback: self)
         presentationMode.wrappedValue.dismiss()
     }
@@ -65,6 +66,11 @@ struct SessionView: View, EventServiceCallback {
                     Text("Distance")
                     Spacer()
                     TextField("Distance", value: $distance, formatter: formatter)
+                }
+                HStack(spacing: 10) {
+                    Text("Max Speed")
+                    Spacer()
+                    TextField("Maxspeed", value: $maxSpeed, formatter: formatter)
                 }
             }
         }

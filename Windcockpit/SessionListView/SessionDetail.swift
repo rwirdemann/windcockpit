@@ -13,15 +13,15 @@ struct SessionDetail: View, EventServiceCallback {
     @State var session: Session
     @State private var showingAlert = false
     @State private var errorMessage = ""
-
+    
     func success(event: Session) {
     }
-
+    
     func error(message: String) {
         self.errorMessage = message
         showingAlert = true
     }
-
+    
     var body: some View {
         Form {
             if editMode?.wrappedValue.isEditing == true {
@@ -30,44 +30,51 @@ struct SessionDetail: View, EventServiceCallback {
                         Text($0.name)
                     }
                 }
-                        .pickerStyle(MenuPickerStyle())
+                .pickerStyle(MenuPickerStyle())
             } else {
                 Text(session.location)
             }
             Text(toString(from: session.date))
-                    .font(.subheadline)
+                .font(.subheadline)
             Text(session.name)
-                    .font(.subheadline)
-
+                .font(.subheadline)
+            
             let distance = Measurement(
-                    value: session.distance,
-                    unit: UnitLength.meters
+                value: session.distance,
+                unit: UnitLength.meters
             ).formatted(
-                    .measurement(width: .abbreviated,
-                            usage: .road)
+                .measurement(width: .abbreviated,
+                             usage: .road)
             )
             Text("Distance: \(distance)")
-                    .font(.subheadline)
+                .font(.subheadline)
+            let maxSpeed = Measurement(
+                value: session.maxspeed,
+                unit: UnitSpeed.metersPerSecond
+            ).formatted(
+            )
+            Text("Max speed: \(maxSpeed)")
+                .font(.subheadline)
         }
-                .alert(errorMessage, isPresented: $showingAlert) {
-                    Button("OK", role: .cancel) {
-                    }
-
-                }
-                .toolbar {
-                    EditButton()
-                }
-                .onChange(of: editMode!.wrappedValue, perform: { value in
-                    if !value.isEditing {
-                        updateSession(session: session, callback: self)
-                        sessionListViewModel.replace(session: session)
-                    }
-                })
+        .alert(errorMessage, isPresented: $showingAlert) {
+            Button("OK", role: .cancel) {
+            }
+            
+        }
+        .toolbar {
+            EditButton()
+        }
+        .onChange(of: editMode!.wrappedValue, perform: { value in
+            if !value.isEditing {
+                updateSession(session: session, callback: self)
+                sessionListViewModel.replace(session: session)
+            }
+        })
     }
 }
 
 struct SessionDetail_Previews: PreviewProvider {
     static var previews: some View {
-        SessionDetail(session: Session(id: 1, location: "Heiligenhafen", name: "Wingding", date: Date(), distance: 0))
+        SessionDetail(session: Session(id: 1, location: "Heiligenhafen", name: "Wingding", date: Date(), distance: 0, maxspeed: 0))
     }
 }

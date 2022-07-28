@@ -12,7 +12,7 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var authorizationStatus: CLAuthorizationStatus
     @Published var lastSeenLocation: CLLocation?
     @Published var currentPlacemark: CLPlacemark?
-    @Published var speed: Double = 0
+    @Published var maxSpeed: Double = 0
     
     private let locationManager: CLLocationManager
     
@@ -37,6 +37,11 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         lastSeenLocation = locations.first
         fetchCountryAndCity(for: locations.first)
+
+        let currentSpeed = self.lastSeenLocation?.speed ?? 0
+        if currentSpeed > maxSpeed {
+            maxSpeed = currentSpeed
+        }
     }
 
     func fetchCountryAndCity(for location: CLLocation?) {

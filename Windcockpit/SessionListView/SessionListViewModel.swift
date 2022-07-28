@@ -89,6 +89,6 @@ final class SessionListViewModel: ObservableObject {
 }
 
 struct MockData {
-    static var sessions = [Session(id:1, location:"Heiligenhafen", name: "Wingding", date: Date(), distance: 40000),
-                           Session(id:2, location:"Altenteil", name: "Wingding", date: Date(), distance: 40000)]
+    static var sessions = [Session(id:1, location:"Heiligenhafen", name: "Wingding", date: Date(), distance: 40000, maxspeed: 22),
+                           Session(id:2, location:"Altenteil", name: "Wingding", date: Date(), distance: 40000, maxspeed: 22)]
 }

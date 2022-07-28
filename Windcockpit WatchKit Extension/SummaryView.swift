@@ -44,6 +44,15 @@ struct SummaryView: View {
                         )
                     )
                     .accentColor(Color.green)
+                    SummaryMetricvView(
+                        title: "Max Speed",
+                        value: Measurement(
+                            value: locationViewModel.maxSpeed,
+                            unit: UnitSpeed.metersPerSecond
+                        ).formatted(
+                        )
+                    )
+                    .accentColor(Color.cyan)
                     Button("Upload Session") {
                         let formatter = DateFormatter()
                         formatter.locale = Locale(identifier: "de")
@@ -54,7 +63,8 @@ struct SummaryView: View {
                                         location: location,
                                         name: "Wingfoiling",
                                         date: Date(),
-                                        distance: dist)
+                                        distance: dist,
+                                        maxspeed: locationViewModel.maxSpeed)
                         createSession(session: s, callback: self)
                     }
                 }
