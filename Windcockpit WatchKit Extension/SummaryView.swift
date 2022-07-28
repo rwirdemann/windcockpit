@@ -9,6 +9,8 @@ import SwiftUI
 
 struct SummaryView: View {
     @EnvironmentObject var workoutManager: WorkoutManager
+    @EnvironmentObject var locationViewModel: LocationViewModel
+    
     @Environment(\.dismiss) var dismiss
     @State private var durationFormatter: DateComponentsFormatter = {
         let formatter = DateComponentsFormatter()
@@ -46,7 +48,7 @@ struct SummaryView: View {
                         let formatter = DateFormatter()
                         formatter.locale = Locale(identifier: "de")
                         formatter.dateFormat = "d. MMMM y, HH:mm"
-                        let location = "New: \(formatter.string(from: Date()))"
+                        let location = locationViewModel.currentPlacemark?.administrativeArea ?? "New: \(formatter.string(from: Date()))"
                         let dist = workoutManager.workout?.totalDistance?.doubleValue(for: .meter()) ?? 0
                         let s = Session(id: 1,
                                         location: location,
