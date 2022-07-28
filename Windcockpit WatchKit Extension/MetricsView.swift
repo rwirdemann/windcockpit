@@ -32,7 +32,7 @@ struct MetricsView: View {
                 Text(
                     Measurement(
                         value: locationViewModel.lastSeenLocation?.speed ?? 0,
-                        unit: UnitSpeed.kilometersPerHour
+                        unit: UnitSpeed.metersPerSecond
                     ).formatted(
                     )
                 )
