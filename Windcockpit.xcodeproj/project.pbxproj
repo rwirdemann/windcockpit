@@ -1,0 +1,673 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BF1148B12892BE7A0081A360 /* WindcockpitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1148B02892BE7A0081A360 /* WindcockpitApp.swift */; };
+		BF1148B32892BE7A0081A360 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1148B22892BE7A0081A360 /* ContentView.swift */; };
+		BF1148B52892BE7B0081A360 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF1148B42892BE7B0081A360 /* Assets.xcassets */; };
+		BF1148B82892BE7B0081A360 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF1148B72892BE7B0081A360 /* Preview Assets.xcassets */; };
+		BF1148BC2892BE7B0081A360 /* Windcockpit WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = BF1148BB2892BE7B0081A360 /* Windcockpit WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BF1148C12892BE7C0081A360 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF1148C02892BE7C0081A360 /* Assets.xcassets */; };
+		BF1148C72892BE7D0081A360 /* Windcockpit WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BF1148C62892BE7D0081A360 /* Windcockpit WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BF1148CC2892BE7D0081A360 /* WindcockpitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1148CB2892BE7D0081A360 /* WindcockpitApp.swift */; };
+		BF1148CE2892BE7D0081A360 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1148CD2892BE7D0081A360 /* ContentView.swift */; };
+		BF1148D02892BE7D0081A360 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1148CF2892BE7D0081A360 /* NotificationController.swift */; };
+		BF1148D22892BE7D0081A360 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1148D12892BE7D0081A360 /* NotificationView.swift */; };
+		BF1148D42892BE7D0081A360 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1148D32892BE7D0081A360 /* ComplicationController.swift */; };
+		BF1148D62892BE7E0081A360 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF1148D52892BE7E0081A360 /* Assets.xcassets */; };
+		BF1148D92892BE7E0081A360 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF1148D82892BE7E0081A360 /* Preview Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BF1148BD2892BE7B0081A360 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BF1148A52892BE7A0081A360 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BF1148BA2892BE7B0081A360;
+			remoteInfo = "Windcockpit WatchKit App";
+		};
+		BF1148C82892BE7D0081A360 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BF1148A52892BE7A0081A360 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BF1148C52892BE7D0081A360;
+			remoteInfo = "Windcockpit WatchKit Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BF1148E12892BE7E0081A360 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				BF1148C72892BE7D0081A360 /* Windcockpit WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF1148E52892BE7E0081A360 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				BF1148BC2892BE7B0081A360 /* Windcockpit WatchKit App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		BF1148AD2892BE7A0081A360 /* Windcockpit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Windcockpit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF1148B02892BE7A0081A360 /* WindcockpitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindcockpitApp.swift; sourceTree = "<group>"; };
+		BF1148B22892BE7A0081A360 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		BF1148B42892BE7B0081A360 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BF1148B72892BE7B0081A360 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		BF1148BB2892BE7B0081A360 /* Windcockpit WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Windcockpit WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF1148C02892BE7C0081A360 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BF1148C62892BE7D0081A360 /* Windcockpit WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Windcockpit WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF1148CB2892BE7D0081A360 /* WindcockpitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindcockpitApp.swift; sourceTree = "<group>"; };
+		BF1148CD2892BE7D0081A360 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		BF1148CF2892BE7D0081A360 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		BF1148D12892BE7D0081A360 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		BF1148D32892BE7D0081A360 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		BF1148D52892BE7E0081A360 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BF1148D82892BE7E0081A360 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		BF1148DA2892BE7E0081A360 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF1148DB2892BE7E0081A360 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BF1148AA2892BE7A0081A360 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF1148C32892BE7D0081A360 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BF1148A42892BE7A0081A360 = {
+			isa = PBXGroup;
+			children = (
+				BF1148AF2892BE7A0081A360 /* Windcockpit */,
+				BF1148BF2892BE7B0081A360 /* Windcockpit WatchKit App */,
+				BF1148CA2892BE7D0081A360 /* Windcockpit WatchKit Extension */,
+				BF1148AE2892BE7A0081A360 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BF1148AE2892BE7A0081A360 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BF1148AD2892BE7A0081A360 /* Windcockpit.app */,
+				BF1148BB2892BE7B0081A360 /* Windcockpit WatchKit App.app */,
+				BF1148C62892BE7D0081A360 /* Windcockpit WatchKit Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BF1148AF2892BE7A0081A360 /* Windcockpit */ = {
+			isa = PBXGroup;
+			children = (
+				BF1148B02892BE7A0081A360 /* WindcockpitApp.swift */,
+				BF1148B22892BE7A0081A360 /* ContentView.swift */,
+				BF1148B42892BE7B0081A360 /* Assets.xcassets */,
+				BF1148B62892BE7B0081A360 /* Preview Content */,
+			);
+			path = Windcockpit;
+			sourceTree = "<group>";
+		};
+		BF1148B62892BE7B0081A360 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				BF1148B72892BE7B0081A360 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		BF1148BF2892BE7B0081A360 /* Windcockpit WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				BF1148C02892BE7C0081A360 /* Assets.xcassets */,
+			);
+			path = "Windcockpit WatchKit App";
+			sourceTree = "<group>";
+		};
+		BF1148CA2892BE7D0081A360 /* Windcockpit WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				BF1148CB2892BE7D0081A360 /* WindcockpitApp.swift */,
+				BF1148CD2892BE7D0081A360 /* ContentView.swift */,
+				BF1148CF2892BE7D0081A360 /* NotificationController.swift */,
+				BF1148D12892BE7D0081A360 /* NotificationView.swift */,
+				BF1148D32892BE7D0081A360 /* ComplicationController.swift */,
+				BF1148D52892BE7E0081A360 /* Assets.xcassets */,
+				BF1148DA2892BE7E0081A360 /* Info.plist */,
+				BF1148DB2892BE7E0081A360 /* PushNotificationPayload.apns */,
+				BF1148D72892BE7E0081A360 /* Preview Content */,
+			);
+			path = "Windcockpit WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		BF1148D72892BE7E0081A360 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				BF1148D82892BE7E0081A360 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BF1148AC2892BE7A0081A360 /* Windcockpit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF1148E62892BE7E0081A360 /* Build configuration list for PBXNativeTarget "Windcockpit" */;
+			buildPhases = (
+				BF1148A92892BE7A0081A360 /* Sources */,
+				BF1148AA2892BE7A0081A360 /* Frameworks */,
+				BF1148AB2892BE7A0081A360 /* Resources */,
+				BF1148E52892BE7E0081A360 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BF1148BE2892BE7B0081A360 /* PBXTargetDependency */,
+			);
+			name = Windcockpit;
+			productName = Windcockpit;
+			productReference = BF1148AD2892BE7A0081A360 /* Windcockpit.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BF1148BA2892BE7B0081A360 /* Windcockpit WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF1148E22892BE7E0081A360 /* Build configuration list for PBXNativeTarget "Windcockpit WatchKit App" */;
+			buildPhases = (
+				BF1148B92892BE7B0081A360 /* Resources */,
+				BF1148E12892BE7E0081A360 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BF1148C92892BE7D0081A360 /* PBXTargetDependency */,
+			);
+			name = "Windcockpit WatchKit App";
+			productName = "Windcockpit WatchKit App";
+			productReference = BF1148BB2892BE7B0081A360 /* Windcockpit WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		BF1148C52892BE7D0081A360 /* Windcockpit WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF1148DE2892BE7E0081A360 /* Build configuration list for PBXNativeTarget "Windcockpit WatchKit Extension" */;
+			buildPhases = (
+				BF1148C22892BE7D0081A360 /* Sources */,
+				BF1148C32892BE7D0081A360 /* Frameworks */,
+				BF1148C42892BE7D0081A360 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Windcockpit WatchKit Extension";
+			productName = "Windcockpit WatchKit Extension";
+			productReference = BF1148C62892BE7D0081A360 /* Windcockpit WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BF1148A52892BE7A0081A360 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1340;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					BF1148AC2892BE7A0081A360 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+					BF1148BA2892BE7B0081A360 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+					BF1148C52892BE7D0081A360 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+				};
+			};
+			buildConfigurationList = BF1148A82892BE7A0081A360 /* Build configuration list for PBXProject "Windcockpit" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BF1148A42892BE7A0081A360;
+			productRefGroup = BF1148AE2892BE7A0081A360 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BF1148AC2892BE7A0081A360 /* Windcockpit */,
+				BF1148BA2892BE7B0081A360 /* Windcockpit WatchKit App */,
+				BF1148C52892BE7D0081A360 /* Windcockpit WatchKit Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BF1148AB2892BE7A0081A360 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF1148B82892BE7B0081A360 /* Preview Assets.xcassets in Resources */,
+				BF1148B52892BE7B0081A360 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF1148B92892BE7B0081A360 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF1148C12892BE7C0081A360 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF1148C42892BE7D0081A360 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF1148D92892BE7E0081A360 /* Preview Assets.xcassets in Resources */,
+				BF1148D62892BE7E0081A360 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BF1148A92892BE7A0081A360 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF1148B32892BE7A0081A360 /* ContentView.swift in Sources */,
+				BF1148B12892BE7A0081A360 /* WindcockpitApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF1148C22892BE7D0081A360 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF1148D02892BE7D0081A360 /* NotificationController.swift in Sources */,
+				BF1148CE2892BE7D0081A360 /* ContentView.swift in Sources */,
+				BF1148D42892BE7D0081A360 /* ComplicationController.swift in Sources */,
+				BF1148CC2892BE7D0081A360 /* WindcockpitApp.swift in Sources */,
+				BF1148D22892BE7D0081A360 /* NotificationView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BF1148BE2892BE7B0081A360 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BF1148BA2892BE7B0081A360 /* Windcockpit WatchKit App */;
+			targetProxy = BF1148BD2892BE7B0081A360 /* PBXContainerItemProxy */;
+		};
+		BF1148C92892BE7D0081A360 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BF1148C52892BE7D0081A360 /* Windcockpit WatchKit Extension */;
+			targetProxy = BF1148C82892BE7D0081A360 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		BF1148DC2892BE7E0081A360 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		BF1148DD2892BE7E0081A360 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		BF1148DF2892BE7E0081A360 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Windcockpit WatchKit Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = 8LW873B8B4;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Windcockpit WatchKit Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Windcockpit WatchKit Extension";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = de.ralfwirdemann.Windcockpit.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Debug;
+		};
+		BF1148E02892BE7E0081A360 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Windcockpit WatchKit Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = 8LW873B8B4;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Windcockpit WatchKit Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Windcockpit WatchKit Extension";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = de.ralfwirdemann.Windcockpit.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Release;
+		};
+		BF1148E32892BE7E0081A360 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8LW873B8B4;
+				GENERATE_INFOPLIST_FILE = YES;
+				IBSC_MODULE = Windcockpit_WatchKit_Extension;
+				INFOPLIST_KEY_CFBundleDisplayName = "Windcockpit WatchKit App";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = de.ralfwirdemann.Windcockpit;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = de.ralfwirdemann.Windcockpit.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Debug;
+		};
+		BF1148E42892BE7E0081A360 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8LW873B8B4;
+				GENERATE_INFOPLIST_FILE = YES;
+				IBSC_MODULE = Windcockpit_WatchKit_Extension;
+				INFOPLIST_KEY_CFBundleDisplayName = "Windcockpit WatchKit App";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = de.ralfwirdemann.Windcockpit;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = de.ralfwirdemann.Windcockpit.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Release;
+		};
+		BF1148E72892BE7E0081A360 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Windcockpit/Preview Content\"";
+				DEVELOPMENT_TEAM = 8LW873B8B4;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = de.ralfwirdemann.Windcockpit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BF1148E82892BE7E0081A360 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Windcockpit/Preview Content\"";
+				DEVELOPMENT_TEAM = 8LW873B8B4;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = de.ralfwirdemann.Windcockpit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BF1148A82892BE7A0081A360 /* Build configuration list for PBXProject "Windcockpit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF1148DC2892BE7E0081A360 /* Debug */,
+				BF1148DD2892BE7E0081A360 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BF1148DE2892BE7E0081A360 /* Build configuration list for PBXNativeTarget "Windcockpit WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF1148DF2892BE7E0081A360 /* Debug */,
+				BF1148E02892BE7E0081A360 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BF1148E22892BE7E0081A360 /* Build configuration list for PBXNativeTarget "Windcockpit WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF1148E32892BE7E0081A360 /* Debug */,
+				BF1148E42892BE7E0081A360 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BF1148E62892BE7E0081A360 /* Build configuration list for PBXNativeTarget "Windcockpit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF1148E72892BE7E0081A360 /* Debug */,
+				BF1148E82892BE7E0081A360 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BF1148A52892BE7A0081A360 /* Project object */;
+}
