@@ -36,10 +36,8 @@ struct MetricsView: View {
                     ).formatted(
                     )
                 )
-                Text(locationViewModel.currentPlacemark?.administrativeArea ?? "")
-                    .font(.system(size: 16.0, design: .rounded))
             }
-            .font(.system(size: 30.0, design: .rounded)
+            .font(.system(size: 32.0, design: .rounded)
                 .monospacedDigit()
                 .lowercaseSmallCaps()
             )

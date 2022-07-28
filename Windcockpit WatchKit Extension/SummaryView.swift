@@ -48,7 +48,7 @@ struct SummaryView: View {
                         let formatter = DateFormatter()
                         formatter.locale = Locale(identifier: "de")
                         formatter.dateFormat = "d. MMMM y, HH:mm"
-                        let location = locationViewModel.currentPlacemark?.administrativeArea ?? "New: \(formatter.string(from: Date()))"
+                        let location = locationViewModel.currentPlacemark?.locality ?? "New: \(formatter.string(from: Date()))"
                         let dist = workoutManager.workout?.totalDistance?.doubleValue(for: .meter()) ?? 0
                         let s = Session(id: 1,
                                         location: location,
