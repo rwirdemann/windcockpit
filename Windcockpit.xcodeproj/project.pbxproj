@@ -15,12 +15,28 @@
 		BF1148C12892BE7C0081A360 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF1148C02892BE7C0081A360 /* Assets.xcassets */; };
 		BF1148C72892BE7D0081A360 /* Windcockpit WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BF1148C62892BE7D0081A360 /* Windcockpit WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BF1148CC2892BE7D0081A360 /* WindcockpitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1148CB2892BE7D0081A360 /* WindcockpitApp.swift */; };
-		BF1148CE2892BE7D0081A360 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1148CD2892BE7D0081A360 /* ContentView.swift */; };
 		BF1148D02892BE7D0081A360 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1148CF2892BE7D0081A360 /* NotificationController.swift */; };
 		BF1148D22892BE7D0081A360 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1148D12892BE7D0081A360 /* NotificationView.swift */; };
 		BF1148D42892BE7D0081A360 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1148D32892BE7D0081A360 /* ComplicationController.swift */; };
 		BF1148D62892BE7E0081A360 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF1148D52892BE7E0081A360 /* Assets.xcassets */; };
 		BF1148D92892BE7E0081A360 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF1148D82892BE7E0081A360 /* Preview Assets.xcassets */; };
+		BF1148EA2892BEB10081A360 /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1148E92892BEB10081A360 /* LocationView.swift */; };
+		BF1148EC2892BEB80081A360 /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1148EB2892BEB80081A360 /* LocationViewModel.swift */; };
+		BF1148F02892BF1A0081A360 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1148EF2892BF1A0081A360 /* HealthKit.framework */; };
+		BF1148F22892BF980081A360 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1148F12892BF980081A360 /* StartView.swift */; };
+		BF1148F42892BFA30081A360 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1148F32892BFA30081A360 /* SummaryView.swift */; };
+		BF1148F62892BFAE0081A360 /* WorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1148F52892BFAE0081A360 /* WorkoutManager.swift */; };
+		BF1148F82892BFD10081A360 /* SessionPagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1148F72892BFD10081A360 /* SessionPagingView.swift */; };
+		BF1148FA2892BFDE0081A360 /* MetricsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1148F92892BFDE0081A360 /* MetricsView.swift */; };
+		BF1148FC2892BFE40081A360 /* ControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1148FB2892BFE40081A360 /* ControlsView.swift */; };
+		BF1148FE2892BFEA0081A360 /* ElapsedTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1148FD2892BFEA0081A360 /* ElapsedTimeView.swift */; };
+		BF1149012892C03C0081A360 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1148FF2892C03C0081A360 /* Constants.swift */; };
+		BF1149022892C03C0081A360 /* EventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1149002892C03C0081A360 /* EventService.swift */; };
+		BF1149032892C0440081A360 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1148FF2892C03C0081A360 /* Constants.swift */; };
+		BF1149042892C0440081A360 /* EventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1149002892C03C0081A360 /* EventService.swift */; };
+		BF1149082892C05F0081A360 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1149062892C05F0081A360 /* Location.swift */; };
+		BF1149092892C05F0081A360 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1149072892C05F0081A360 /* Session.swift */; };
+		BF11490A2892C0630081A360 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1149072892C05F0081A360 /* Session.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,7 +91,6 @@
 		BF1148C02892BE7C0081A360 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF1148C62892BE7D0081A360 /* Windcockpit WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Windcockpit WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF1148CB2892BE7D0081A360 /* WindcockpitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindcockpitApp.swift; sourceTree = "<group>"; };
-		BF1148CD2892BE7D0081A360 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BF1148CF2892BE7D0081A360 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		BF1148D12892BE7D0081A360 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		BF1148D32892BE7D0081A360 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
@@ -83,6 +98,21 @@
 		BF1148D82892BE7E0081A360 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BF1148DA2892BE7E0081A360 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF1148DB2892BE7E0081A360 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		BF1148E92892BEB10081A360 /* LocationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
+		BF1148EB2892BEB80081A360 /* LocationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
+		BF1148ED2892BF1A0081A360 /* Windcockpit WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Windcockpit WatchKit Extension.entitlements"; sourceTree = "<group>"; };
+		BF1148EF2892BF1A0081A360 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS8.5.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
+		BF1148F12892BF980081A360 /* StartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
+		BF1148F32892BFA30081A360 /* SummaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
+		BF1148F52892BFAE0081A360 /* WorkoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutManager.swift; sourceTree = "<group>"; };
+		BF1148F72892BFD10081A360 /* SessionPagingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionPagingView.swift; sourceTree = "<group>"; };
+		BF1148F92892BFDE0081A360 /* MetricsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetricsView.swift; sourceTree = "<group>"; };
+		BF1148FB2892BFE40081A360 /* ControlsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlsView.swift; sourceTree = "<group>"; };
+		BF1148FD2892BFEA0081A360 /* ElapsedTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElapsedTimeView.swift; sourceTree = "<group>"; };
+		BF1148FF2892C03C0081A360 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		BF1149002892C03C0081A360 /* EventService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventService.swift; sourceTree = "<group>"; };
+		BF1149062892C05F0081A360 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		BF1149072892C05F0081A360 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +127,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF1148F02892BF1A0081A360 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,6 +141,7 @@
 				BF1148BF2892BE7B0081A360 /* Windcockpit WatchKit App */,
 				BF1148CA2892BE7D0081A360 /* Windcockpit WatchKit Extension */,
 				BF1148AE2892BE7A0081A360 /* Products */,
+				BF1148EE2892BF1A0081A360 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -126,8 +158,11 @@
 		BF1148AF2892BE7A0081A360 /* Windcockpit */ = {
 			isa = PBXGroup;
 			children = (
+				BF1149052892C05F0081A360 /* Model */,
 				BF1148B02892BE7A0081A360 /* WindcockpitApp.swift */,
 				BF1148B22892BE7A0081A360 /* ContentView.swift */,
+				BF1148FF2892C03C0081A360 /* Constants.swift */,
+				BF1149002892C03C0081A360 /* EventService.swift */,
 				BF1148B42892BE7B0081A360 /* Assets.xcassets */,
 				BF1148B62892BE7B0081A360 /* Preview Content */,
 			);
@@ -153,8 +188,17 @@
 		BF1148CA2892BE7D0081A360 /* Windcockpit WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				BF1148F12892BF980081A360 /* StartView.swift */,
+				BF1148F32892BFA30081A360 /* SummaryView.swift */,
+				BF1148F52892BFAE0081A360 /* WorkoutManager.swift */,
+				BF1148F72892BFD10081A360 /* SessionPagingView.swift */,
 				BF1148CB2892BE7D0081A360 /* WindcockpitApp.swift */,
-				BF1148CD2892BE7D0081A360 /* ContentView.swift */,
+				BF1148FB2892BFE40081A360 /* ControlsView.swift */,
+				BF1148FD2892BFEA0081A360 /* ElapsedTimeView.swift */,
+				BF1148F92892BFDE0081A360 /* MetricsView.swift */,
+				BF1148ED2892BF1A0081A360 /* Windcockpit WatchKit Extension.entitlements */,
+				BF1148E92892BEB10081A360 /* LocationView.swift */,
+				BF1148EB2892BEB80081A360 /* LocationViewModel.swift */,
 				BF1148CF2892BE7D0081A360 /* NotificationController.swift */,
 				BF1148D12892BE7D0081A360 /* NotificationView.swift */,
 				BF1148D32892BE7D0081A360 /* ComplicationController.swift */,
@@ -172,6 +216,23 @@
 				BF1148D82892BE7E0081A360 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		BF1148EE2892BF1A0081A360 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BF1148EF2892BF1A0081A360 /* HealthKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BF1149052892C05F0081A360 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BF1149062892C05F0081A360 /* Location.swift */,
+				BF1149072892C05F0081A360 /* Session.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -305,8 +366,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF1149022892C03C0081A360 /* EventService.swift in Sources */,
 				BF1148B32892BE7A0081A360 /* ContentView.swift in Sources */,
+				BF1149092892C05F0081A360 /* Session.swift in Sources */,
+				BF1149082892C05F0081A360 /* Location.swift in Sources */,
 				BF1148B12892BE7A0081A360 /* WindcockpitApp.swift in Sources */,
+				BF1149012892C03C0081A360 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,11 +379,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF1148F82892BFD10081A360 /* SessionPagingView.swift in Sources */,
 				BF1148D02892BE7D0081A360 /* NotificationController.swift in Sources */,
-				BF1148CE2892BE7D0081A360 /* ContentView.swift in Sources */,
+				BF1148EA2892BEB10081A360 /* LocationView.swift in Sources */,
+				BF1149042892C0440081A360 /* EventService.swift in Sources */,
+				BF1148FC2892BFE40081A360 /* ControlsView.swift in Sources */,
+				BF1148F22892BF980081A360 /* StartView.swift in Sources */,
 				BF1148D42892BE7D0081A360 /* ComplicationController.swift in Sources */,
+				BF1148EC2892BEB80081A360 /* LocationViewModel.swift in Sources */,
+				BF1148FE2892BFEA0081A360 /* ElapsedTimeView.swift in Sources */,
 				BF1148CC2892BE7D0081A360 /* WindcockpitApp.swift in Sources */,
+				BF1148F62892BFAE0081A360 /* WorkoutManager.swift in Sources */,
 				BF1148D22892BE7D0081A360 /* NotificationView.swift in Sources */,
+				BF11490A2892C0630081A360 /* Session.swift in Sources */,
+				BF1149032892C0440081A360 /* Constants.swift in Sources */,
+				BF1148FA2892BFDE0081A360 /* MetricsView.swift in Sources */,
+				BF1148F42892BFA30081A360 /* SummaryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,6 +527,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "Windcockpit WatchKit Extension/Windcockpit WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Windcockpit WatchKit Extension/Preview Content\"";
@@ -459,7 +536,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Windcockpit WatchKit Extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Windcockpit WatchKit Extension";
-				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = Windcockpit_WatchKit_Extension.ComplicationController;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -483,6 +560,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "Windcockpit WatchKit Extension/Windcockpit WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Windcockpit WatchKit Extension/Preview Content\"";
@@ -491,7 +569,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Windcockpit WatchKit Extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Windcockpit WatchKit Extension";
-				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = Windcockpit_WatchKit_Extension.ComplicationController;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
