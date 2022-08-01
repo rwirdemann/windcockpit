@@ -11,9 +11,7 @@ struct ElapsedTimeView: View {
     var elapsedTime: TimeInterval = 0
     var showSubseconds: Bool = true
     @State private var timeFormatter = ElapsedTimeFormatter()
-    
-    
-    
+        
     var body: some View {
         Text(NSNumber(value: elapsedTime), formatter: timeFormatter)
             .fontWeight(.semibold)

@@ -53,8 +53,19 @@ struct SessionDetail: View, EventServiceCallback {
                 unit: UnitSpeed.metersPerSecond
             ).formatted(
             )
-            Text("Max speed: \(maxSpeed)")
-                .font(.subheadline)
+            
+            let formatter: NumberFormatter = {
+                  let formatter = NumberFormatter()
+                  formatter.numberStyle = .decimal
+                  return formatter
+              }()
+            if editMode?.wrappedValue.isEditing == true {
+                TextField("Max speed", value: $session.maxspeed, formatter: formatter)
+
+            } else {
+                Text("Max speed: \(maxSpeed)")
+                    .font(.subheadline)
+            }
         }
         .alert(errorMessage, isPresented: $showingAlert) {
             Button("OK", role: .cancel) {
