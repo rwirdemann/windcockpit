@@ -114,6 +114,7 @@ class WorkoutManager: NSObject, ObservableObject {
         session = nil
         workout = nil
         distance = 0
+        maxSpeed = 0
     }
     
     @Published var distance: Double = 0
