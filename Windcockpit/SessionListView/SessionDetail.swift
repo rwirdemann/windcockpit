@@ -14,6 +14,13 @@ struct SessionDetail: View, EventServiceCallback {
     @State private var showingAlert = false
     @State private var errorMessage = ""
     
+    let sports = ["Wingfoiling", "Windsurfing"]
+    let formatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        return formatter
+    }()
+    
     func success(event: Session) {
     }
     
@@ -22,22 +29,50 @@ struct SessionDetail: View, EventServiceCallback {
         showingAlert = true
     }
     
-    var body: some View {
+    var body: some View {        
         Form {
-            if editMode?.wrappedValue.isEditing == true {
-                Picker("Spot", selection: $session.location) {
-                    ForEach(sessionListViewModel.locations, id: \.name) {
-                        Text($0.name)
+            HStack {
+                Text("Spot")
+                Spacer()
+                if editMode?.wrappedValue.isEditing == true {
+                    Picker("Spot", selection: $session.location) {
+                        ForEach(sessionListViewModel.locations, id: \.name) {
+                            Text($0.name)
+                        }
                     }
+                    .pickerStyle(MenuPickerStyle())
+                } else {
+                    Text(session.location)
                 }
-                .pickerStyle(MenuPickerStyle())
-            } else {
-                Text(session.location)
             }
-            Text(toString(from: session.date))
-                .font(.subheadline)
-            Text(session.name)
-                .font(.subheadline)
+            
+            HStack {
+                Text("Wann")
+                Spacer()
+                if editMode?.wrappedValue.isEditing == true {
+                    DatePicker("", selection: $session.date, displayedComponents: .date)
+                        .environment(\.locale, Locale.init(identifier: "de_DE"))
+                } else {
+                    Text(toString(from: session.date))
+                        .font(.subheadline)
+                }
+            }
+            
+            HStack {
+                Text("Aktivität")
+                Spacer()
+                if editMode?.wrappedValue.isEditing == true {
+                    Picker("", selection: $session.name) {
+                        ForEach(sports, id: \.self) {
+                            Text($0)
+                        }
+                    }
+                    .pickerStyle(MenuPickerStyle())
+                } else {
+                    Text(session.name)
+                        .font(.subheadline)
+                }
+            }
             
             let distance = Measurement(
                 value: session.distance,
@@ -46,25 +81,34 @@ struct SessionDetail: View, EventServiceCallback {
                 .measurement(width: .abbreviated,
                              usage: .road)
             )
-            Text("Distance: \(distance)")
-                .font(.subheadline)
+            HStack {
+                Text("Distanz")
+                Spacer()
+                if editMode?.wrappedValue.isEditing == true {
+                    TextField("Max speed", value: $session.distance, formatter: formatter)
+                        .multilineTextAlignment(.trailing)
+                } else {
+                    Text(distance)
+                        .font(.subheadline)
+                }
+            }
+            
+            
             let maxSpeed = Measurement(
                 value: session.maxspeed,
                 unit: UnitSpeed.metersPerSecond
             ).formatted(
             )
-            
-            let formatter: NumberFormatter = {
-                  let formatter = NumberFormatter()
-                  formatter.numberStyle = .decimal
-                  return formatter
-              }()
-            if editMode?.wrappedValue.isEditing == true {
-                TextField("Max speed", value: $session.maxspeed, formatter: formatter)
-
-            } else {
-                Text("Max speed: \(maxSpeed)")
-                    .font(.subheadline)
+            HStack {
+                Text("Max")
+                Spacer()
+                if editMode?.wrappedValue.isEditing == true {
+                    TextField("Max speed", value: $session.maxspeed, formatter: formatter)
+                        .multilineTextAlignment(.trailing)
+                } else {
+                    Text(maxSpeed)
+                        .font(.subheadline)
+                }
             }
         }
         .alert(errorMessage, isPresented: $showingAlert) {
