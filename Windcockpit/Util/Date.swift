@@ -8,9 +8,6 @@
 import Foundation
 
 func toString(from: Date) -> String {
-//    let dateFormatter = DateFormatter()
-//    dateFormatter.dateStyle = .full
-    
     let formatter = DateFormatter()
     formatter.locale = Locale(identifier: "de")
     formatter.dateFormat = "EEEE, d. MMMM y, HH:mm"

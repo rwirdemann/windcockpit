@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SessionDetail: View, EventServiceCallback {
+struct EditSessionView: View, EventServiceCallback {
     @EnvironmentObject var sessionListViewModel: SessionListViewModel
     @Environment(\.editMode) private var editMode
     @State var session: Session
@@ -119,6 +119,7 @@ struct SessionDetail: View, EventServiceCallback {
         .toolbar {
             EditButton()
         }
+        .navigationTitle("Deine Session")
         .onChange(of: editMode!.wrappedValue, perform: { value in
             if !value.isEditing {
                 updateSession(session: session, callback: self)
@@ -130,6 +131,6 @@ struct SessionDetail: View, EventServiceCallback {
 
 struct SessionDetail_Previews: PreviewProvider {
     static var previews: some View {
-        SessionDetail(session: Session(id: 1, location: "Heiligenhafen", name: "Wingding", date: Date(), distance: 0, maxspeed: 0))
+        EditSessionView(session: Session(id: 1, location: "Heiligenhafen", name: "Wingding", date: Date(), distance: 0, maxspeed: 0))
     }
 }

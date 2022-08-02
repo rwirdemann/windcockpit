@@ -20,7 +20,7 @@ struct SessionListView: View {
             List {
                 ForEach(viewModel.sessions) { session in
                     NavigationLink {
-                        SessionDetail(session: session)
+                        EditSessionView(session: session)
                     } label: {
                         SessionCell(session: session)
                     }
@@ -29,7 +29,7 @@ struct SessionListView: View {
             }
             .navigationTitle("Windcockpit")
             .toolbar {
-                NavigationLink(destination: SessionView(),
+                NavigationLink(destination: CreateSessionView(),
                                label: {Image(systemName: "plus")})
             }
         }
