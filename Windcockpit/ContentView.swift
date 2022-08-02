@@ -20,12 +20,6 @@ struct ContentView: View {
                     Image(systemName: "map")
                     Text("Spots")
                 }
-            Text("Gear")
-                .tabItem {
-                    Image(systemName: "circle.grid.cross")
-                    Text("Gear")
-                }
-
         }
     }
 }
