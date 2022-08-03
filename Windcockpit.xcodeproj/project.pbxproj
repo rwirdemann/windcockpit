@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF05045D289AB34A00EEB2AA /* DurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF05045C289AB34A00EEB2AA /* DurationView.swift */; };
 		BF1148B12892BE7A0081A360 /* WindcockpitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1148B02892BE7A0081A360 /* WindcockpitApp.swift */; };
 		BF1148B52892BE7B0081A360 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF1148B42892BE7B0081A360 /* Assets.xcassets */; };
 		BF1148B82892BE7B0081A360 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF1148B72892BE7B0081A360 /* Preview Assets.xcassets */; };
@@ -43,7 +44,7 @@
 		BF1149162892D95D0081A360 /* SessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1149112892D95D0081A360 /* SessionCell.swift */; };
 		BF1149182892D96F0081A360 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1149172892D96F0081A360 /* ContentView.swift */; };
 		BF11491A2892D97A0081A360 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1149192892D97A0081A360 /* Date.swift */; };
-		BF9A5DAC289967DD009F438D /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9A5DAB289967DD009F438D /* Formatter.swift */; };
+		BF9A5DAC289967DD009F438D /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9A5DAB289967DD009F438D /* Formatters.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BF05045C289AB34A00EEB2AA /* DurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationView.swift; sourceTree = "<group>"; };
 		BF1148AD2892BE7A0081A360 /* Windcockpit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Windcockpit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF1148B02892BE7A0081A360 /* WindcockpitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindcockpitApp.swift; sourceTree = "<group>"; };
 		BF1148B42892BE7B0081A360 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -126,7 +128,7 @@
 		BF1149112892D95D0081A360 /* SessionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionCell.swift; sourceTree = "<group>"; };
 		BF1149172892D96F0081A360 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BF1149192892D97A0081A360 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
-		BF9A5DAB289967DD009F438D /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
+		BF9A5DAB289967DD009F438D /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -255,7 +257,7 @@
 				BF1149192892D97A0081A360 /* Date.swift */,
 				BF1148FF2892C03C0081A360 /* Constants.swift */,
 				BF1149002892C03C0081A360 /* EventService.swift */,
-				BF9A5DAB289967DD009F438D /* Formatter.swift */,
+				BF9A5DAB289967DD009F438D /* Formatters.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -268,6 +270,7 @@
 				BF1149112892D95D0081A360 /* SessionCell.swift */,
 				BF11490F2892D95D0081A360 /* CreateSessionView.swift */,
 				BF11490D2892D95D0081A360 /* EditSessionView.swift */,
+				BF05045C289AB34A00EEB2AA /* DurationView.swift */,
 			);
 			path = SessionListView;
 			sourceTree = "<group>";
@@ -403,8 +406,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF05045D289AB34A00EEB2AA /* DurationView.swift in Sources */,
 				BF1149162892D95D0081A360 /* SessionCell.swift in Sources */,
-				BF9A5DAC289967DD009F438D /* Formatter.swift in Sources */,
+				BF9A5DAC289967DD009F438D /* Formatters.swift in Sources */,
 				BF1149182892D96F0081A360 /* ContentView.swift in Sources */,
 				BF1149022892C03C0081A360 /* EventService.swift in Sources */,
 				BF1149132892D95D0081A360 /* SessionListViewModel.swift in Sources */,

@@ -110,6 +110,18 @@ struct EditSessionView: View, EventServiceCallback {
                         .font(.subheadline)
                 }
             }
+            HStack {
+                Text("Dauer")
+                Spacer()
+                if editMode?.wrappedValue.isEditing == true {
+                    TextField("Dauer", value: $session.duration, formatter: Formatters.number)
+                        .multilineTextAlignment(.trailing)
+                } else {
+                    DurationView(duration: session.duration)
+                        .font(.subheadline)
+                }
+            }
+
         }
         .alert(errorMessage, isPresented: $showingAlert) {
             Button("OK", role: .cancel) {

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Formatter {
+struct Formatters {
     static let number: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
