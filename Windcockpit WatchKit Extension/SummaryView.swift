@@ -53,15 +53,15 @@ struct SummaryView: View {
                         )
                     )
                     .accentColor(Color.cyan)
+
+                    let formatter = DurationFormatter()
+                    let duration = formatter.string(for: workoutManager.builder?.elapsedTime ?? 0) ?? "00:00:00"
                     SummaryMetricvView(
                         title: "Duration",
-                        value: Measurement(
-                            value: workoutManager.builder?.elapsedTime ?? 0,
-                            unit: UnitDuration.seconds
-                        ).formatted(
-                        )
+                        value: duration
                     )
                     .accentColor(Color.mint)
+
                     Button("Upload Session") {
                         let formatter = DateFormatter()
                         formatter.locale = Locale(identifier: "de")

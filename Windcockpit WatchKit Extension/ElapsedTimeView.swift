@@ -54,4 +54,3 @@ struct ElapsedTimeView_Previews: PreviewProvider {
         ElapsedTimeView()
     }
 }
- 

@@ -36,20 +36,12 @@ struct MetricsView: View {
                     ).formatted(
                     )
                 )
-                HStack {
-                    Text("max")
-                    Spacer()
-                    Text(
-                        Measurement(
-                            value: locationViewModel.maxSpeed,
-                            unit: UnitSpeed.metersPerSecond
-                        ).formatted(
-                        )
+                Text(
+                    Measurement(
+                        value: locationViewModel.maxSpeed,
+                        unit: UnitSpeed.metersPerSecond
+                    ).formatted(
                     )
-                }
-                .font(.system(size: 22.0, design: .rounded)
-                    .monospacedDigit()
-                    .lowercaseSmallCaps()
                 )
             }
             .font(.system(size: 32.0, design: .rounded)
