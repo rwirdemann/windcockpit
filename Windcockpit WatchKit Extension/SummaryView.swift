@@ -53,18 +53,29 @@ struct SummaryView: View {
                         )
                     )
                     .accentColor(Color.cyan)
+                    SummaryMetricvView(
+                        title: "Duration",
+                        value: Measurement(
+                            value: workoutManager.builder?.elapsedTime ?? 0,
+                            unit: UnitDuration.seconds
+                        ).formatted(
+                        )
+                    )
+                    .accentColor(Color.mint)
                     Button("Upload Session") {
                         let formatter = DateFormatter()
                         formatter.locale = Locale(identifier: "de")
                         formatter.dateFormat = "d. MMMM y, HH:mm"
                         let location = locationViewModel.currentPlacemark?.locality ?? "New: \(formatter.string(from: Date()))"
                         let dist = workoutManager.workout?.totalDistance?.doubleValue(for: .meter()) ?? 0
+                        let duration = workoutManager.builder?.elapsedTime ?? 0
                         let s = Session(id: 1,
                                         location: location,
                                         name: "Wingfoiling",
                                         date: Date(),
                                         distance: dist,
-                                        maxspeed: locationViewModel.maxSpeed)
+                                        maxspeed: locationViewModel.maxSpeed,
+                                        duration: duration)
                         createSession(session: s, callback: self)
                     }
                 }

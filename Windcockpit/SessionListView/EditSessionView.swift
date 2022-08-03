@@ -128,9 +128,3 @@ struct EditSessionView: View, EventServiceCallback {
         })
     }
 }
-
-struct SessionDetail_Previews: PreviewProvider {
-    static var previews: some View {
-        EditSessionView(session: Session(id: 1, location: "Heiligenhafen", name: "Wingding", date: Date(), distance: 0, maxspeed: 0))
-    }
-}

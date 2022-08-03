@@ -30,7 +30,7 @@ struct CreateSessionView: View, EventServiceCallback {
     
     fileprivate func saveSession() {
         let id = Int.random(in: 1..<1000)
-        let session = Session(id: id, location: spot, name: sport, date: date, distance: 0, maxspeed: 0)
+        let session = Session(id: id, location: spot, name: sport, date: date, distance: 0, maxspeed: 0, duration: 2)
         sessionListViewModel.uploadSession(session: session, callback: self)
         presentationMode.wrappedValue.dismiss()
     }

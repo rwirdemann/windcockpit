@@ -45,15 +45,3 @@ struct SessionCell: View {
         return .secondary
     }
 }
-
-
-struct SessionCell_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            SessionCell(session:Session(id: 1, location: "Heiligenhafen", name: "Wingding", date: Date(), distance: 25444, maxspeed: 22))
-            
-            SessionCell(session:Session(id: 1, location: "Altenteil", name: "Wingding", date: Date(), distance: 25444, maxspeed: 23))
-        }
-        .previewLayout(.fixed(width: 300, height: 70))
-    }
-}
