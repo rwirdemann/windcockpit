@@ -29,9 +29,10 @@ struct MetricsView: View {
                                      usage: .road)
                     )
                 )
+                .foregroundColor(Color.green)
                 Text(
                     Measurement(
-                        value: locationViewModel.lastSeenLocation?.speed ?? 0,
+                        value: locationViewModel.currentSpeed(),
                         unit: UnitSpeed.metersPerSecond
                     ).formatted(
                     )
@@ -43,6 +44,7 @@ struct MetricsView: View {
                     ).formatted(
                     )
                 )
+                .foregroundColor(Color.red)
             }
             .font(.system(size: 32.0, design: .rounded)
                 .monospacedDigit()

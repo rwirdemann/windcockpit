@@ -11,36 +11,42 @@ struct ControlsView: View {
     @EnvironmentObject var workoutManager: WorkoutManager
     
     var body: some View {
-        HStack {
-            VStack {
-                Button {
-                    workoutManager.endWorkout()
-                } label: {
-                    Image(systemName: "xmark")
+        
+        
+        VStack {
+            HStack {
+                VStack {
+                    Button {
+                        workoutManager.endWorkout()
+                    } label: {
+                        Image(systemName: "xmark")
+                    }
+                    .tint(Color.red)
+                    .font(.title2)
+                    Text("End")
                 }
-                .tint(Color.red)
-                .font(.title2)
-                Text("End")
+                VStack {
+                    Button {
+                        workoutManager.togglePause()
+                    } label: {
+                        Image(systemName: workoutManager.running ? "pause" : "play")
+                    }
+                    .tint(Color.yellow)
+                    .font(.title2)
+                    Text(workoutManager.running ? "Pause" : "Resume")
+                }
             }
-            VStack {
-                Button {
-                    workoutManager.togglePause()
-                } label: {
-                    Image(systemName: workoutManager.running ? "pause" : "play")
+            HStack {
+                VStack {
+                    Button {
+                        WKInterfaceDevice.current().enableWaterLock()
+                    } label: {
+                        Image(systemName: "drop.fill")
+                    }
+                    .tint(Color.blue)
+                    .font(.title2)
+                    Text("Lock")
                 }
-                .tint(Color.yellow)
-                .font(.title2)
-                Text(workoutManager.running ? "Pause" : "Resume")
-            }
-            VStack {
-                Button {
-                    WKInterfaceDevice.current().enableWaterLock()
-                } label: {
-                    Image(systemName: "drop.fill")
-                }
-                .tint(Color.blue)
-                .font(.title2)
-                Text("Lock")
             }
         }
     }

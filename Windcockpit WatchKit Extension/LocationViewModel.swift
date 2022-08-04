@@ -51,4 +51,12 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
             self.currentPlacemark = placemarks?.first
         }
     }
+    
+    func currentSpeed() -> CLLocationSpeed {
+        let speed = lastSeenLocation?.speed ?? 0
+        if speed < 0 {
+            return 0
+        }
+        return 0
+    }
 }

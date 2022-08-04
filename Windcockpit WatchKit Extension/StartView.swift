@@ -25,7 +25,7 @@ struct StartView: View {
             EdgeInsets(top: 15, leading: 10, bottom: 15, trailing: 10)
         )
         .listStyle(.carousel)
-        .navigationTitle("Sessions")
+        .navigationTitle("Windcockpit")
         .onAppear {
             workoutManager.requestAuthorization()
             locationModel.requestPermission()
