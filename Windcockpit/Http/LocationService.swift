@@ -7,39 +7,65 @@
 
 import Foundation
 
-protocol LocationServiceCallback {
+protocol SuccessHandler {
     func success(locations: [Location])
+}
+
+protocol ErrorHandler {
     func error(message: String)
 }
 
-func loadLocations(callback: LocationServiceCallback) {
+func loadLocations(successHandler: SuccessHandler, errorHandler: ErrorHandler) {
     guard let url = URL(string: "\(Constants.BASE_URL)/locations") else {
-        callback.error(message: "Invalid URL")
+        errorHandler.error(message: "Invalid URL")
         return
     }
     URLSession.shared.dataTask(with: url) { data, response, error in
         guard let httpResponse = response as? HTTPURLResponse, error == nil else {
-            callback.error(message: "No valid response")
+            errorHandler.error(message: "No valid response")
             return
         }
-
+        
         if let error = error {
-            callback.error(message: error.localizedDescription)
+            errorHandler.error(message: error.localizedDescription)
             return
         }
-
+        
         guard 200 ..< 300 ~= httpResponse.statusCode else {
-            callback.error(message: "Status code was \(httpResponse.statusCode), but expected 2xx")
+            errorHandler.error(message: "Status code was \(httpResponse.statusCode), but expected 2xx")
             return
-       }
-
+        }
+        
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
         let locations = try! decoder.decode([Location].self, from: data!)
         DispatchQueue.main.async {
-            callback.success(locations: locations)
+            successHandler.success(locations: locations)
         }
     }.resume()
 }
 
-
+func deleteLocation(location: Location, errorHandler: ErrorHandler) {
+    guard let url = URL(string: "\(Constants.BASE_URL)/locations/\(location.id)") else {
+        errorHandler.error(message: "Invalid URL")
+        return
+    }
+    var request = URLRequest(url: url)
+    request.httpMethod = "DELETE"
+    URLSession.shared.dataTask(with: request) { data, response, error in
+        guard let httpResponse = response as? HTTPURLResponse, error == nil else {
+            errorHandler.error(message: "No valid response")
+            return
+        }
+        
+        if let error = error {
+            errorHandler.error(message: error.localizedDescription)
+            return
+        }
+        
+        guard 200 ..< 300 ~= httpResponse.statusCode else {
+            errorHandler.error(message: "Status code was \(httpResponse.statusCode), but expected 2xx")
+            return
+        }
+    }.resume()
+}
