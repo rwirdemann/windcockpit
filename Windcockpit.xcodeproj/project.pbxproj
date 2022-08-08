@@ -11,6 +11,10 @@
 		BF05045F289AFBD000EEB2AA /* DurationFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF05045E289AFBD000EEB2AA /* DurationFormatter.swift */; };
 		BF050460289AFBF700EEB2AA /* DurationFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF05045E289AFBD000EEB2AA /* DurationFormatter.swift */; };
 		BF050461289AFC1300EEB2AA /* DurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF05045C289AB34A00EEB2AA /* DurationView.swift */; };
+		BF0A812328A10825008C4C41 /* LocationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0A812228A10825008C4C41 /* LocationListView.swift */; };
+		BF0A812528A108D3008C4C41 /* LocationListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0A812428A108D3008C4C41 /* LocationListModel.swift */; };
+		BF0A812828A10B26008C4C41 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0A812728A10B26008C4C41 /* LocationService.swift */; };
+		BF0A812928A10C35008C4C41 /* SessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1149002892C03C0081A360 /* SessionService.swift */; };
 		BF1148B12892BE7A0081A360 /* WindcockpitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1148B02892BE7A0081A360 /* WindcockpitApp.swift */; };
 		BF1148B52892BE7B0081A360 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF1148B42892BE7B0081A360 /* Assets.xcassets */; };
 		BF1148B82892BE7B0081A360 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF1148B72892BE7B0081A360 /* Preview Assets.xcassets */; };
@@ -34,9 +38,8 @@
 		BF1148FC2892BFE40081A360 /* ControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1148FB2892BFE40081A360 /* ControlsView.swift */; };
 		BF1148FE2892BFEA0081A360 /* ElapsedTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1148FD2892BFEA0081A360 /* ElapsedTimeView.swift */; };
 		BF1149012892C03C0081A360 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1148FF2892C03C0081A360 /* Constants.swift */; };
-		BF1149022892C03C0081A360 /* EventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1149002892C03C0081A360 /* EventService.swift */; };
+		BF1149022892C03C0081A360 /* SessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1149002892C03C0081A360 /* SessionService.swift */; };
 		BF1149032892C0440081A360 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1148FF2892C03C0081A360 /* Constants.swift */; };
-		BF1149042892C0440081A360 /* EventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1149002892C03C0081A360 /* EventService.swift */; };
 		BF1149082892C05F0081A360 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1149062892C05F0081A360 /* Location.swift */; };
 		BF1149092892C05F0081A360 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1149072892C05F0081A360 /* Session.swift */; };
 		BF11490A2892C0630081A360 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1149072892C05F0081A360 /* Session.swift */; };
@@ -95,6 +98,9 @@
 /* Begin PBXFileReference section */
 		BF05045C289AB34A00EEB2AA /* DurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationView.swift; sourceTree = "<group>"; };
 		BF05045E289AFBD000EEB2AA /* DurationFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationFormatter.swift; sourceTree = "<group>"; };
+		BF0A812228A10825008C4C41 /* LocationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListView.swift; sourceTree = "<group>"; };
+		BF0A812428A108D3008C4C41 /* LocationListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListModel.swift; sourceTree = "<group>"; };
+		BF0A812728A10B26008C4C41 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		BF1148AD2892BE7A0081A360 /* Windcockpit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Windcockpit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF1148B02892BE7A0081A360 /* WindcockpitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindcockpitApp.swift; sourceTree = "<group>"; };
 		BF1148B42892BE7B0081A360 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -122,7 +128,7 @@
 		BF1148FB2892BFE40081A360 /* ControlsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlsView.swift; sourceTree = "<group>"; };
 		BF1148FD2892BFEA0081A360 /* ElapsedTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElapsedTimeView.swift; sourceTree = "<group>"; };
 		BF1148FF2892C03C0081A360 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		BF1149002892C03C0081A360 /* EventService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventService.swift; sourceTree = "<group>"; };
+		BF1149002892C03C0081A360 /* SessionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionService.swift; sourceTree = "<group>"; };
 		BF1149062892C05F0081A360 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		BF1149072892C05F0081A360 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		BF11490D2892D95D0081A360 /* EditSessionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditSessionView.swift; sourceTree = "<group>"; };
@@ -154,6 +160,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BF0A812128A10803008C4C41 /* LocationListView */ = {
+			isa = PBXGroup;
+			children = (
+				BF0A812228A10825008C4C41 /* LocationListView.swift */,
+				BF0A812428A108D3008C4C41 /* LocationListModel.swift */,
+			);
+			path = LocationListView;
+			sourceTree = "<group>";
+		};
+		BF0A812628A10B16008C4C41 /* Http */ = {
+			isa = PBXGroup;
+			children = (
+				BF1149002892C03C0081A360 /* SessionService.swift */,
+				BF0A812728A10B26008C4C41 /* LocationService.swift */,
+			);
+			path = Http;
+			sourceTree = "<group>";
+		};
 		BF1148A42892BE7A0081A360 = {
 			isa = PBXGroup;
 			children = (
@@ -178,6 +202,8 @@
 		BF1148AF2892BE7A0081A360 /* Windcockpit */ = {
 			isa = PBXGroup;
 			children = (
+				BF0A812628A10B16008C4C41 /* Http */,
+				BF0A812128A10803008C4C41 /* LocationListView */,
 				BF11490C2892D95D0081A360 /* SessionListView */,
 				BF11490B2892D94A0081A360 /* Util */,
 				BF1149052892C05F0081A360 /* Model */,
@@ -260,7 +286,6 @@
 			children = (
 				BF1149192892D97A0081A360 /* Date.swift */,
 				BF1148FF2892C03C0081A360 /* Constants.swift */,
-				BF1149002892C03C0081A360 /* EventService.swift */,
 				BF9A5DAB289967DD009F438D /* Formatters.swift */,
 				BF05045E289AFBD000EEB2AA /* DurationFormatter.swift */,
 			);
@@ -415,16 +440,19 @@
 				BF1149162892D95D0081A360 /* SessionCell.swift in Sources */,
 				BF9A5DAC289967DD009F438D /* Formatters.swift in Sources */,
 				BF1149182892D96F0081A360 /* ContentView.swift in Sources */,
-				BF1149022892C03C0081A360 /* EventService.swift in Sources */,
+				BF1149022892C03C0081A360 /* SessionService.swift in Sources */,
+				BF0A812528A108D3008C4C41 /* LocationListModel.swift in Sources */,
 				BF1149132892D95D0081A360 /* SessionListViewModel.swift in Sources */,
 				BF1149152892D95D0081A360 /* SessionListView.swift in Sources */,
 				BF1149092892C05F0081A360 /* Session.swift in Sources */,
 				BF1149082892C05F0081A360 /* Location.swift in Sources */,
 				BF11491A2892D97A0081A360 /* Date.swift in Sources */,
+				BF0A812328A10825008C4C41 /* LocationListView.swift in Sources */,
 				BF1148B12892BE7A0081A360 /* WindcockpitApp.swift in Sources */,
 				BF1149122892D95D0081A360 /* EditSessionView.swift in Sources */,
 				BF05045F289AFBD000EEB2AA /* DurationFormatter.swift in Sources */,
 				BF1149142892D95D0081A360 /* CreateSessionView.swift in Sources */,
+				BF0A812828A10B26008C4C41 /* LocationService.swift in Sources */,
 				BF1149012892C03C0081A360 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -436,10 +464,10 @@
 				BF1148F82892BFD10081A360 /* SessionPagingView.swift in Sources */,
 				BF1148D02892BE7D0081A360 /* NotificationController.swift in Sources */,
 				BF1148EA2892BEB10081A360 /* LocationView.swift in Sources */,
-				BF1149042892C0440081A360 /* EventService.swift in Sources */,
 				BF1148FC2892BFE40081A360 /* ControlsView.swift in Sources */,
 				BF1148F22892BF980081A360 /* StartView.swift in Sources */,
 				BF1148D42892BE7D0081A360 /* ComplicationController.swift in Sources */,
+				BF0A812928A10C35008C4C41 /* SessionService.swift in Sources */,
 				BF1148EC2892BEB80081A360 /* LocationViewModel.swift in Sources */,
 				BF050460289AFBF700EEB2AA /* DurationFormatter.swift in Sources */,
 				BF1148FE2892BFEA0081A360 /* ElapsedTimeView.swift in Sources */,

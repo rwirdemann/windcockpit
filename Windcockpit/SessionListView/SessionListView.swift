@@ -27,7 +27,7 @@ struct SessionListView: View {
                 }
                 .onDelete(perform: delete)
             }
-            .navigationTitle("Windcockpit")
+            .navigationTitle("Sessions")
             .toolbar {
                 NavigationLink(destination: CreateSessionView(),
                                label: {Image(systemName: "plus")})
@@ -43,11 +43,5 @@ struct SessionListView: View {
     
     func delete(at offsets: IndexSet) {
         viewModel.removeSession(index: offsets.first!)
-    }
-}
-
-struct RedOneView_Previews: PreviewProvider {
-    static var previews: some View {
-        SessionListView()
     }
 }

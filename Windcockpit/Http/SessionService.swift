@@ -7,12 +7,12 @@
 
 import Foundation
 
-protocol EventServiceCallback {
+protocol SessionServiceCallback {
     func success(event: Session)
     func error(message: String)
 }
 
-func createSession(session: Session, callback: EventServiceCallback) {
+func createSession(session: Session, callback: SessionServiceCallback) {
     guard let url = URL(string: "\(Constants.BASE_URL)/events") else {
         callback.error(message: "Invalid URL")
         return
@@ -44,7 +44,7 @@ func createSession(session: Session, callback: EventServiceCallback) {
     task.resume()
 }
 
-func updateSession(session: Session, callback: EventServiceCallback) {
+func updateSession(session: Session, callback: SessionServiceCallback) {
     guard let url = URL(string: "\(Constants.BASE_URL)/events/\(session.id)") else {
         callback.error(message: "Invalid URL")
         return

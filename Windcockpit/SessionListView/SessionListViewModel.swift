@@ -15,7 +15,7 @@ final class SessionListViewModel: ObservableObject {
         self.sessions = MockData.sessions
     }
     
-    func uploadSession(session: Session, callback: EventServiceCallback) {
+    func uploadSession(session: Session, callback: SessionServiceCallback) {
         createSession(session: session, callback: callback)
     }
 

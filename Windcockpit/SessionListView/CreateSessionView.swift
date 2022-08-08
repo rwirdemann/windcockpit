@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CreateSessionView: View, EventServiceCallback {
+struct CreateSessionView: View, SessionServiceCallback {
     
     func success(event: Session) {
         sessionListViewModel.loadSessions()

@@ -13,9 +13,9 @@ struct ContentView: View {
             SessionListView()
                 .tabItem {
                     Image(systemName: "list.bullet.circle")
-                    Text("Windcockpit")
+                    Text("Sessions")
                 }
-            Text("Spots")
+            LocationListView()
                 .tabItem {
                     Image(systemName: "map")
                     Text("Spots")

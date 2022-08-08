@@ -111,7 +111,7 @@ struct SummaryMetricvView: View {
     }
 }
 
-extension SummaryView: EventServiceCallback {
+extension SummaryView: SessionServiceCallback {
     func success(event: Session) {
         DispatchQueue.main.async {
             dismiss()

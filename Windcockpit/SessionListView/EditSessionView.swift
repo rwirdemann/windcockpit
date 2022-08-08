@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct EditSessionView: View, EventServiceCallback {
+struct EditSessionView: View, SessionServiceCallback {
     @EnvironmentObject var sessionListViewModel: SessionListViewModel
     @Environment(\.editMode) private var editMode
     @State var session: Session
