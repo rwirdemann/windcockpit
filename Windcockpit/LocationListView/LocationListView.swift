@@ -27,16 +27,19 @@ struct LocationListView: View {
         }
         .navigationViewStyle(StackNavigationViewStyle())
         .onAppear {
-            viewModel.loadLocations(errorHandler: self)
+            viewModel.loadLocations(cb: self)
         }
     }
     
     func delete(at offsets: IndexSet) {
-        viewModel.deleteLocation(index: offsets.first!, errorHandler: self)
+        viewModel.deleteLocation(index: offsets.first!, cb: self)
     }
 }
 
-extension LocationListView: ErrorHandler {
+extension LocationListView: LocationServiceCallback {
+    func success(locations: [Location]) {
+    }
+    
     func error(message: String) {
         errorMessage = message
         showingAlert = true

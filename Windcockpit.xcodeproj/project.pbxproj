@@ -13,7 +13,6 @@
 		BF050461289AFC1300EEB2AA /* DurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF05045C289AB34A00EEB2AA /* DurationView.swift */; };
 		BF0A812328A10825008C4C41 /* LocationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0A812228A10825008C4C41 /* LocationListView.swift */; };
 		BF0A812528A108D3008C4C41 /* LocationListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0A812428A108D3008C4C41 /* LocationListModel.swift */; };
-		BF0A812828A10B26008C4C41 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0A812728A10B26008C4C41 /* LocationService.swift */; };
 		BF0A812928A10C35008C4C41 /* SessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1149002892C03C0081A360 /* SessionService.swift */; };
 		BF1148B12892BE7A0081A360 /* WindcockpitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1148B02892BE7A0081A360 /* WindcockpitApp.swift */; };
 		BF1148B52892BE7B0081A360 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF1148B42892BE7B0081A360 /* Assets.xcassets */; };
@@ -100,7 +99,6 @@
 		BF05045E289AFBD000EEB2AA /* DurationFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationFormatter.swift; sourceTree = "<group>"; };
 		BF0A812228A10825008C4C41 /* LocationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListView.swift; sourceTree = "<group>"; };
 		BF0A812428A108D3008C4C41 /* LocationListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListModel.swift; sourceTree = "<group>"; };
-		BF0A812728A10B26008C4C41 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		BF1148AD2892BE7A0081A360 /* Windcockpit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Windcockpit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF1148B02892BE7A0081A360 /* WindcockpitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindcockpitApp.swift; sourceTree = "<group>"; };
 		BF1148B42892BE7B0081A360 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -173,7 +171,6 @@
 			isa = PBXGroup;
 			children = (
 				BF1149002892C03C0081A360 /* SessionService.swift */,
-				BF0A812728A10B26008C4C41 /* LocationService.swift */,
 			);
 			path = Http;
 			sourceTree = "<group>";
@@ -452,7 +449,6 @@
 				BF1149122892D95D0081A360 /* EditSessionView.swift in Sources */,
 				BF05045F289AFBD000EEB2AA /* DurationFormatter.swift in Sources */,
 				BF1149142892D95D0081A360 /* CreateSessionView.swift in Sources */,
-				BF0A812828A10B26008C4C41 /* LocationService.swift in Sources */,
 				BF1149012892C03C0081A360 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
