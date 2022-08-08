@@ -33,7 +33,6 @@ struct SessionListView: View {
                                label: {Image(systemName: "plus")})
             }
         }
-        .navigationViewStyle(StackNavigationViewStyle())
         .onAppear {
             viewModel.loadSessions()
             viewModel.loadSpots()

@@ -25,7 +25,6 @@ struct LocationListView: View {
         .alert(errorMessage, isPresented: $showingAlert)  {
             Button("OK", role: .cancel) {}
         }
-        .navigationViewStyle(StackNavigationViewStyle())
         .onAppear {
             viewModel.loadLocations(cb: self)
         }
