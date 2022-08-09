@@ -52,7 +52,7 @@ struct SummaryView: View {
                         ).formatted(
                         )
                     )
-                    .accentColor(Color.cyan)
+                    .accentColor(Color.red)
 
                     let formatter = DurationFormatter()
                     let duration = formatter.string(for: workoutManager.builder?.elapsedTime ?? 0) ?? "00:00:00"

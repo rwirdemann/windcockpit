@@ -57,6 +57,6 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
         if speed < 0 {
             return 0
         }
-        return 0
+        return speed
     }
 }
