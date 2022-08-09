@@ -115,11 +115,9 @@ class WorkoutManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         session = nil
         workout = nil
         distance = 0
-        maxSpeed = 0
     }
     
     @Published var distance: Double = 0
-    @Published var maxSpeed: Double = 0
     @Published var workout: HKWorkout?
     
     // LocationViewModel
@@ -173,21 +171,11 @@ class WorkoutManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         }
         return speed
     }
-
-    
 }
 
 extension WorkoutManager: HKWorkoutSessionDelegate {
     func workoutSession(_ workoutSession: HKWorkoutSession, didFailWithError error: Error) {
         
-    }
-    
-    func workoutSession(_ workoutSession: HKWorkoutSession, didGenerate event: HKWorkoutEvent) {
-        if event.type == .segment {
-            let maxSpeed = event.metadata?[HKMetadataKeyMaximumSpeed]
-            guard let maxSpeed = maxSpeed as? Double else { return }
-            self.maxSpeed = maxSpeed
-        }
     }
     
     func workoutSession(_ workoutSession: HKWorkoutSession, didChangeTo toState: HKWorkoutSessionState, from fromState: HKWorkoutSessionState, date: Date) {
