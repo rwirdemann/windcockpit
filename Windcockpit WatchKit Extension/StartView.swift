@@ -10,7 +10,6 @@ import HealthKit
 
 struct StartView: View {
     @EnvironmentObject var workoutManager: WorkoutManager
-    @EnvironmentObject var locationModel: LocationViewModel
 
     var workoutTypes: [HKWorkoutActivityType] = [.cycling, .sailing]
     var body: some View {
@@ -28,7 +27,7 @@ struct StartView: View {
         .navigationTitle("Windcockpit")
         .onAppear {
             workoutManager.requestAuthorization()
-            locationModel.requestPermission()
+            workoutManager.requestPermission()
         }
     }
 }

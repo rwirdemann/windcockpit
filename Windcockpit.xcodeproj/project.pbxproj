@@ -26,8 +26,6 @@
 		BF1148D42892BE7D0081A360 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1148D32892BE7D0081A360 /* ComplicationController.swift */; };
 		BF1148D62892BE7E0081A360 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF1148D52892BE7E0081A360 /* Assets.xcassets */; };
 		BF1148D92892BE7E0081A360 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF1148D82892BE7E0081A360 /* Preview Assets.xcassets */; };
-		BF1148EA2892BEB10081A360 /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1148E92892BEB10081A360 /* LocationView.swift */; };
-		BF1148EC2892BEB80081A360 /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1148EB2892BEB80081A360 /* LocationViewModel.swift */; };
 		BF1148F02892BF1A0081A360 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1148EF2892BF1A0081A360 /* HealthKit.framework */; };
 		BF1148F22892BF980081A360 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1148F12892BF980081A360 /* StartView.swift */; };
 		BF1148F42892BFA30081A360 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1148F32892BFA30081A360 /* SummaryView.swift */; };
@@ -114,8 +112,6 @@
 		BF1148D82892BE7E0081A360 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BF1148DA2892BE7E0081A360 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF1148DB2892BE7E0081A360 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
-		BF1148E92892BEB10081A360 /* LocationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
-		BF1148EB2892BEB80081A360 /* LocationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
 		BF1148ED2892BF1A0081A360 /* Windcockpit WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Windcockpit WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		BF1148EF2892BF1A0081A360 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS8.5.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
 		BF1148F12892BF980081A360 /* StartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
@@ -240,8 +236,6 @@
 				BF1148FD2892BFEA0081A360 /* ElapsedTimeView.swift */,
 				BF1148F92892BFDE0081A360 /* MetricsView.swift */,
 				BF1148ED2892BF1A0081A360 /* Windcockpit WatchKit Extension.entitlements */,
-				BF1148E92892BEB10081A360 /* LocationView.swift */,
-				BF1148EB2892BEB80081A360 /* LocationViewModel.swift */,
 				BF1148CF2892BE7D0081A360 /* NotificationController.swift */,
 				BF1148D12892BE7D0081A360 /* NotificationView.swift */,
 				BF1148D32892BE7D0081A360 /* ComplicationController.swift */,
@@ -459,12 +453,10 @@
 			files = (
 				BF1148F82892BFD10081A360 /* SessionPagingView.swift in Sources */,
 				BF1148D02892BE7D0081A360 /* NotificationController.swift in Sources */,
-				BF1148EA2892BEB10081A360 /* LocationView.swift in Sources */,
 				BF1148FC2892BFE40081A360 /* ControlsView.swift in Sources */,
 				BF1148F22892BF980081A360 /* StartView.swift in Sources */,
 				BF1148D42892BE7D0081A360 /* ComplicationController.swift in Sources */,
 				BF0A812928A10C35008C4C41 /* SessionService.swift in Sources */,
-				BF1148EC2892BEB80081A360 /* LocationViewModel.swift in Sources */,
 				BF050460289AFBF700EEB2AA /* DurationFormatter.swift in Sources */,
 				BF1148FE2892BFEA0081A360 /* ElapsedTimeView.swift in Sources */,
 				BF1148CC2892BE7D0081A360 /* WindcockpitApp.swift in Sources */,

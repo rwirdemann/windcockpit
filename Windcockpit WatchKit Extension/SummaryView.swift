@@ -9,7 +9,6 @@ import SwiftUI
 
 struct SummaryView: View {
     @EnvironmentObject var workoutManager: WorkoutManager
-    @EnvironmentObject var locationViewModel: LocationViewModel
     
     @Environment(\.dismiss) var dismiss
     @State private var durationFormatter: DateComponentsFormatter = {
@@ -47,7 +46,7 @@ struct SummaryView: View {
                     SummaryMetricvView(
                         title: "Max Speed",
                         value: Measurement(
-                            value: locationViewModel.maxSpeed,
+                            value: workoutManager.maxSpeedModel,
                             unit: UnitSpeed.metersPerSecond
                         ).formatted(
                         )
@@ -66,7 +65,7 @@ struct SummaryView: View {
                         let formatter = DateFormatter()
                         formatter.locale = Locale(identifier: "de")
                         formatter.dateFormat = "d. MMMM y, HH:mm"
-                        let location = locationViewModel.currentPlacemark?.locality ?? "New: \(formatter.string(from: Date()))"
+                        let location = workoutManager.currentPlacemark?.locality ?? "New: \(formatter.string(from: Date()))"
                         let dist = workoutManager.workout?.totalDistance?.doubleValue(for: .meter()) ?? 0
                         let duration = workoutManager.builder?.elapsedTime ?? 0
                         let s = Session(id: 1,
@@ -74,9 +73,9 @@ struct SummaryView: View {
                                         name: "Wingfoiling",
                                         date: Date(),
                                         distance: dist,
-                                        maxspeed: locationViewModel.maxSpeed,
+                                        maxspeed: workoutManager.maxSpeedModel,
                                         duration: duration)
-                        locationViewModel.maxSpeed = 0
+                        workoutManager.maxSpeedModel = 0
                         createSession(session: s, callback: self)
                     }
                 }

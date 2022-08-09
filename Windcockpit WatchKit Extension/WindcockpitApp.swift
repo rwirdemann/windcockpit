@@ -10,7 +10,6 @@ import SwiftUI
 @main
 struct WindcockpitApp: App {
     @StateObject var workoutManager = WorkoutManager()
-    @StateObject var locationViewModel = LocationViewModel()
 
     @SceneBuilder var body: some Scene {
         WindowGroup {
@@ -21,7 +20,6 @@ struct WindcockpitApp: App {
                 SummaryView()
             }
             .environmentObject(workoutManager)
-            .environmentObject(locationViewModel)
         }
         WKNotificationScene(controller: NotificationController.self, category: "myCategory")
     }

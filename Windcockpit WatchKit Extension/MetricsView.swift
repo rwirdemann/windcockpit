@@ -9,7 +9,6 @@ import SwiftUI
 
 struct MetricsView: View {
     @EnvironmentObject var workoutManager: WorkoutManager
-    @EnvironmentObject var locationViewModel: LocationViewModel
 
     var body: some View {
         TimelineView(
@@ -32,14 +31,14 @@ struct MetricsView: View {
                 .foregroundColor(Color.green)
                 Text(
                     Measurement(
-                        value: locationViewModel.currentSpeed(),
+                        value: workoutManager.currentSpeed(),
                         unit: UnitSpeed.metersPerSecond
                     ).formatted(
                     )
                 )
                 Text(
                     Measurement(
-                        value: locationViewModel.maxSpeed,
+                        value: workoutManager.maxSpeedModel,
                         unit: UnitSpeed.metersPerSecond
                     ).formatted(
                     )
