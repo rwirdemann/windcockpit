@@ -38,7 +38,7 @@ struct MetricsView: View {
                 )
                 Text(
                     Measurement(
-                        value: workoutManager.maxSpeedModel,
+                        value: workoutManager.maxSpeed,
                         unit: UnitSpeed.metersPerSecond
                     ).formatted(
                     )

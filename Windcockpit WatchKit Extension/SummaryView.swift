@@ -46,7 +46,7 @@ struct SummaryView: View {
                     SummaryMetricvView(
                         title: "Max Speed",
                         value: Measurement(
-                            value: workoutManager.maxSpeedModel,
+                            value: workoutManager.maxSpeed,
                             unit: UnitSpeed.metersPerSecond
                         ).formatted(
                         )
@@ -73,9 +73,8 @@ struct SummaryView: View {
                                         name: "Wingfoiling",
                                         date: Date(),
                                         distance: dist,
-                                        maxspeed: workoutManager.maxSpeedModel,
+                                        maxspeed: workoutManager.maxSpeed,
                                         duration: duration)
-                        workoutManager.maxSpeedModel = 0
                         createSession(session: s, callback: self)
                     }
                 }

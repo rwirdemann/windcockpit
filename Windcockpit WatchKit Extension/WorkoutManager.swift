@@ -77,6 +77,8 @@ class WorkoutManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         builder?.beginCollection(withStart: startDate) { (success, error) in
             
         }
+
+        locationManager.startUpdatingLocation()
     }
     
     func requestAuthorization() {
@@ -115,6 +117,8 @@ class WorkoutManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         session = nil
         workout = nil
         distance = 0
+        maxSpeed = 0
+        locationManager.stopUpdatingLocation()
     }
     
     @Published var distance: Double = 0
@@ -124,7 +128,7 @@ class WorkoutManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var authorizationStatus: CLAuthorizationStatus
     @Published var lastSeenLocation: CLLocation?
     @Published var currentPlacemark: CLPlacemark?
-    @Published var maxSpeedModel: Double = 0
+    @Published var maxSpeed: Double = 0
     
     private let locationManager: CLLocationManager
     
@@ -135,7 +139,6 @@ class WorkoutManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         super.init()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.startUpdatingLocation()
     }
     
     func requestPermission() {
@@ -151,8 +154,8 @@ class WorkoutManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         fetchCountryAndCity(for: locations.first)
 
         let currentSpeed = self.lastSeenLocation?.speed ?? 0
-        if currentSpeed > maxSpeedModel {
-            maxSpeedModel = currentSpeed
+        if currentSpeed > maxSpeed {
+            maxSpeed = currentSpeed
         }
     }
 
