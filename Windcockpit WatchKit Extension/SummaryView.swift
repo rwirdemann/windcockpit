@@ -76,6 +76,7 @@ struct SummaryView: View {
                                         distance: dist,
                                         maxspeed: locationViewModel.maxSpeed,
                                         duration: duration)
+                        locationViewModel.maxSpeed = 0
                         createSession(session: s, callback: self)
                     }
                 }
