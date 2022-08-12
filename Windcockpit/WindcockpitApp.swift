@@ -13,7 +13,7 @@ struct WindcockpitApp: App {
 
     var body: some Scene {
         WindowGroup {
-            MyContentView()
+            ContentView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

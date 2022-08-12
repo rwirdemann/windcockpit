@@ -22,6 +22,11 @@ struct ContentView: View {
                     Image(systemName: "map")
                     Text("Spots")
                 }
+            MyContentView()
+                .tabItem {
+                    Image(systemName: "externaldrive")
+                    Text("CoreData")
+                }
         }
     }
 }
