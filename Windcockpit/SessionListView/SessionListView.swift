@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct SessionListView: View {
     
@@ -14,7 +15,7 @@ struct SessionListView: View {
     // updated. StateObject makes also sure the this view will be informed when the published states
     // changes
     @StateObject private var viewModel = SessionListViewModel()
-    
+        
     var body: some View {
         NavigationView {
             List {

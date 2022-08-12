@@ -47,8 +47,10 @@
 		BF1149162892D95D0081A360 /* SessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1149112892D95D0081A360 /* SessionCell.swift */; };
 		BF1149182892D96F0081A360 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1149172892D96F0081A360 /* ContentView.swift */; };
 		BF11491A2892D97A0081A360 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1149192892D97A0081A360 /* Date.swift */; };
-		BF72ABAE28A3E68F00D7F496 /* Windcockpit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BF72ABAC28A3E68F00D7F496 /* Windcockpit.xcdatamodeld */; };
 		BF9A5DAC289967DD009F438D /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9A5DAB289967DD009F438D /* Formatters.swift */; };
+		BFAB602328A6786500CC6276 /* MyContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAB602228A6786500CC6276 /* MyContentView.swift */; };
+		BFAB602628A678CC00CC6276 /* CoreSample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BFAB602428A678CC00CC6276 /* CoreSample.xcdatamodeld */; };
+		BFAB602828A678DF00CC6276 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAB602728A678DF00CC6276 /* Persistence.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,8 +135,10 @@
 		BF1149112892D95D0081A360 /* SessionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionCell.swift; sourceTree = "<group>"; };
 		BF1149172892D96F0081A360 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BF1149192892D97A0081A360 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
-		BF72ABAD28A3E68F00D7F496 /* Windcockpit.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Windcockpit.xcdatamodel; sourceTree = "<group>"; };
 		BF9A5DAB289967DD009F438D /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
+		BFAB602228A6786500CC6276 /* MyContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyContentView.swift; sourceTree = "<group>"; };
+		BFAB602528A678CC00CC6276 /* CoreSample.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreSample.xcdatamodel; sourceTree = "<group>"; };
+		BFAB602728A678DF00CC6276 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +208,7 @@
 				BF11490B2892D94A0081A360 /* Util */,
 				BF1149052892C05F0081A360 /* Model */,
 				BF1148B02892BE7A0081A360 /* WindcockpitApp.swift */,
+				BFAB602228A6786500CC6276 /* MyContentView.swift */,
 				BF1149172892D96F0081A360 /* ContentView.swift */,
 				BF1148B42892BE7B0081A360 /* Assets.xcassets */,
 				BF1148B62892BE7B0081A360 /* Preview Content */,
@@ -302,7 +307,8 @@
 		BF72ABAB28A3E64400D7F496 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				BF72ABAC28A3E68F00D7F496 /* Windcockpit.xcdatamodeld */,
+				BFAB602728A678DF00CC6276 /* Persistence.swift */,
+				BFAB602428A678CC00CC6276 /* CoreSample.xcdatamodeld */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -438,6 +444,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFAB602328A6786500CC6276 /* MyContentView.swift in Sources */,
 				BF05045D289AB34A00EEB2AA /* DurationView.swift in Sources */,
 				BF1149162892D95D0081A360 /* SessionCell.swift in Sources */,
 				BF9A5DAC289967DD009F438D /* Formatters.swift in Sources */,
@@ -446,16 +453,17 @@
 				BF0A812528A108D3008C4C41 /* LocationListModel.swift in Sources */,
 				BF1149132892D95D0081A360 /* SessionListViewModel.swift in Sources */,
 				BF1149152892D95D0081A360 /* SessionListView.swift in Sources */,
+				BFAB602828A678DF00CC6276 /* Persistence.swift in Sources */,
 				BF1149092892C05F0081A360 /* Session.swift in Sources */,
 				BF1149082892C05F0081A360 /* Location.swift in Sources */,
 				BF11491A2892D97A0081A360 /* Date.swift in Sources */,
 				BF0A812328A10825008C4C41 /* LocationListView.swift in Sources */,
+				BFAB602628A678CC00CC6276 /* CoreSample.xcdatamodeld in Sources */,
 				BF1148B12892BE7A0081A360 /* WindcockpitApp.swift in Sources */,
 				BF1149122892D95D0081A360 /* EditSessionView.swift in Sources */,
 				BF05045F289AFBD000EEB2AA /* DurationFormatter.swift in Sources */,
 				BF1149142892D95D0081A360 /* CreateSessionView.swift in Sources */,
 				BF1149012892C03C0081A360 /* Constants.swift in Sources */,
-				BF72ABAE28A3E68F00D7F496 /* Windcockpit.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -832,13 +840,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		BF72ABAC28A3E68F00D7F496 /* Windcockpit.xcdatamodeld */ = {
+		BFAB602428A678CC00CC6276 /* CoreSample.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				BF72ABAD28A3E68F00D7F496 /* Windcockpit.xcdatamodel */,
+				BFAB602528A678CC00CC6276 /* CoreSample.xcdatamodel */,
 			);
-			currentVersion = BF72ABAD28A3E68F00D7F496 /* Windcockpit.xcdatamodel */;
-			path = Windcockpit.xcdatamodeld;
+			currentVersion = BFAB602528A678CC00CC6276 /* CoreSample.xcdatamodel */;
+			path = CoreSample.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
