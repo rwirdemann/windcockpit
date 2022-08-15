@@ -6,11 +6,14 @@
 //
 
 import Foundation
+import CoreData
+import SwiftUI
 
 final class SessionListViewModel: ObservableObject {
+    
     @Published var sessions: [Session] = []
     @Published var locations: [Location] = []
-
+    
     func getSessions() {
         self.sessions = MockData.sessions
     }
@@ -18,23 +21,48 @@ final class SessionListViewModel: ObservableObject {
     func uploadSession(session: Session, callback: SessionServiceCallback) {
         createSession(session: session, callback: callback)
     }
-
-    func loadSessions() {
+    
+    func loadSessions(viewContext: NSManagedObjectContext? = nil) {
         guard let url = URL(string: "\(Constants.BASE_URL)/events") else {
             print("Invalid url...")
             return
         }
         URLSession.shared.dataTask(with: url) { data, response, error in
             if let httpResponse = response as? HTTPURLResponse {
-                   print("statusCode: \(httpResponse.statusCode)")
-               }
+                print("statusCode: \(httpResponse.statusCode)")
+            }
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
             let sessions = try! decoder.decode([Session].self, from: data!)
             DispatchQueue.main.async {
                 self.sessions = sessions
+                if let viewContext = viewContext {
+                    for session in self.sessions {
+                        
+                        let exists = self.itemExists(viewContext: viewContext, item: session)
+                        if exists == false {
+                            let newItem = SessionEntity(context: viewContext)
+                            newItem.date = session.date
+                            newItem.location = session.location
+                            newItem.id = Int32(session.id)
+                            print("New Session: \(newItem)")
+                        }
+                        do {
+                            try viewContext.save()
+                        } catch {
+                            let nsError = error as NSError
+                            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                        }
+                    }
+                }
             }
         }.resume()
+    }
+    
+    private func itemExists(viewContext: NSManagedObjectContext, item: Session) -> Bool {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "SessionEntity")
+        fetchRequest.predicate = NSPredicate(format: "id == %d", item.id)
+        return ((try? viewContext.count(for: fetchRequest)) ?? 0) > 0
     }
     
     func loadSpots() {
@@ -44,8 +72,8 @@ final class SessionListViewModel: ObservableObject {
         }
         URLSession.shared.dataTask(with: url) { data, response, error in
             if let httpResponse = response as? HTTPURLResponse {
-                   print("statusCode: \(httpResponse.statusCode)")
-               }
+                print("statusCode: \(httpResponse.statusCode)")
+            }
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
             let locations = try! decoder.decode([Location].self, from: data!)

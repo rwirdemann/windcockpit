@@ -12,7 +12,7 @@ struct MyContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \SessionEntity.date, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \SessionEntity.date, ascending: false)],
         animation: .default)
     private var items: FetchedResults<SessionEntity>
 
@@ -23,7 +23,7 @@ struct MyContentView: View {
                     NavigationLink {
                         Text("Item at \(item.date!, formatter: itemFormatter)")
                     } label: {
-                        Text(item.date!, formatter: itemFormatter)
+                        Text("\(item.location!)@\(item.date!, formatter: itemFormatter)")
                     }
                 }
                 .onDelete(perform: deleteItems)

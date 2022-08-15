@@ -139,6 +139,7 @@
 		BFAB602228A6786500CC6276 /* MyContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyContentView.swift; sourceTree = "<group>"; };
 		BFAB602528A678CC00CC6276 /* CoreSample.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreSample.xcdatamodel; sourceTree = "<group>"; };
 		BFAB602728A678DF00CC6276 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		BFCF213F28AA2BA6004ED37D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +202,7 @@
 		BF1148AF2892BE7A0081A360 /* Windcockpit */ = {
 			isa = PBXGroup;
 			children = (
+				BFCF213F28AA2BA6004ED37D /* Info.plist */,
 				BF72ABAB28A3E64400D7F496 /* CoreData */,
 				BF0A812628A10B16008C4C41 /* Http */,
 				BF0A812128A10803008C4C41 /* LocationListView */,
@@ -746,6 +748,7 @@
 				DEVELOPMENT_TEAM = 8LW873B8B4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Windcockpit/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -777,6 +780,7 @@
 				DEVELOPMENT_TEAM = 8LW873B8B4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Windcockpit/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
