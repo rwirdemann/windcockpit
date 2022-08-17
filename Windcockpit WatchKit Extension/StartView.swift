@@ -10,24 +10,29 @@ import HealthKit
 
 struct StartView: View {
     @EnvironmentObject var workoutManager: WorkoutManager
-
+    
     var workoutTypes: [HKWorkoutActivityType] = [.cycling, .sailing]
     var body: some View {
-        List(workoutTypes) { workoutType in
-            NavigationLink(
-                workoutType.name,
-                destination: SessionPagingView(),
-                tag: workoutType,
-                selection: $workoutManager.selectedWorkout
+        VStack {
+            Button("Hello World!", action: {
+                WatchConnectivityManager.shared.send("Hello World!\n\(Date().ISO8601Format())")
+            })
+            List(workoutTypes) { workoutType in
+                NavigationLink(
+                    workoutType.name,
+                    destination: SessionPagingView(),
+                    tag: workoutType,
+                    selection: $workoutManager.selectedWorkout
+                )
+            }.padding(
+                EdgeInsets(top: 15, leading: 10, bottom: 15, trailing: 10)
             )
-        }.padding(
-            EdgeInsets(top: 15, leading: 10, bottom: 15, trailing: 10)
-        )
-        .listStyle(.carousel)
-        .navigationTitle("Windcockpit")
-        .onAppear {
-            workoutManager.requestAuthorization()
-            workoutManager.requestPermission()
+            .listStyle(.carousel)
+            .navigationTitle("Windcockpit")
+            .onAppear {
+                workoutManager.requestAuthorization()
+                workoutManager.requestPermission()
+            }
         }
     }
 }
