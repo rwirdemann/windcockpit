@@ -20,7 +20,8 @@ struct NotificationMessage: Identifiable, Equatable {
 final class WatchConnectivityManager: NSObject, ObservableObject {
     static let shared = WatchConnectivityManager()
     @Published var notificationMessage: NotificationMessage? = nil
-    
+    @Published var newSession: Session? = nil
+
     private override init() {
         super.init()
         
@@ -31,7 +32,28 @@ final class WatchConnectivityManager: NSObject, ObservableObject {
     }
     
     private let kMessageKey = "message"
-    
+
+    func send(_ session: Session) {
+        guard WCSession.default.activationState == .activated else {
+          return
+        }
+        #if os(iOS)
+        guard WCSession.default.isWatchAppInstalled else {
+            return
+        }
+        #else
+        guard WCSession.default.isCompanionAppInstalled else {
+            return
+        }
+        #endif
+ 
+        let encoder = JSONEncoder()
+        let data = try! encoder.encode(session)
+        WCSession.default.sendMessageData(data, replyHandler: nil) { error in
+            print("Cannot send data: \(String(describing: error))")
+        }
+    }
+
     func send(_ message: String) {
         guard WCSession.default.activationState == .activated else {
           return
@@ -58,6 +80,14 @@ extension WatchConnectivityManager: WCSessionDelegate {
             DispatchQueue.main.async { [weak self] in
                 self?.notificationMessage = NotificationMessage(text: notificationText)
             }
+        }
+    }
+    
+    func session(_ session: WCSession, didReceiveMessageData messageData: Data) {
+        let decoder = JSONDecoder()
+        let session = try! decoder.decode(Session.self, from: messageData)
+        DispatchQueue.main.async { [weak self] in
+            self?.newSession = session
         }
     }
     

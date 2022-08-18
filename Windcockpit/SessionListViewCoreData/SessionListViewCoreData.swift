@@ -8,7 +8,7 @@
 import SwiftUI
 import CoreData
 
-struct MyContentView: View {
+struct SessionListViewCoreData: View {
     @ObservedObject private var connectivityManager = WatchConnectivityManager.shared
     
     @Environment(\.managedObjectContext) private var viewContext
@@ -24,11 +24,12 @@ struct MyContentView: View {
                     NavigationLink {
                         Text("Item at \(item.date!, formatter: itemFormatter)")
                     } label: {
-                        Text("\(item.location!)@\(item.date!, formatter: itemFormatter)")
+                        SessionCellCoreData(session: item)
                     }
                 }
                 .onDelete(perform: deleteItems)
             }
+            .navigationTitle("CoreData")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
@@ -39,10 +40,24 @@ struct MyContentView: View {
                     }
                 }
             }
-            Text("Select an item")
         }
-        .onChange(of: connectivityManager.notificationMessage) {message in
-            addItem(location: message?.text)
+        .onChange(of: connectivityManager.newSession) {session in
+            addItem(session: session)
+        }
+    }
+
+    private func addItem(session: Session?) {
+        guard let session = session else {
+            return
+        }
+        let newItem = SessionEntity(context: viewContext)
+        newItem.date = session.date
+        newItem.location = session.location
+        do {
+            try viewContext.save()
+        } catch {
+            let nsError = error as NSError
+            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
         }
     }
 
@@ -100,6 +115,6 @@ private let itemFormatter: DateFormatter = {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        MyContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        SessionListViewCoreData().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

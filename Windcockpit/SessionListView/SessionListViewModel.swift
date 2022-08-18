@@ -44,6 +44,7 @@ final class SessionListViewModel: ObservableObject {
                             let newItem = SessionEntity(context: viewContext)
                             newItem.date = session.date
                             newItem.location = session.location
+                            newItem.name = session.name
                             newItem.id = Int32(session.id)
                             print("New Session: \(newItem)")
                         }

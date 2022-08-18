@@ -15,7 +15,14 @@ struct StartView: View {
     var body: some View {
         VStack {
             Button("Hello World!", action: {
-                WatchConnectivityManager.shared.send("Hello World!\n\(Date().ISO8601Format())")
+                let s = Session(id:0,
+                                location: "Hansholm",
+                                name: "Wingfoiling",
+                                date: Date(),
+                                distance: 0,
+                                maxspeed: 0,
+                                duration: 0)
+                WatchConnectivityManager.shared.send(s)
             })
             List(workoutTypes) { workoutType in
                 NavigationLink(

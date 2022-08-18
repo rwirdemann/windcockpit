@@ -22,7 +22,7 @@ struct ContentView: View {
                     Image(systemName: "map")
                     Text("Spots")
                 }
-            MyContentView()
+            SessionListViewCoreData()
                 .tabItem {
                     Image(systemName: "externaldrive")
                     Text("CoreData")
