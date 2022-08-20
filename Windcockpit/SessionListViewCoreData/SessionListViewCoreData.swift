@@ -21,13 +21,26 @@ struct SessionListViewCoreData: View {
         NavigationView {
             List {
                 ForEach(items) { item in
-                    NavigationLink {
+                   NavigationLink {
                         Text("Item at \(item.date!, formatter: itemFormatter)")
                     } label: {
                         SessionCellCoreData(session: item)
                     }
+                    .swipeActions {
+                        Button {
+                            deleteItem(session: item)
+                        } label: {
+                            Label("Delete", systemImage: "trash")
+                        }
+                        .tint(.red)
+                        Button {
+                            uploadSession(session: item)
+                        } label: {
+                            Label("Upload", systemImage: "square.and.arrow.up")
+                        }
+                        .tint(.blue)
+                    }
                 }
-                .onDelete(perform: deleteItems)
             }
             .navigationTitle("CoreData")
             .toolbar {
@@ -45,7 +58,7 @@ struct SessionListViewCoreData: View {
             addItem(session: session)
         }
     }
-
+    
     private func addItem(session: Session?) {
         guard let session = session else {
             return
@@ -62,7 +75,11 @@ struct SessionListViewCoreData: View {
             fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
         }
     }
-
+    
+    private func uploadSession(session: SessionEntity) {
+        
+    }
+    
     private func addItem(location: String?) {
         let newItem = SessionEntity(context: viewContext)
         newItem.date = Date()
@@ -76,7 +93,7 @@ struct SessionListViewCoreData: View {
             fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
         }
     }
-
+    
     private func addItem() {
         withAnimation {
             let newItem = SessionEntity(context: viewContext)
@@ -92,15 +109,12 @@ struct SessionListViewCoreData: View {
         }
     }
     
-    private func deleteItems(offsets: IndexSet) {
+    private func deleteItem(session: SessionEntity) {
         withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
-            
+            viewContext.delete(session)
             do {
                 try viewContext.save()
             } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
                 let nsError = error as NSError
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
