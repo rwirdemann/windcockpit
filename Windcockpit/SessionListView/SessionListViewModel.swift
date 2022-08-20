@@ -45,7 +45,7 @@ final class SessionListViewModel: ObservableObject {
                             newItem.date = session.date
                             newItem.location = session.location
                             newItem.name = session.name
-                            newItem.id = Int32(session.id)
+                            newItem.cid = Int32(session.id)
                             print("New Session: \(newItem)")
                         }
                         do {
@@ -62,7 +62,7 @@ final class SessionListViewModel: ObservableObject {
     
     private func itemExists(viewContext: NSManagedObjectContext, item: Session) -> Bool {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "SessionEntity")
-        fetchRequest.predicate = NSPredicate(format: "id == %d", item.id)
+        fetchRequest.predicate = NSPredicate(format: "cid == %d", item.id)
         return ((try? viewContext.count(for: fetchRequest)) ?? 0) > 0
     }
     

@@ -14,7 +14,7 @@ struct StartView: View {
     var workoutTypes: [HKWorkoutActivityType] = [.cycling, .sailing]
     var body: some View {
         VStack {
-            Button("Hello World!", action: {
+            Button("Create Sessoion", action: {
                 let s = Session(id:0,
                                 location: "Hansholm",
                                 name: "Wingfoiling",

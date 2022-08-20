@@ -53,6 +53,7 @@ struct SessionListViewCoreData: View {
         let newItem = SessionEntity(context: viewContext)
         newItem.date = session.date
         newItem.location = session.location
+        newItem.name = session.name
         do {
             try viewContext.save()
         } catch {
