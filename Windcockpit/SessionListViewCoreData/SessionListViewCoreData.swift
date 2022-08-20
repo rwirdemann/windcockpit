@@ -54,6 +54,7 @@ struct SessionListViewCoreData: View {
         newItem.date = session.date
         newItem.location = session.location
         newItem.name = session.name
+        newItem.published = false
         do {
             try viewContext.save()
         } catch {

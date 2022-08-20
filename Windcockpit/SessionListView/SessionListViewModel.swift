@@ -46,6 +46,7 @@ final class SessionListViewModel: ObservableObject {
                             newItem.location = session.location
                             newItem.name = session.name
                             newItem.cid = Int32(session.id)
+                            newItem.published = true
                             print("New Session: \(newItem)")
                         }
                         do {

@@ -25,9 +25,11 @@ struct SessionCellCoreData: View {
                     .fontWeight(.semibold)
                     .foregroundColor(.primary)
 
-                Text(session.name ?? "")
+                let sport = session.name ?? ""
+                let published = session.published ? "published" : "local"
+                Text("\(sport) (\(published))")
                     .font(.footnote)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.blue)
 
                 Text(toString(from: session.date ?? Date()))
                     .font(.subheadline)
