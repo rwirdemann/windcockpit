@@ -10,7 +10,7 @@ import SwiftUI
 struct SessionCellCoreData: View {
     @Environment(\.colorScheme) var colorScheme
     
-    let session: SessionEntity
+    @StateObject var session: SessionEntity
     
     var body: some View {
         HStack {

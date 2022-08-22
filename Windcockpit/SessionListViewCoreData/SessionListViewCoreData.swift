@@ -22,7 +22,8 @@ struct SessionListViewCoreData: View {
             List {
                 ForEach(items) { item in
                    NavigationLink {
-                        Text("Item at \(item.date!, formatter: itemFormatter)")
+                       let published = item.published ? "published" : "local"
+                        Text("Item at \(item.date!, formatter: itemFormatter): \(published)")
                     } label: {
                         SessionCellCoreData(session: item)
                     }
@@ -39,6 +40,7 @@ struct SessionListViewCoreData: View {
                             Label("Upload", systemImage: "square.and.arrow.up")
                         }
                         .tint(.blue)
+                        .disabled(item.published)
                     }
                 }
             }
@@ -77,18 +79,10 @@ struct SessionListViewCoreData: View {
     }
     
     private func uploadSession(session: SessionEntity) {
-        
-    }
-    
-    private func addItem(location: String?) {
-        let newItem = SessionEntity(context: viewContext)
-        newItem.date = Date()
-        newItem.location = location
+        session.published = true
         do {
             try viewContext.save()
         } catch {
-            // Replace this implementation with code to handle the error appropriately.
-            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             let nsError = error as NSError
             fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
         }
@@ -98,6 +92,9 @@ struct SessionListViewCoreData: View {
         withAnimation {
             let newItem = SessionEntity(context: viewContext)
             newItem.date = Date()
+            newItem.location = "Hanstholm"
+            newItem.name = "Wingfoil"
+            newItem.published = false
             do {
                 try viewContext.save()
             } catch {
