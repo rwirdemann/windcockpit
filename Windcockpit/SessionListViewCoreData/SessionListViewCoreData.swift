@@ -8,7 +8,7 @@
 import SwiftUI
 import CoreData
 
-struct SessionListViewCoreData: View {
+struct SessionListViewCoreData: View, SessionServiceCallback {
     @ObservedObject private var connectivityManager = WatchConnectivityManager.shared
     
     @Environment(\.managedObjectContext) private var viewContext
@@ -16,6 +16,9 @@ struct SessionListViewCoreData: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \SessionEntity.date, ascending: false)],
         animation: .default)
     private var items: FetchedResults<SessionEntity>
+    
+    @State private var showingAlert = false
+    @State private var errorMessage = ""
     
     var body: some View {
         NavigationView {
@@ -35,7 +38,7 @@ struct SessionListViewCoreData: View {
                         }
                         .tint(.red)
                         Button {
-                            uploadSession(session: item)
+                            uploadSession(sessionEntity: item)
                         } label: {
                             Label("Upload", systemImage: "square.and.arrow.up")
                         }
@@ -55,6 +58,9 @@ struct SessionListViewCoreData: View {
                     }
                 }
             }
+        }
+        .alert(errorMessage, isPresented: $showingAlert)  {
+            Button("OK", role: .cancel) {}
         }
         .onChange(of: connectivityManager.newSession) {session in
             addItem(session: session)
@@ -78,14 +84,44 @@ struct SessionListViewCoreData: View {
         }
     }
     
-    private func uploadSession(session: SessionEntity) {
-        session.published = true
+    private func uploadSession(sessionEntity: SessionEntity) {
+        let location = sessionEntity.location ?? ""
+        let name = sessionEntity.name ?? ""
+        let date = sessionEntity.date ?? Date()
+        let session = Session(id: 0,
+                              location: location,
+                              name: name,
+                              date: date,
+                              distance: 0,
+                              maxspeed: 0,
+                              duration: 0)
+        createSession(session: session, callback: self, managedObjectID: sessionEntity.objectID)
+    }
+    
+    func success(id: Int, managedObjectID: NSManagedObjectID?) {
+        guard let managedObjectID = managedObjectID else {
+            return
+        }
+
         do {
-            try viewContext.save()
+            let object = try viewContext.existingObject(
+                with: managedObjectID
+            )
+            
+            if let session = object as? SessionEntity {
+                session.cid = Int32(id)
+                session.published = true
+            }
+
         } catch {
             let nsError = error as NSError
             fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
         }
+    }
+    
+    func error(message: String) {
+        self.errorMessage = message
+        showingAlert = true
     }
     
     private func addItem() {

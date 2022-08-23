@@ -6,13 +6,14 @@
 //
 
 import Foundation
+import CoreData
 
 protocol SessionServiceCallback {
-    func success(event: Session)
+    func success(id: Int, managedObjectID: NSManagedObjectID?)
     func error(message: String)
 }
 
-func createSession(session: Session, callback: SessionServiceCallback) {
+func createSession(session: Session, callback: SessionServiceCallback, managedObjectID: NSManagedObjectID?) {
     guard let url = URL(string: "\(Constants.BASE_URL)/events") else {
         callback.error(message: "Invalid URL")
         return
@@ -28,7 +29,7 @@ func createSession(session: Session, callback: SessionServiceCallback) {
             callback.error(message: "No valid response")
             return
         }
-
+        
         if let error = error {
             callback.error(message: error.localizedDescription)
             return
@@ -37,11 +38,28 @@ func createSession(session: Session, callback: SessionServiceCallback) {
         guard 200 ..< 300 ~= httpResponse.statusCode else {
             callback.error(message: "Status code was \(httpResponse.statusCode), but expected 2xx")
             return
-       }
+        }
+        
+        guard let location = httpResponse.value(forHTTPHeaderField: "Location") else {
+            callback.error(message: "No Location header found")
+            return
+        }
 
-        callback.success(event: session)
+        guard let id = extractIdFromLocationHeader(url: location) else {
+            callback.error(message: "Location header contains no valid id")
+            return
+        }
+
+        callback.success(id: id, managedObjectID: managedObjectID)
     }
     task.resume()
+}
+
+func extractIdFromLocationHeader(url: String) -> Int? {
+    guard let lastIndexOfChar = url.lastIndex(of: "/") else { return nil }
+    let startIndex = url.index(lastIndexOfChar, offsetBy:1)
+    let substring = url[startIndex..<url.endIndex]
+    return Int(substring)
 }
 
 func updateSession(session: Session, callback: SessionServiceCallback) {
@@ -60,7 +78,7 @@ func updateSession(session: Session, callback: SessionServiceCallback) {
             callback.error(message: "No valid response")
             return
         }
-
+        
         if let error = error {
             callback.error(message: error.localizedDescription)
             return
@@ -69,9 +87,9 @@ func updateSession(session: Session, callback: SessionServiceCallback) {
         guard 200 ..< 300 ~= httpResponse.statusCode else {
             callback.error(message: "Status code was \(httpResponse.statusCode), but expected 2xx")
             return
-       }
-
-        callback.success(event: session)
+        }
+        
+        callback.success(id: session.id, managedObjectID: nil)
     }
     task.resume()
 }

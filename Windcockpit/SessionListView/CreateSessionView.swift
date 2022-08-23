@@ -6,10 +6,11 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct CreateSessionView: View, SessionServiceCallback {
     
-    func success(event: Session) {
+    func success(id: Int, managedObjectID: NSManagedObjectID?) {
         sessionListViewModel.loadSessions()
     }
     

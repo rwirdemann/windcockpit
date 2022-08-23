@@ -14,16 +14,16 @@ struct StartView: View {
     var workoutTypes: [HKWorkoutActivityType] = [.cycling, .sailing]
     var body: some View {
         VStack {
-            Button("Create Sessoion", action: {
-                let s = Session(id:0,
-                                location: "Hansholm",
-                                name: "Wingfoiling",
-                                date: Date(),
-                                distance: 0,
-                                maxspeed: 0,
-                                duration: 0)
-                WatchConnectivityManager.shared.send(s)
-            })
+//            Button("Create Sessoion", action: {
+            //                let s = Session(id:0,
+            //                  location: "Hansholm",
+            //                  name: "Wingfoiling",
+            //                  date: Date(),
+            //                  distance: 0,
+            //                  maxspeed: 0,
+            //                  duration: 0)
+            //  WatchConnectivityManager.shared.send(s)
+            // })
             List(workoutTypes) { workoutType in
                 NavigationLink(
                     workoutType.name,

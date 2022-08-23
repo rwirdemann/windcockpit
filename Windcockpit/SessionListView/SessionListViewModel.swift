@@ -19,7 +19,7 @@ final class SessionListViewModel: ObservableObject {
     }
     
     func uploadSession(session: Session, callback: SessionServiceCallback) {
-        createSession(session: session, callback: callback)
+        createSession(session: session, callback: callback, managedObjectID: nil)
     }
     
     func loadSessions(viewContext: NSManagedObjectContext? = nil) {

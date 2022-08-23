@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct EditSessionView: View, SessionServiceCallback {
     @EnvironmentObject var sessionListViewModel: SessionListViewModel
@@ -21,7 +22,7 @@ struct EditSessionView: View, SessionServiceCallback {
         return formatter
     }()
     
-    func success(event: Session) {
+    func success(id: Int, managedObjectID: NSManagedObjectID?) {
     }
     
     func error(message: String) {

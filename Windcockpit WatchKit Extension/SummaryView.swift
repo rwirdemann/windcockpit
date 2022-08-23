@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct SummaryView: View {
     @EnvironmentObject var workoutManager: WorkoutManager
@@ -61,21 +62,12 @@ struct SummaryView: View {
                     )
                     .accentColor(Color.mint)
 
+                    
+                    Button("Sync Session") {
+                        WatchConnectivityManager.shared.send(buildSession())
+                    }
                     Button("Upload Session") {
-                        let formatter = DateFormatter()
-                        formatter.locale = Locale(identifier: "de")
-                        formatter.dateFormat = "d. MMMM y, HH:mm"
-                        let location = workoutManager.currentPlacemark?.locality ?? "New: \(formatter.string(from: Date()))"
-                        let dist = workoutManager.workout?.totalDistance?.doubleValue(for: .meter()) ?? 0
-                        let duration = workoutManager.builder?.elapsedTime ?? 0
-                        let s = Session(id: 1,
-                                        location: location,
-                                        name: "Wingfoiling",
-                                        date: Date(),
-                                        distance: dist,
-                                        maxspeed: workoutManager.maxSpeed,
-                                        duration: duration)
-                        createSession(session: s, callback: self)
+                        createSession(session: buildSession(), callback: self, managedObjectID:nil)
                     }
                 }
                 .alert(errorMessage, isPresented: $showingAlert)  {
@@ -86,7 +78,24 @@ struct SummaryView: View {
             .navigationTitle("Summary")
             .navigationBarTitleDisplayMode(.inline)
         }
-    }    
+    }
+    
+    func buildSession() -> Session {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "de")
+        formatter.dateFormat = "d. MMMM y, HH:mm"
+        let location = workoutManager.currentPlacemark?.locality ?? "New: \(formatter.string(from: Date()))"
+        let dist = workoutManager.workout?.totalDistance?.doubleValue(for: .meter()) ?? 0
+        let duration = workoutManager.builder?.elapsedTime ?? 0
+        return Session(id: 0,
+                        location: location,
+                        name: "Wingfoiling",
+                        date: Date(),
+                        distance: dist,
+                        maxspeed: workoutManager.maxSpeed,
+                        duration: duration)
+        
+    }
 }
 
 struct SummaryView_Previews: PreviewProvider {
@@ -111,7 +120,7 @@ struct SummaryMetricvView: View {
 }
 
 extension SummaryView: SessionServiceCallback {
-    func success(event: Session) {
+    func success(id: Int, managedObjectID: NSManagedObjectID?) {
         DispatchQueue.main.async {
             dismiss()
         }
