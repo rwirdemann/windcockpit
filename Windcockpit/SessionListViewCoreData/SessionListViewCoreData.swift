@@ -25,8 +25,7 @@ struct SessionListViewCoreData: View, SessionServiceCallback {
             List {
                 ForEach(items) { item in
                    NavigationLink {
-                       let published = item.published ? "published" : "local"
-                        Text("Item at \(item.date!, formatter: itemFormatter): \(published)")
+                       EditSessionCoreView(s: item)
                     } label: {
                         SessionCellCoreData(session: item)
                     }
