@@ -74,6 +74,9 @@ struct SessionListViewCoreData: View, SessionServiceCallback {
         newItem.date = session.date
         newItem.location = session.location
         newItem.name = session.name
+        newItem.maxspeed = session.maxspeed
+        newItem.distance = session.distance
+        newItem.duration = session.duration
         newItem.published = false
         do {
             try viewContext.save()
@@ -91,9 +94,9 @@ struct SessionListViewCoreData: View, SessionServiceCallback {
                               location: location,
                               name: name,
                               date: date,
-                              distance: 0,
-                              maxspeed: 0,
-                              duration: 0)
+                              distance: sessionEntity.distance,
+                              maxspeed: sessionEntity.maxspeed,
+                              duration: sessionEntity.duration)
         createSession(session: session, callback: self, managedObjectID: sessionEntity.objectID)
     }
     
