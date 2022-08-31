@@ -65,7 +65,12 @@ struct SummaryView: View {
                     
                     Button("Sync Session") {
                         WatchConnectivityManager.shared.send(buildSession())
+                        DispatchQueue.main.async {
+                            dismiss()
+                        }
                     }
+                    .disabled(!WatchConnectivityManager.shared.isConnected())
+                    
                     Button("Upload Session") {
                         createSession(session: buildSession(), callback: self, managedObjectID:nil)
                     }

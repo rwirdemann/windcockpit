@@ -33,6 +33,10 @@ final class WatchConnectivityManager: NSObject, ObservableObject {
     
     private let kMessageKey = "message"
 
+    func isConnected() -> Bool {
+        return WCSession.default.activationState == .activated
+    }
+    
     func send(_ session: Session) {
         guard WCSession.default.activationState == .activated else {
           return
