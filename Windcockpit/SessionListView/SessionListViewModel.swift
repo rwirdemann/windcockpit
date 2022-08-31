@@ -46,8 +46,10 @@ final class SessionListViewModel: ObservableObject {
                             newItem.location = session.location
                             newItem.name = session.name
                             newItem.cid = Int32(session.id)
+                            newItem.distance = session.distance
+                            newItem.maxspeed = session.maxspeed
+                            newItem.duration = session.duration
                             newItem.published = true
-                            print("New Session: \(newItem)")
                         }
                         do {
                             try viewContext.save()

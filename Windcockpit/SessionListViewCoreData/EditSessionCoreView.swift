@@ -98,7 +98,7 @@ struct EditSessionCoreView: View {
                 Text("Distanz")
                 Spacer()
                 if editMode?.wrappedValue.isEditing == true {
-                    TextField("Max speed", value: $distance, formatter: formatter)
+                    TextField("Distanz", value: $distance, formatter: formatter)
                         .multilineTextAlignment(.trailing)
                 } else {
                     Text(distance)
