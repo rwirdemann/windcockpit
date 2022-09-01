@@ -11,6 +11,7 @@ import CoreData
 struct EditSessionCoreView: View {
     @Environment(\.editMode) private var editMode
     var session: SessionEntity
+    @EnvironmentObject var spotListModel: SpotListModel
     
     @State private var location: String
     @State private var date: Date
@@ -23,7 +24,6 @@ struct EditSessionCoreView: View {
     @State private var errorMessage = ""
     
     let sports = ["Wingfoiling", "Windsurfing"]
-    let locations = [Location(id: 1, name: "Hanstholm")]
 
     let formatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -49,7 +49,7 @@ struct EditSessionCoreView: View {
                 Spacer()
                 if editMode?.wrappedValue.isEditing == true {
                     Picker("Spot", selection: $location) {
-                        ForEach(locations, id: \.name) {
+                        ForEach(spotListModel.locations, id: \.name) {
                             Text($0.name)
                         }
                     }
@@ -130,7 +130,7 @@ struct EditSessionCoreView: View {
                     TextField("Dauer", value: $duration, formatter: Formatters.number)
                         .multilineTextAlignment(.trailing)
                 } else {
-                    DurationView(duration: session.duration)
+                    DurationView(duration: duration)
                         .font(.subheadline)
                 }
             }

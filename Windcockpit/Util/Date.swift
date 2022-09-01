@@ -10,7 +10,7 @@ import Foundation
 func toString(from: Date) -> String {
     let formatter = DateFormatter()
     formatter.locale = Locale(identifier: "de")
-    formatter.dateFormat = "EEEE, d. MMMM y, HH:mm"
+    formatter.dateFormat = "EEEE, d. MMM y, HH:mm"
 
     
     formatter.locale = Locale(identifier: "de")

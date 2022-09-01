@@ -10,7 +10,8 @@ import CoreData
 
 struct SessionListViewCoreData: View, SessionServiceCallback {
     @ObservedObject private var connectivityManager = WatchConnectivityManager.shared
-    
+    @StateObject private var viewModel = SpotListModel()
+
     @Environment(\.managedObjectContext) private var viewContext
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \SessionEntity.date, ascending: false)],
@@ -52,9 +53,8 @@ struct SessionListViewCoreData: View, SessionServiceCallback {
                     EditButton()
                 }
                 ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
+                    NavigationLink(destination: CreateSessionViewCoreData(),
+                                   label: {Image(systemName: "plus")})
                 }
             }
         }
@@ -64,6 +64,10 @@ struct SessionListViewCoreData: View, SessionServiceCallback {
         .onChange(of: connectivityManager.newSession) {session in
             addItem(session: session)
         }
+        .onAppear {
+            viewModel.loadSpots()
+        }
+        .environmentObject(viewModel)
     }
     
     private func addItem(session: Session?) {
