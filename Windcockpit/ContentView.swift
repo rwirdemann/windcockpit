@@ -12,7 +12,7 @@ struct ContentView: View {
 
     var body: some View {
         TabView {
-            SessionListView()
+            SessionListViewCoreData()
                 .tabItem {
                     Image(systemName: "list.bullet.circle")
                     Text("Sessions")
@@ -21,11 +21,6 @@ struct ContentView: View {
                 .tabItem {
                     Image(systemName: "map")
                     Text("Spots")
-                }
-            SessionListViewCoreData()
-                .tabItem {
-                    Image(systemName: "externaldrive")
-                    Text("CoreData")
                 }
         }
     }

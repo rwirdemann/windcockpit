@@ -47,7 +47,7 @@ struct SessionListViewCoreData: View, SessionServiceCallback {
                     }
                 }
             }
-            .navigationTitle("CoreData")
+            .navigationTitle("Sessions")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
@@ -167,9 +167,3 @@ private let itemFormatter: DateFormatter = {
     formatter.timeStyle = .medium
     return formatter
 }()
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        SessionListViewCoreData().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-    }
-}
