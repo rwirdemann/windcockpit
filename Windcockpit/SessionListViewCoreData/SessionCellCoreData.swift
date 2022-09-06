@@ -14,29 +14,47 @@ struct SessionCellCoreData: View {
     
     var body: some View {
         HStack {
-            Image(colorScheme == .light ? "wingfoiling-light" : "wingfoiling-dark")
-                .resizable()
-                .scaledToFit()
+            if session.name == "Wingfoiling" || session.name == "Wingding" {
+                Image(colorScheme == .light ? "wingfoiling-light" : "wingfoiling-dark")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 50, height: 50)
+                    .padding(.leading, -10)
+            } else {
+                ZStack {
+                    Circle()
+                        .stroke(.blue, lineWidth: 1)
+                    Text(short(name: session.name ?? "Wingfoiling"))
+                        .font(.system(size: 20))
+                }
                 .frame(width: 50, height: 50)
                 .padding(.leading, -10)
+            }
             
             VStack(alignment: .leading, spacing: 5) {
                 Text(session.location ?? "")
                     .fontWeight(.semibold)
                     .foregroundColor(.primary)
-
+                
                 let sport = session.name ?? ""
                 let published = session.published ? "published" : "local"
                 Text("\(sport) (\(published))")
                     .font(.footnote)
                     .foregroundColor(.blue)
-
+                
                 Text(toString(from: session.date ?? Date()))
                     .font(.subheadline)
                     .foregroundColor(.secondary)
             }
             
             Spacer()
+        }
+    }
+    
+    func short(name: String) -> String {
+        switch name {
+        case "Windsurfing": return "WS"
+        default: return name
         }
     }
 }

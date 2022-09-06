@@ -9,6 +9,7 @@ import SwiftUI
 import CoreData
 
 struct EditSessionCoreView: View {
+    @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.editMode) private var editMode
     var session: SessionEntity
     @EnvironmentObject var spotListModel: SpotListModel
@@ -152,6 +153,13 @@ struct EditSessionCoreView: View {
                         session.duration = duration
                         session.maxspeed = maxspeed
                         session.distance = distance
+                        do {
+                            try viewContext.save()
+                        } catch {
+                            let nsError = error as NSError
+                            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                        }                        
+                        
                         if session.published {
                             let s = Session(id: Int(session.cid),
                                     location: session.location ?? "",
@@ -162,6 +170,7 @@ struct EditSessionCoreView: View {
                                     duration: session.duration)
                             updateSession(session: s, callback: self)
                         }
+                        
                     }
                 })
     }
