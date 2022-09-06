@@ -12,35 +12,19 @@ struct StartView: View {
     @EnvironmentObject var workoutManager: WorkoutManager
     
     var workoutTypes: [HKWorkoutActivityType] = [.cycling, .sailing]
+    
     var body: some View {
-        VStack {
-//            Button("Create Sessoion", action: {
-            //                let s = Session(id:0,
-            //                  location: "Hansholm",
-            //                  name: "Wingfoiling",
-            //                  date: Date(),
-            //                  distance: 0,
-            //                  maxspeed: 0,
-            //                  duration: 0)
-            //  WatchConnectivityManager.shared.send(s)
-            // })
-            List(workoutTypes) { workoutType in
-                NavigationLink(
-                    workoutType.name,
-                    destination: SessionPagingView(),
-                    tag: workoutType,
-                    selection: $workoutManager.selectedWorkout
-                )
-            }.padding(
-                EdgeInsets(top: 15, leading: 10, bottom: 15, trailing: 10)
-            )
-            .listStyle(.carousel)
-            .navigationTitle("Windcockpit")
-            .onAppear {
-                workoutManager.requestAuthorization()
-                workoutManager.requestPermission()
-            }
+        NavigationLink(
+            "Start session",
+            destination: SessionPagingView(),
+            tag: .cycling,
+            selection: $workoutManager.selectedWorkout
+        )
+        .onAppear {
+            workoutManager.requestAuthorization()
+            workoutManager.requestPermission()
         }
+        .navigationTitle("Windcockpit")
     }
 }
 
@@ -59,8 +43,6 @@ extension HKWorkoutActivityType: Identifiable {
         switch self {
         case .cycling:
             return "Wingfoiling"
-        case .sailing:
-            return "Windsurfing"
         default:
             return ""
         }
