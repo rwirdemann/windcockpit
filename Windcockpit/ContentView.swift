@@ -14,8 +14,13 @@ struct ContentView: View {
         TabView {
             SessionListViewCoreData()
                 .tabItem {
-                    Image(systemName: "list.bullet.circle")
+                    Image(systemName: "wind")
                     Text("Sessions")
+                }
+            SessionListView()
+                .tabItem {
+                    Image(systemName: "server.rack")
+                    Text("Public Timeline")
                 }
             LocationListView()
                 .tabItem {

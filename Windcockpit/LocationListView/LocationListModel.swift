@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreData
 
 protocol LocationServiceCallback {
     func success(locations: [Location])
@@ -19,7 +20,7 @@ final class LocationListModel: ObservableObject {
         self.locations = locations
     }
     
-    func loadLocations(cb: LocationServiceCallback) {
+    func loadLocations(cb: LocationServiceCallback, viewContext: NSManagedObjectContext? = nil) {
         guard let url = URL(string: "\(Constants.BASE_URL)/locations") else {
             cb.error(message: "Invalid URL")
             return
@@ -45,8 +46,30 @@ final class LocationListModel: ObservableObject {
             let locations = try! decoder.decode([Location].self, from: data!)
             DispatchQueue.main.async {
                 self.locations = locations
+                if let viewContext = viewContext {
+                    for l in self.locations {
+                        let exists = self.itemExists(viewContext: viewContext, item: l)
+                        if exists == false {
+                            let newItem = LocationEntity(context: viewContext)
+                            newItem.name = l.name
+                            newItem.cid = Int32(l.id)
+                        }
+                        do {
+                            try viewContext.save()
+                        } catch {
+                            let nsError = error as NSError
+                            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                        }
+                    }
+                }
             }
         }.resume()
+    }
+    
+    private func itemExists(viewContext: NSManagedObjectContext, item: Location) -> Bool {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "LocationEntity")
+        fetchRequest.predicate = NSPredicate(format: "cid == %d", item.id)
+        return ((try? viewContext.count(for: fetchRequest)) ?? 0) > 0
     }
     
     func deleteLocation(index: Int, cb: LocationServiceCallback) {

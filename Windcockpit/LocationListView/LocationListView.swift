@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LocationListView: View {
+    @Environment(\.managedObjectContext) private var viewContext
     @StateObject private var viewModel = LocationListModel()
     @State private var showingAlert = false
     @State private var errorMessage = ""
@@ -26,7 +27,7 @@ struct LocationListView: View {
             Button("OK", role: .cancel) {}
         }
         .onAppear {
-            viewModel.loadLocations(cb: self)
+            viewModel.loadLocations(cb: self, viewContext: viewContext)
         }
     }
     
