@@ -14,15 +14,24 @@ struct LocationListViewCoreData: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \LocationEntity.name, ascending: true)],
         animation: .default)
     private var items: FetchedResults<LocationEntity>
-
+    
     var body: some View {
         NavigationView {
             List {
                 ForEach(items) { l in
                     Text(l.name ?? "unknown")
                 }
+                .onDelete(perform: self.deleteItem)
             }
+            
             .navigationTitle("Spots CoreData")
+        }
+    }
+    
+    private func deleteItem(at indexSet: IndexSet) {
+        for index in indexSet {
+            let l = items[index]
+            viewContext.delete(l)
         }
     }
 }
