@@ -49,6 +49,7 @@
 		BF3A3EBF28C0B5A8007BE348 /* CreateSessionViewCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3A3EBE28C0B5A8007BE348 /* CreateSessionViewCoreData.swift */; };
 		BF3A3EC128C0D24B007BE348 /* SpotListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3A3EC028C0D24B007BE348 /* SpotListModel.swift */; };
 		BF3E792128AE4ACC00570B11 /* SessionCellCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3E792028AE4ACC00570B11 /* SessionCellCoreData.swift */; };
+		BF5F101428D9FDCC00E71AA4 /* LocationListViewCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F101328D9FDCC00E71AA4 /* LocationListViewCoreData.swift */; };
 		BF7B77D628AD2F21006484FF /* WatchConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B77D528AD2F21006484FF /* WatchConnectivityManager.swift */; };
 		BF7B77D728AD2F21006484FF /* WatchConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B77D528AD2F21006484FF /* WatchConnectivityManager.swift */; };
 		BF83FD5728B77A6C00699C53 /* EditSessionCoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF83FD5628B77A6C00699C53 /* EditSessionCoreView.swift */; };
@@ -143,6 +144,7 @@
 		BF3A3EBE28C0B5A8007BE348 /* CreateSessionViewCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSessionViewCoreData.swift; sourceTree = "<group>"; };
 		BF3A3EC028C0D24B007BE348 /* SpotListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotListModel.swift; sourceTree = "<group>"; };
 		BF3E792028AE4ACC00570B11 /* SessionCellCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCellCoreData.swift; sourceTree = "<group>"; };
+		BF5F101328D9FDCC00E71AA4 /* LocationListViewCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListViewCoreData.swift; sourceTree = "<group>"; };
 		BF7B77D528AD2F21006484FF /* WatchConnectivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityManager.swift; sourceTree = "<group>"; };
 		BF83FD5628B77A6C00699C53 /* EditSessionCoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSessionCoreView.swift; sourceTree = "<group>"; };
 		BF9A5DAB289967DD009F438D /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 		BF1148AF2892BE7A0081A360 /* Windcockpit */ = {
 			isa = PBXGroup;
 			children = (
+				BF5F101228D9FDA800E71AA4 /* LocationListViewCoreData */,
 				BF3E791F28AE4A8300570B11 /* SessionListViewCoreData */,
 				BFCF213F28AA2BA6004ED37D /* Info.plist */,
 				BF72ABAB28A3E64400D7F496 /* CoreData */,
@@ -327,6 +330,14 @@
 				BF05045C289AB34A00EEB2AA /* DurationView.swift */,
 			);
 			path = SessionListViewCoreData;
+			sourceTree = "<group>";
+		};
+		BF5F101228D9FDA800E71AA4 /* LocationListViewCoreData */ = {
+			isa = PBXGroup;
+			children = (
+				BF5F101328D9FDCC00E71AA4 /* LocationListViewCoreData.swift */,
+			);
+			path = LocationListViewCoreData;
 			sourceTree = "<group>";
 		};
 		BF72ABAB28A3E64400D7F496 /* CoreData */ = {
@@ -495,6 +506,7 @@
 				BF11491A2892D97A0081A360 /* Date.swift in Sources */,
 				BF0A812328A10825008C4C41 /* LocationListView.swift in Sources */,
 				BF3A3EBF28C0B5A8007BE348 /* CreateSessionViewCoreData.swift in Sources */,
+				BF5F101428D9FDCC00E71AA4 /* LocationListViewCoreData.swift in Sources */,
 				BFAB602628A678CC00CC6276 /* WindcockpitCoreData.xcdatamodeld in Sources */,
 				BF1148B12892BE7A0081A360 /* WindcockpitApp.swift in Sources */,
 				BF1149122892D95D0081A360 /* EditSessionView.swift in Sources */,

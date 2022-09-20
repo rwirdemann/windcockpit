@@ -27,6 +27,12 @@ struct ContentView: View {
                     Image(systemName: "map")
                     Text("Spots")
                 }
+            LocationListViewCoreData()
+                .tabItem {
+                    Image(systemName: "map")
+                    Text("Spots Core")
+                }
+
         }
     }
 }
