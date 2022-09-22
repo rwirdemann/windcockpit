@@ -12,18 +12,23 @@ struct CreateSessionViewCoreData: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var spotListModel: SpotListModel
-    @State private var spot = ""
+    @State private var selectedSpot: LocationEntity?
     @State private var sport = "Wingfoiling"
     @State private var date = Date()
     @State private var showingAlert = false
     @State private var errorMessage = ""
     
-    let sports = ["Wingfoiling", "Windsurfing"]
+    let sports = ["Wingfoiling", "Windsurfing", "Kitesurfing"]
+
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \LocationEntity.name, ascending: true)],
+        animation: .default)
+    private var items: FetchedResults<LocationEntity>
 
     fileprivate func saveSession() {
         let newItem = SessionEntity(context: viewContext)
         newItem.date = date
-        newItem.location = spot
+        newItem.location = selectedSpot?.name ?? "unknown"
         newItem.name = sport
         newItem.published = false
         do {
@@ -41,9 +46,10 @@ struct CreateSessionViewCoreData: View {
             HStack {
                 Text("Spot")
                 Spacer()
-                Picker("", selection: $spot) {
-                    ForEach(spotListModel.locations, id: \.name) {
-                        Text($0.name)
+                Picker("", selection: $selectedSpot) {
+                    ForEach(items) { location in
+                        Text(location.name!)
+                            .tag(Optional(location))
                     }
                 }.pickerStyle(MenuPickerStyle())
             }
@@ -73,7 +79,7 @@ struct CreateSessionViewCoreData: View {
         .toolbar{
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 Button("Save", action : saveSession)
-                    .disabled(self.spot.isEmpty)
+                    .disabled(self.selectedSpot == nil)
             }
         }
     }

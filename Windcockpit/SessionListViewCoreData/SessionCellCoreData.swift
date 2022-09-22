@@ -14,7 +14,7 @@ struct SessionCellCoreData: View {
     
     var body: some View {
         HStack {
-            if session.name == "Wingfoiling" || session.name == "Wingding" {
+            if session.name == "xWingfoiling" || session.name == "xWingding" {
                 Image(colorScheme == .light ? "wingfoiling-light" : "wingfoiling-dark")
                     .resizable()
                     .scaledToFit()
@@ -43,7 +43,7 @@ struct SessionCellCoreData: View {
                     .foregroundColor(.blue)
                 
                 Text(toString(from: session.date ?? Date()))
-                    .font(.subheadline)
+                    .font(.footnote)
                     .foregroundColor(.secondary)
             }
             
@@ -53,7 +53,9 @@ struct SessionCellCoreData: View {
     
     func short(name: String) -> String {
         switch name {
+        case "Wingfoiling", "Wingsurfing": return "WF"
         case "Windsurfing": return "WS"
+        case "Kitesurfing": return "KS"
         default: return name
         }
     }
