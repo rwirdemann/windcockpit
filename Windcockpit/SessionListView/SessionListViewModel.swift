@@ -22,6 +22,29 @@ final class SessionListViewModel: ObservableObject {
         createSession(session: session, callback: callback, managedObjectID: nil)
     }
     
+    fileprivate func addSessionsToCodeData(_ viewContext: NSManagedObjectContext) {
+        for session in self.sessions {
+            let exists = self.itemExists(viewContext: viewContext, item: session)
+            if exists == false {
+                let newItem = SessionEntity(context: viewContext)
+                newItem.date = session.date
+                newItem.location = session.location
+                newItem.name = session.name
+                newItem.cid = Int32(session.id)
+                newItem.distance = session.distance
+                newItem.maxspeed = session.maxspeed
+                newItem.duration = session.duration
+                newItem.published = true
+            }
+            do {
+                try viewContext.save()
+            } catch {
+                let nsError = error as NSError
+                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            }
+        }
+    }
+    
     func loadSessions(viewContext: NSManagedObjectContext? = nil) {
         guard let url = URL(string: "\(Constants.BASE_URL)/events") else {
             print("Invalid url...")
@@ -37,27 +60,7 @@ final class SessionListViewModel: ObservableObject {
             DispatchQueue.main.async {
                 self.sessions = sessions
                 if let viewContext = viewContext {
-                    for session in self.sessions {
-                        
-                        let exists = self.itemExists(viewContext: viewContext, item: session)
-                        if exists == false {
-                            let newItem = SessionEntity(context: viewContext)
-                            newItem.date = session.date
-                            newItem.location = session.location
-                            newItem.name = session.name
-                            newItem.cid = Int32(session.id)
-                            newItem.distance = session.distance
-                            newItem.maxspeed = session.maxspeed
-                            newItem.duration = session.duration
-                            newItem.published = true
-                        }
-                        do {
-                            try viewContext.save()
-                        } catch {
-                            let nsError = error as NSError
-                            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-                        }
-                    }
+                    //self.addSessionsToCodeData(viewContext)
                 }
             }
         }.resume()
