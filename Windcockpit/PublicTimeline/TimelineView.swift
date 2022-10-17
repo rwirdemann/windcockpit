@@ -15,7 +15,7 @@ struct TimelineView: View {
             List {
                 ForEach(viewModel.sessions) { session in
                     NavigationLink {
-                        EditSessionView(session: session)
+                        SessionView(session: session)
                     } label: {
                         SessionCell(session: session)
                     }
