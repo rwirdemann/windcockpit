@@ -23,8 +23,17 @@ struct LocationListViewCoreData: View {
                 }
                 .onDelete(perform: self.deleteItem)
             }
-            
             .navigationTitle("Spots CoreData")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    EditButton()
+                }
+                ToolbarItem {
+                    NavigationLink(destination: CreateLocationViewCoreData(),
+                                   label: {Image(systemName: "plus")})
+                }
+            }
+            
         }
     }
     

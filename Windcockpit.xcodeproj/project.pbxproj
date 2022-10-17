@@ -49,6 +49,7 @@
 		BF3A3EBF28C0B5A8007BE348 /* CreateSessionViewCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3A3EBE28C0B5A8007BE348 /* CreateSessionViewCoreData.swift */; };
 		BF3A3EC128C0D24B007BE348 /* SpotListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3A3EC028C0D24B007BE348 /* SpotListModel.swift */; };
 		BF3E792128AE4ACC00570B11 /* SessionCellCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3E792028AE4ACC00570B11 /* SessionCellCoreData.swift */; };
+		BF5F049428FD5E3A00ACAAD6 /* CreateLocationViewCodeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F049328FD5E3A00ACAAD6 /* CreateLocationViewCodeData.swift */; };
 		BF5F101428D9FDCC00E71AA4 /* LocationListViewCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F101328D9FDCC00E71AA4 /* LocationListViewCoreData.swift */; };
 		BF7B77D628AD2F21006484FF /* WatchConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B77D528AD2F21006484FF /* WatchConnectivityManager.swift */; };
 		BF7B77D728AD2F21006484FF /* WatchConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B77D528AD2F21006484FF /* WatchConnectivityManager.swift */; };
@@ -144,6 +145,7 @@
 		BF3A3EBE28C0B5A8007BE348 /* CreateSessionViewCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSessionViewCoreData.swift; sourceTree = "<group>"; };
 		BF3A3EC028C0D24B007BE348 /* SpotListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotListModel.swift; sourceTree = "<group>"; };
 		BF3E792028AE4ACC00570B11 /* SessionCellCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCellCoreData.swift; sourceTree = "<group>"; };
+		BF5F049328FD5E3A00ACAAD6 /* CreateLocationViewCodeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateLocationViewCodeData.swift; sourceTree = "<group>"; };
 		BF5F101328D9FDCC00E71AA4 /* LocationListViewCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListViewCoreData.swift; sourceTree = "<group>"; };
 		BF7B77D528AD2F21006484FF /* WatchConnectivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityManager.swift; sourceTree = "<group>"; };
 		BF83FD5628B77A6C00699C53 /* EditSessionCoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSessionCoreView.swift; sourceTree = "<group>"; };
@@ -336,6 +338,7 @@
 			isa = PBXGroup;
 			children = (
 				BF5F101328D9FDCC00E71AA4 /* LocationListViewCoreData.swift */,
+				BF5F049328FD5E3A00ACAAD6 /* CreateLocationViewCodeData.swift */,
 			);
 			path = LocationListViewCoreData;
 			sourceTree = "<group>";
@@ -490,6 +493,7 @@
 			files = (
 				BFAB602328A6786500CC6276 /* SessionListViewCoreData.swift in Sources */,
 				BF05045D289AB34A00EEB2AA /* DurationView.swift in Sources */,
+				BF5F049428FD5E3A00ACAAD6 /* CreateLocationViewCodeData.swift in Sources */,
 				BF1149162892D95D0081A360 /* SessionCell.swift in Sources */,
 				BF9A5DAC289967DD009F438D /* Formatters.swift in Sources */,
 				BF3A3EC128C0D24B007BE348 /* SpotListModel.swift in Sources */,
