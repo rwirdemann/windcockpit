@@ -1,14 +1,7 @@
-//
-//  RedOneView.swift
-//  Windcockpit
-//
-//  Created by Ralf Wirdemann on 22.05.22.
-//
-
 import SwiftUI
 import CoreData
 
-struct SessionListView: View {
+struct TimelineView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
     // The SessionListViewModel is an observable that publishes its session list. Since we reference
@@ -29,7 +22,7 @@ struct SessionListView: View {
                 }
                 .onDelete(perform: delete)
             }
-            .navigationTitle("Sessions")
+            .navigationTitle("Public Sessions")
             .toolbar {
                 NavigationLink(destination: CreateSessionView(),
                                label: {Image(systemName: "plus")})

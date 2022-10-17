@@ -17,7 +17,7 @@ struct ContentView: View {
                     Image(systemName: "wind")
                     Text("Sessions")
                 }
-            SessionListView()
+            TimelineView()
                 .tabItem {
                     Image(systemName: "server.rack")
                     Text("Public Timeline")

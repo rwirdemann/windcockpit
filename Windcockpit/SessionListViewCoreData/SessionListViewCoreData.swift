@@ -47,7 +47,7 @@ struct SessionListViewCoreData: View, SessionServiceCallback {
                     }
                 }
             }
-            .navigationTitle("Sessions")
+            .navigationTitle("Meine Sessions")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()

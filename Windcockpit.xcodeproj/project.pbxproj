@@ -42,7 +42,7 @@
 		BF1149122892D95D0081A360 /* EditSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF11490D2892D95D0081A360 /* EditSessionView.swift */; };
 		BF1149132892D95D0081A360 /* SessionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF11490E2892D95D0081A360 /* SessionListViewModel.swift */; };
 		BF1149142892D95D0081A360 /* CreateSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF11490F2892D95D0081A360 /* CreateSessionView.swift */; };
-		BF1149152892D95D0081A360 /* SessionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1149102892D95D0081A360 /* SessionListView.swift */; };
+		BF1149152892D95D0081A360 /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1149102892D95D0081A360 /* TimelineView.swift */; };
 		BF1149162892D95D0081A360 /* SessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1149112892D95D0081A360 /* SessionCell.swift */; };
 		BF1149182892D96F0081A360 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1149172892D96F0081A360 /* ContentView.swift */; };
 		BF11491A2892D97A0081A360 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1149192892D97A0081A360 /* Date.swift */; };
@@ -138,7 +138,7 @@
 		BF11490D2892D95D0081A360 /* EditSessionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditSessionView.swift; sourceTree = "<group>"; };
 		BF11490E2892D95D0081A360 /* SessionListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionListViewModel.swift; sourceTree = "<group>"; };
 		BF11490F2892D95D0081A360 /* CreateSessionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateSessionView.swift; sourceTree = "<group>"; };
-		BF1149102892D95D0081A360 /* SessionListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionListView.swift; sourceTree = "<group>"; };
+		BF1149102892D95D0081A360 /* TimelineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
 		BF1149112892D95D0081A360 /* SessionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionCell.swift; sourceTree = "<group>"; };
 		BF1149172892D96F0081A360 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BF1149192892D97A0081A360 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
@@ -217,13 +217,13 @@
 		BF1148AF2892BE7A0081A360 /* Windcockpit */ = {
 			isa = PBXGroup;
 			children = (
+				BF11490C2892D95D0081A360 /* PublicTimeline */,
 				BF5F101228D9FDA800E71AA4 /* LocationListViewCoreData */,
 				BF3E791F28AE4A8300570B11 /* SessionListViewCoreData */,
 				BFCF213F28AA2BA6004ED37D /* Info.plist */,
 				BF72ABAB28A3E64400D7F496 /* CoreData */,
 				BF0A812628A10B16008C4C41 /* Http */,
 				BF0A812128A10803008C4C41 /* LocationListView */,
-				BF11490C2892D95D0081A360 /* PublicTimeline */,
 				BF11490B2892D94A0081A360 /* Util */,
 				BF1149052892C05F0081A360 /* Model */,
 				BF1148B02892BE7A0081A360 /* WindcockpitApp.swift */,
@@ -313,7 +313,7 @@
 			isa = PBXGroup;
 			children = (
 				BF11490E2892D95D0081A360 /* SessionListViewModel.swift */,
-				BF1149102892D95D0081A360 /* SessionListView.swift */,
+				BF1149102892D95D0081A360 /* TimelineView.swift */,
 				BF1149112892D95D0081A360 /* SessionCell.swift */,
 				BF11490F2892D95D0081A360 /* CreateSessionView.swift */,
 				BF11490D2892D95D0081A360 /* EditSessionView.swift */,
@@ -502,7 +502,7 @@
 				BF0A812528A108D3008C4C41 /* LocationListModel.swift in Sources */,
 				BF1149132892D95D0081A360 /* SessionListViewModel.swift in Sources */,
 				BF83FD5728B77A6C00699C53 /* EditSessionCoreView.swift in Sources */,
-				BF1149152892D95D0081A360 /* SessionListView.swift in Sources */,
+				BF1149152892D95D0081A360 /* TimelineView.swift in Sources */,
 				BF3E792128AE4ACC00570B11 /* SessionCellCoreData.swift in Sources */,
 				BFAB602828A678DF00CC6276 /* Persistence.swift in Sources */,
 				BF1149092892C05F0081A360 /* Session.swift in Sources */,
