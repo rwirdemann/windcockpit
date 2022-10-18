@@ -40,7 +40,7 @@
 		BF1149092892C05F0081A360 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1149072892C05F0081A360 /* Session.swift */; };
 		BF11490A2892C0630081A360 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1149072892C05F0081A360 /* Session.swift */; };
 		BF1149122892D95D0081A360 /* SessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF11490D2892D95D0081A360 /* SessionView.swift */; };
-		BF1149132892D95D0081A360 /* SessionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF11490E2892D95D0081A360 /* SessionListViewModel.swift */; };
+		BF1149132892D95D0081A360 /* TimelineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF11490E2892D95D0081A360 /* TimelineViewModel.swift */; };
 		BF1149152892D95D0081A360 /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1149102892D95D0081A360 /* TimelineView.swift */; };
 		BF1149162892D95D0081A360 /* SessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1149112892D95D0081A360 /* SessionCell.swift */; };
 		BF1149182892D96F0081A360 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1149172892D96F0081A360 /* ContentView.swift */; };
@@ -135,7 +135,7 @@
 		BF1149062892C05F0081A360 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		BF1149072892C05F0081A360 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		BF11490D2892D95D0081A360 /* SessionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionView.swift; sourceTree = "<group>"; };
-		BF11490E2892D95D0081A360 /* SessionListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionListViewModel.swift; sourceTree = "<group>"; };
+		BF11490E2892D95D0081A360 /* TimelineViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineViewModel.swift; sourceTree = "<group>"; };
 		BF1149102892D95D0081A360 /* TimelineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
 		BF1149112892D95D0081A360 /* SessionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionCell.swift; sourceTree = "<group>"; };
 		BF1149172892D96F0081A360 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -310,7 +310,7 @@
 		BF11490C2892D95D0081A360 /* PublicTimeline */ = {
 			isa = PBXGroup;
 			children = (
-				BF11490E2892D95D0081A360 /* SessionListViewModel.swift */,
+				BF11490E2892D95D0081A360 /* TimelineViewModel.swift */,
 				BF1149102892D95D0081A360 /* TimelineView.swift */,
 				BF1149112892D95D0081A360 /* SessionCell.swift */,
 				BF11490D2892D95D0081A360 /* SessionView.swift */,
@@ -497,7 +497,7 @@
 				BF1149182892D96F0081A360 /* ContentView.swift in Sources */,
 				BF1149022892C03C0081A360 /* SessionService.swift in Sources */,
 				BF0A812528A108D3008C4C41 /* LocationListModel.swift in Sources */,
-				BF1149132892D95D0081A360 /* SessionListViewModel.swift in Sources */,
+				BF1149132892D95D0081A360 /* TimelineViewModel.swift in Sources */,
 				BF83FD5728B77A6C00699C53 /* EditSessionCoreView.swift in Sources */,
 				BF1149152892D95D0081A360 /* TimelineView.swift in Sources */,
 				BF3E792128AE4ACC00570B11 /* SessionCellCoreData.swift in Sources */,

@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 import SwiftUI
 
-final class SessionListViewModel: ObservableObject {
+final class TimelineViewModel: ObservableObject {
     
     @Published var sessions: [Session] = []
     @Published var locations: [Location] = []
@@ -56,13 +56,7 @@ final class SessionListViewModel: ObservableObject {
             }
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
-            let sessions = try! decoder.decode([Session].self, from: data!)
-            DispatchQueue.main.async {
-                self.sessions = sessions
-                if let viewContext = viewContext {
-                    //self.addSessionsToCodeData(viewContext)
-                }
-            }
+            self.sessions = try! decoder.decode([Session].self, from: data!)
         }.resume()
     }
     

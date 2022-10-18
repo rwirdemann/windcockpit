@@ -8,7 +8,7 @@ struct TimelineView: View {
     // this model as StateObject we can be sure that this model stays alive even when the view gets
     // updated. StateObject makes also sure the this view will be informed when the published states
     // changes
-    @StateObject private var viewModel = SessionListViewModel()
+    @StateObject private var viewModel = TimelineViewModel()
         
     var body: some View {
         NavigationView {
