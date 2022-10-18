@@ -14,28 +14,14 @@ struct TimelineView: View {
         NavigationView {
             List {
                 ForEach(viewModel.sessions) { session in
-                    NavigationLink {
-                        SessionView(session: session)
-                    } label: {
-                        SessionCell(session: session)
-                    }
+                    SessionCell(session: session)
                 }
-                .onDelete(perform: delete)
             }
             .navigationTitle("Public Sessions")
-            .toolbar {
-                NavigationLink(destination: CreateSessionView(),
-                               label: {Image(systemName: "plus")})
-            }
         }
         .onAppear {
             viewModel.loadSessions(viewContext: viewContext)
-            viewModel.loadSpots()
         }
         .environmentObject(viewModel)
-    }
-    
-    func delete(at offsets: IndexSet) {
-        viewModel.removeSession(index: offsets.first!)
     }
 }

@@ -49,14 +49,5 @@ struct SessionCellCoreData: View {
             
             Spacer()
         }
-    }
-    
-    func short(name: String) -> String {
-        switch name {
-        case "Wingfoiling", "Wingding": return "WF"
-        case "Windsurfing": return "WS"
-        case "Kitesurfing": return "KS"
-        default: return name
-        }
-    }
+    }    
 }
