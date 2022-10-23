@@ -8,7 +8,7 @@
 import SwiftUI
 import CoreData
 
-struct CreateSessionViewCoreData: View {
+struct CreateSessionView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var spotListModel: SpotListModel
@@ -26,11 +26,12 @@ struct CreateSessionViewCoreData: View {
     private var items: FetchedResults<LocationEntity>
 
     fileprivate func saveSession() {
-        let newItem = SessionEntity(context: viewContext)
-        newItem.date = date
-        newItem.location = selectedSpot?.name ?? "unknown"
-        newItem.name = sport
-        newItem.published = false
+        let s = SessionEntity(context: viewContext)
+        s.date = date
+        s.location = selectedSpot?.name ?? "unknown"
+        s.name = sport
+        s.spot = selectedSpot
+        s.published = false
         do {
             try viewContext.save()
         } catch {

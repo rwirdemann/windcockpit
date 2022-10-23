@@ -45,7 +45,7 @@
 		BF1149162892D95D0081A360 /* SessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1149112892D95D0081A360 /* SessionCell.swift */; };
 		BF1149182892D96F0081A360 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1149172892D96F0081A360 /* ContentView.swift */; };
 		BF11491A2892D97A0081A360 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1149192892D97A0081A360 /* Date.swift */; };
-		BF3A3EBF28C0B5A8007BE348 /* CreateSessionViewCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3A3EBE28C0B5A8007BE348 /* CreateSessionViewCoreData.swift */; };
+		BF3A3EBF28C0B5A8007BE348 /* CreateSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3A3EBE28C0B5A8007BE348 /* CreateSessionView.swift */; };
 		BF3A3EC128C0D24B007BE348 /* SpotListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3A3EC028C0D24B007BE348 /* SpotListModel.swift */; };
 		BF3E792128AE4ACC00570B11 /* SessionCellCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3E792028AE4ACC00570B11 /* SessionCellCoreData.swift */; };
 		BF5F049428FD5E3A00ACAAD6 /* CreateLocationViewCodeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F049328FD5E3A00ACAAD6 /* CreateLocationViewCodeData.swift */; };
@@ -54,7 +54,7 @@
 		BF7B77D728AD2F21006484FF /* WatchConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B77D528AD2F21006484FF /* WatchConnectivityManager.swift */; };
 		BF83FD5728B77A6C00699C53 /* EditSessionCoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF83FD5628B77A6C00699C53 /* EditSessionCoreView.swift */; };
 		BF9A5DAC289967DD009F438D /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9A5DAB289967DD009F438D /* Formatters.swift */; };
-		BFAB602328A6786500CC6276 /* SessionListViewCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAB602228A6786500CC6276 /* SessionListViewCoreData.swift */; };
+		BFAB602328A6786500CC6276 /* SessionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAB602228A6786500CC6276 /* SessionListView.swift */; };
 		BFAB602628A678CC00CC6276 /* WindcockpitCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BFAB602428A678CC00CC6276 /* WindcockpitCoreData.xcdatamodeld */; };
 		BFAB602828A678DF00CC6276 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAB602728A678DF00CC6276 /* Persistence.swift */; };
 /* End PBXBuildFile section */
@@ -140,7 +140,7 @@
 		BF1149112892D95D0081A360 /* SessionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionCell.swift; sourceTree = "<group>"; };
 		BF1149172892D96F0081A360 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BF1149192892D97A0081A360 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
-		BF3A3EBE28C0B5A8007BE348 /* CreateSessionViewCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSessionViewCoreData.swift; sourceTree = "<group>"; };
+		BF3A3EBE28C0B5A8007BE348 /* CreateSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSessionView.swift; sourceTree = "<group>"; };
 		BF3A3EC028C0D24B007BE348 /* SpotListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotListModel.swift; sourceTree = "<group>"; };
 		BF3E792028AE4ACC00570B11 /* SessionCellCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCellCoreData.swift; sourceTree = "<group>"; };
 		BF5F049328FD5E3A00ACAAD6 /* CreateLocationViewCodeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateLocationViewCodeData.swift; sourceTree = "<group>"; };
@@ -148,7 +148,7 @@
 		BF7B77D528AD2F21006484FF /* WatchConnectivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityManager.swift; sourceTree = "<group>"; };
 		BF83FD5628B77A6C00699C53 /* EditSessionCoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSessionCoreView.swift; sourceTree = "<group>"; };
 		BF9A5DAB289967DD009F438D /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
-		BFAB602228A6786500CC6276 /* SessionListViewCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionListViewCoreData.swift; sourceTree = "<group>"; };
+		BFAB602228A6786500CC6276 /* SessionListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionListView.swift; sourceTree = "<group>"; };
 		BFAB602528A678CC00CC6276 /* CoreSample.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreSample.xcdatamodel; sourceTree = "<group>"; };
 		BFAB602728A678DF00CC6276 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		BFCF213F28AA2BA6004ED37D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -321,10 +321,10 @@
 		BF3E791F28AE4A8300570B11 /* SessionList */ = {
 			isa = PBXGroup;
 			children = (
-				BFAB602228A6786500CC6276 /* SessionListViewCoreData.swift */,
+				BFAB602228A6786500CC6276 /* SessionListView.swift */,
 				BF3E792028AE4ACC00570B11 /* SessionCellCoreData.swift */,
 				BF83FD5628B77A6C00699C53 /* EditSessionCoreView.swift */,
-				BF3A3EBE28C0B5A8007BE348 /* CreateSessionViewCoreData.swift */,
+				BF3A3EBE28C0B5A8007BE348 /* CreateSessionView.swift */,
 				BF3A3EC028C0D24B007BE348 /* SpotListModel.swift */,
 				BF05045C289AB34A00EEB2AA /* DurationView.swift */,
 			);
@@ -488,7 +488,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFAB602328A6786500CC6276 /* SessionListViewCoreData.swift in Sources */,
+				BFAB602328A6786500CC6276 /* SessionListView.swift in Sources */,
 				BF05045D289AB34A00EEB2AA /* DurationView.swift in Sources */,
 				BF5F049428FD5E3A00ACAAD6 /* CreateLocationViewCodeData.swift in Sources */,
 				BF1149162892D95D0081A360 /* SessionCell.swift in Sources */,
@@ -506,7 +506,7 @@
 				BF1149082892C05F0081A360 /* Location.swift in Sources */,
 				BF11491A2892D97A0081A360 /* Date.swift in Sources */,
 				BF0A812328A10825008C4C41 /* LocationListView.swift in Sources */,
-				BF3A3EBF28C0B5A8007BE348 /* CreateSessionViewCoreData.swift in Sources */,
+				BF3A3EBF28C0B5A8007BE348 /* CreateSessionView.swift in Sources */,
 				BF5F101428D9FDCC00E71AA4 /* LocationListViewCoreData.swift in Sources */,
 				BFAB602628A678CC00CC6276 /* WindcockpitCoreData.xcdatamodeld in Sources */,
 				BF1148B12892BE7A0081A360 /* WindcockpitApp.swift in Sources */,

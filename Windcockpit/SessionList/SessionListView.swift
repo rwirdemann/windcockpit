@@ -8,7 +8,7 @@
 import SwiftUI
 import CoreData
 
-struct SessionListViewCoreData: View, SessionServiceCallback {
+struct SessionListView: View, SessionServiceCallback {
     @ObservedObject private var connectivityManager = WatchConnectivityManager.shared
     @StateObject private var viewModel = SpotListModel()
 
@@ -53,7 +53,7 @@ struct SessionListViewCoreData: View, SessionServiceCallback {
                     EditButton()
                 }
                 ToolbarItem {
-                    NavigationLink(destination: CreateSessionViewCoreData(),
+                    NavigationLink(destination: CreateSessionView(),
                                    label: {Image(systemName: "plus")})
                 }
             }

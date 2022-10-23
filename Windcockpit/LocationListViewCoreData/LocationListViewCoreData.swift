@@ -41,6 +41,10 @@ struct LocationListViewCoreData: View {
         for index in indexSet {
             let l = items[index]
             viewContext.delete(l)
+            do {
+                try viewContext.save()
+            } catch {
+            }
         }
     }
 }

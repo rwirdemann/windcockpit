@@ -12,7 +12,7 @@ struct ContentView: View {
 
     var body: some View {
         TabView {
-            SessionListViewCoreData()
+            SessionListView()
                 .tabItem {
                     Image(systemName: "wind")
                     Text("Sessions")
