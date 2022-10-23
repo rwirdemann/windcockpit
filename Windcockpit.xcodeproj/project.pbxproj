@@ -215,19 +215,19 @@
 		BF1148AF2892BE7A0081A360 /* Windcockpit */ = {
 			isa = PBXGroup;
 			children = (
-				BF1149052892C05F0081A360 /* Model */,
-				BF11490B2892D94A0081A360 /* Util */,
+				BF1148B42892BE7B0081A360 /* Assets.xcassets */,
+				BF1149172892D96F0081A360 /* ContentView.swift */,
 				BF72ABAB28A3E64400D7F496 /* CoreData */,
 				BF0A812628A10B16008C4C41 /* Http */,
-				BF0A812128A10803008C4C41 /* LocationListView */,
-				BF11490C2892D95D0081A360 /* PublicTimeline */,
-				BF5F101228D9FDA800E71AA4 /* LocationListViewCoreData */,
-				BF3E791F28AE4A8300570B11 /* SessionList */,
 				BFCF213F28AA2BA6004ED37D /* Info.plist */,
-				BF1148B02892BE7A0081A360 /* WindcockpitApp.swift */,
-				BF1149172892D96F0081A360 /* ContentView.swift */,
-				BF1148B42892BE7B0081A360 /* Assets.xcassets */,
+				BF0A812128A10803008C4C41 /* LocationListView */,
+				BF5F101228D9FDA800E71AA4 /* LocationListViewCoreData */,
+				BF1149052892C05F0081A360 /* Model */,
 				BF1148B62892BE7B0081A360 /* Preview Content */,
+				BF11490C2892D95D0081A360 /* PublicTimeline */,
+				BF3E791F28AE4A8300570B11 /* SessionList */,
+				BF11490B2892D94A0081A360 /* Util */,
+				BF1148B02892BE7A0081A360 /* WindcockpitApp.swift */,
 			);
 			path = Windcockpit;
 			sourceTree = "<group>";
