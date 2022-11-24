@@ -17,20 +17,10 @@ struct ContentView: View {
                     Image(systemName: "wind")
                     Text("Sessions")
                 }
-            TimelineView()
-                .tabItem {
-                    Image(systemName: "server.rack")
-                    Text("Public Timeline")
-                }
             LocationListView()
                 .tabItem {
                     Image(systemName: "map")
                     Text("Spots")
-                }
-            LocationListViewCoreData()
-                .tabItem {
-                    Image(systemName: "map")
-                    Text("Spots Core")
                 }
 
         }

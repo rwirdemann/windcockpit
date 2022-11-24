@@ -1,5 +1,5 @@
 //
-//  CreateLocationViewCoreData.swift
+//  CreateLocationView.swift
 //  Windcockpit
 //
 //  Created by Ralf Wirdemann on 17.10.22.
@@ -8,7 +8,7 @@
 import SwiftUI
 import CoreData
 
-struct CreateLocationViewCoreData: View {
+struct CreateLocationView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.presentationMode) var presentationMode
     @State private var name = ""

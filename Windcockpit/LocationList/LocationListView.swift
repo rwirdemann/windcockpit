@@ -1,5 +1,5 @@
 //
-//  SpotListViewCoreData.swift
+//  LocationListView.swift
 //  Windcockpit
 //
 //  Created by Ralf Wirdemann on 08.08.22.
@@ -8,7 +8,7 @@
 import SwiftUI
 import CoreData
 
-struct LocationListViewCoreData: View {
+struct LocationListView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \LocationEntity.name, ascending: true)],
@@ -29,7 +29,7 @@ struct LocationListViewCoreData: View {
                     EditButton()
                 }
                 ToolbarItem {
-                    NavigationLink(destination: CreateLocationViewCoreData(),
+                    NavigationLink(destination: CreateLocationView(),
                                    label: {Image(systemName: "plus")})
                 }
             }

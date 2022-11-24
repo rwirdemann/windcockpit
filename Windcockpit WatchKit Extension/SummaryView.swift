@@ -53,7 +53,7 @@ struct SummaryView: View {
                         )
                     )
                     .accentColor(Color.red)
-
+                    
                     let formatter = DurationFormatter()
                     let duration = formatter.string(for: workoutManager.builder?.elapsedTime ?? 0) ?? "00:00:00"
                     SummaryMetricvView(
@@ -61,7 +61,7 @@ struct SummaryView: View {
                         value: duration
                     )
                     .accentColor(Color.mint)
-
+                    
                     
                     Button("Sync Session") {
                         WatchConnectivityManager.shared.send(buildSession())
@@ -93,13 +93,14 @@ struct SummaryView: View {
         let dist = workoutManager.workout?.totalDistance?.doubleValue(for: .meter()) ?? 0
         let duration = workoutManager.builder?.elapsedTime ?? 0
         return Session(id: 0,
-                        location: location,
-                        name: "Wingfoiling",
-                        date: Date(),
-                        distance: dist,
-                        maxspeed: workoutManager.maxSpeed,
-                        duration: duration)
-        
+                       location: location,
+                       name: "Wingfoiling",
+                       date: Date(),
+                       distance: dist,
+                       maxspeed: workoutManager.maxSpeed,
+                       duration: duration,
+                       locationId: 0
+        )        
     }
 }
 

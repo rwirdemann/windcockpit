@@ -1,17 +1,9 @@
-//
-//  ContentView.swift
-//  CoreSample
-//
-//  Created by Ralf Wirdemann on 10.08.22.
-//
-
 import SwiftUI
 import CoreData
 
 struct SessionListView: View, SessionServiceCallback {
     @ObservedObject private var connectivityManager = WatchConnectivityManager.shared
-    @StateObject private var viewModel = SpotListModel()
-
+    
     @Environment(\.managedObjectContext) private var viewContext
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \SessionEntity.date, ascending: false)],
@@ -25,10 +17,10 @@ struct SessionListView: View, SessionServiceCallback {
         NavigationView {
             List {
                 ForEach(items) { item in
-                   NavigationLink {
-                       EditSessionCoreView(s: item)
+                    NavigationLink {
+                        EditSessionView(s: item)
                     } label: {
-                        SessionCellCoreData(session: item)
+                        SessionCell(session: item)
                     }
                     .swipeActions {
                         Button {
@@ -47,7 +39,7 @@ struct SessionListView: View, SessionServiceCallback {
                     }
                 }
             }
-            .navigationTitle("Meine Sessions")
+            .navigationTitle("My Sessions")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
@@ -64,10 +56,6 @@ struct SessionListView: View, SessionServiceCallback {
         .onChange(of: connectivityManager.newSession) {session in
             addItem(session: session)
         }
-        .onAppear {
-            viewModel.loadSpots()
-        }
-        .environmentObject(viewModel)
     }
     
     private func addItem(session: Session?) {
@@ -76,7 +64,6 @@ struct SessionListView: View, SessionServiceCallback {
         }
         let newItem = SessionEntity(context: viewContext)
         newItem.date = session.date
-        newItem.location = session.location
         newItem.name = session.name
         newItem.maxspeed = session.maxspeed
         newItem.distance = session.distance
@@ -91,16 +78,16 @@ struct SessionListView: View, SessionServiceCallback {
     }
     
     private func uploadSession(sessionEntity: SessionEntity) {
-        let location = sessionEntity.location ?? ""
         let name = sessionEntity.name ?? ""
         let date = sessionEntity.date ?? Date()
         let session = Session(id: 0,
-                              location: location,
+                              location: "",
                               name: name,
                               date: date,
                               distance: sessionEntity.distance,
                               maxspeed: sessionEntity.maxspeed,
-                              duration: sessionEntity.duration)
+                              duration: sessionEntity.duration,
+                              locationId: 0)
         createSession(session: session, callback: self, managedObjectID: sessionEntity.objectID)
     }
     
@@ -108,7 +95,7 @@ struct SessionListView: View, SessionServiceCallback {
         guard let managedObjectID = managedObjectID else {
             return
         }
-
+        
         do {
             let object = try viewContext.existingObject(
                 with: managedObjectID
@@ -118,7 +105,7 @@ struct SessionListView: View, SessionServiceCallback {
                 session.cid = Int32(id)
                 session.published = true
             }
-
+            
         } catch {
             let nsError = error as NSError
             fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
@@ -134,7 +121,6 @@ struct SessionListView: View, SessionServiceCallback {
         withAnimation {
             let newItem = SessionEntity(context: viewContext)
             newItem.date = Date()
-            newItem.location = "Hanstholm"
             newItem.name = "Wingfoil"
             newItem.published = false
             do {

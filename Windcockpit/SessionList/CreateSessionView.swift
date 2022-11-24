@@ -26,9 +26,11 @@ struct CreateSessionView: View {
     private var items: FetchedResults<LocationEntity>
 
     fileprivate func saveSession() {
+        let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        print(urls[urls.count-1] as URL)
+        
         let s = SessionEntity(context: viewContext)
         s.date = date
-        s.location = selectedSpot?.name ?? "unknown"
         s.name = sport
         s.spot = selectedSpot
         s.published = false
@@ -76,7 +78,7 @@ struct CreateSessionView: View {
         .alert(errorMessage, isPresented: $showingAlert)  {
             Button("OK", role: .cancel) {}
         }
-        .navigationTitle("Neue Session")
+        .navigationTitle("New Session")
         .toolbar{
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 Button("Save", action : saveSession)

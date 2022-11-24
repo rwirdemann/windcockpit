@@ -15,4 +15,5 @@ struct Session: Identifiable, Codable, Hashable {
     var distance: Double
     var maxspeed: Double
     var duration: Double
+    var locationId: Int
 }

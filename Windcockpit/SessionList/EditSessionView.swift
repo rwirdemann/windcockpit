@@ -8,72 +8,75 @@
 import SwiftUI
 import CoreData
 
-struct EditSessionCoreView: View {
+struct EditSessionView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.editMode) private var editMode
     var session: SessionEntity
-    @EnvironmentObject var spotListModel: SpotListModel
-
-    @State private var location: String
+    
+    @State private var selectedSpot: LocationEntity?
     @State private var date: Date
     @State private var sport: String
     @State private var distance: Double
     @State private var maxspeed: Double
     @State private var duration: Double
-
+    
     @State private var showingAlert = false
     @State private var errorMessage = ""
-
-    let sports = ["Wingfoiling", "Windsurfing"]
-
+    
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \LocationEntity.name, ascending: true)],
+        animation: .default)
+    private var spots: FetchedResults<LocationEntity>
+    
+    let sports = ["Wingfoiling", "Windsurfing", "Kitesurfing"]
+    
     let formatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
         return formatter
     }()
-
+    
     init(s: SessionEntity) {
         self.session = s
-
-        _location = State(initialValue: s.location ?? "")
+        
         _date = State(initialValue: s.date ?? Date())
         _sport = State(initialValue: s.name ?? "")
         _distance = State(initialValue: s.distance)
         _maxspeed = State(initialValue: s.maxspeed)
         _duration = State(initialValue: s.duration)
     }
-
+    
     var body: some View {
         Form {
             HStack {
                 Text("Spot")
                 Spacer()
                 if editMode?.wrappedValue.isEditing == true {
-                    Picker("Spot", selection: $location) {
-                        ForEach(spotListModel.locations, id: \.name) {
-                            Text($0.name)
+                    Picker("", selection: $selectedSpot) {
+                        ForEach(spots) { location in
+                            Text(location.name!)
+                                .tag(Optional(location))
                         }
-                    }
-                            .pickerStyle(MenuPickerStyle())
+                    }.pickerStyle(MenuPickerStyle())
                 } else {
-                    Text(session.location ?? "")
+                    Text(session.spot?.name ?? "")
                 }
             }
-
+            
             HStack {
-                Text("Wann")
+                Text("When")
                 Spacer()
                 if editMode?.wrappedValue.isEditing == true {
                     DatePicker("", selection: $date, displayedComponents: .date)
-                            .environment(\.locale, Locale.init(identifier: "de_DE"))
+                        .environment(\.locale, Locale.init(identifier: "de_DE"))
                 } else {
                     Text(toString(from: session.date ?? Date()))
-                            .font(.subheadline)
+                        .font(.subheadline)
                 }
             }
-
+            
             HStack {
-                Text("Aktivität")
+                Text("Sport")
                 Spacer()
                 if editMode?.wrappedValue.isEditing == true {
                     Picker("", selection: $sport) {
@@ -81,36 +84,36 @@ struct EditSessionCoreView: View {
                             Text($0)
                         }
                     }
-                            .pickerStyle(MenuPickerStyle())
+                    .pickerStyle(MenuPickerStyle())
                 } else {
                     Text(session.name ?? "")
-                            .font(.subheadline)
+                        .font(.subheadline)
                 }
             }
-
+            
             let distance = Measurement(
-                    value: distance,
-                    unit: UnitLength.meters
+                value: distance,
+                unit: UnitLength.meters
             ).formatted(
-                    .measurement(width: .abbreviated,
-                            usage: .road)
+                .measurement(width: .abbreviated,
+                             usage: .road)
             )
             HStack {
-                Text("Distanz")
+                Text("Distance")
                 Spacer()
                 if editMode?.wrappedValue.isEditing == true {
-                    TextField("Distanz", value: $distance, formatter: formatter)
-                            .multilineTextAlignment(.trailing)
+                    TextField("Distance", value: $distance, formatter: formatter)
+                        .multilineTextAlignment(.trailing)
                 } else {
                     Text(distance)
-                            .font(.subheadline)
+                        .font(.subheadline)
                 }
             }
-
-
+            
+            
             let maxSpeed = Measurement(
-                    value: maxspeed,
-                    unit: UnitSpeed.metersPerSecond
+                value: maxspeed,
+                unit: UnitSpeed.metersPerSecond
             ).formatted(
             )
             HStack {
@@ -118,68 +121,70 @@ struct EditSessionCoreView: View {
                 Spacer()
                 if editMode?.wrappedValue.isEditing == true {
                     TextField("Max speed", value: $maxspeed, formatter: formatter)
-                            .multilineTextAlignment(.trailing)
+                        .multilineTextAlignment(.trailing)
                 } else {
                     Text(maxSpeed)
-                            .font(.subheadline)
+                        .font(.subheadline)
                 }
             }
             HStack {
-                Text("Dauer")
+                Text("Duration")
                 Spacer()
                 if editMode?.wrappedValue.isEditing == true {
-                    TextField("Dauer", value: $duration, formatter: Formatters.number)
-                            .multilineTextAlignment(.trailing)
+                    TextField("Duration", value: $duration, formatter: Formatters.number)
+                        .multilineTextAlignment(.trailing)
                 } else {
                     DurationView(duration: duration)
-                            .font(.subheadline)
+                        .font(.subheadline)
                 }
             }
-
+            
         }
-                .alert(errorMessage, isPresented: $showingAlert) {
-                    Button("OK", role: .cancel) {
-                    }
-
+        .alert(errorMessage, isPresented: $showingAlert) {
+            Button("OK", role: .cancel) {
+            }
+            
+        }
+        .toolbar {
+            EditButton()
+        }
+        .navigationTitle("Your Session")
+        .onChange(of: editMode!.wrappedValue, perform: { value in
+            if !value.isEditing {
+                session.name = sport
+                session.date = date
+                session.duration = duration
+                session.maxspeed = maxspeed
+                session.distance = distance
+                session.spot = selectedSpot
+                do {
+                    try viewContext.save()
+                } catch {
+                    let nsError = error as NSError
+                    fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
                 }
-                .toolbar {
-                    EditButton()
-                }
-                .navigationTitle("Deine Session")
-                .onChange(of: editMode!.wrappedValue, perform: { value in
-                    if !value.isEditing {
-                        session.location = location
-                        session.name = sport
-                        session.duration = duration
-                        session.maxspeed = maxspeed
-                        session.distance = distance
-                        do {
-                            try viewContext.save()
-                        } catch {
-                            let nsError = error as NSError
-                            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-                        }                        
-                        
-                        if session.published {
-                            let s = Session(id: Int(session.cid),
-                                    location: session.location ?? "",
+                
+                if session.published {
+                    let s = Session(id: Int(session.cid),
+                                    location: session.spot?.name ?? "",
                                     name: session.name ?? "",
                                     date: session.date ?? Date(),
                                     distance: session.distance,
                                     maxspeed: session.maxspeed,
-                                    duration: session.duration)
-                            updateSession(session: s, callback: self)
-                        }
-                        
-                    }
-                })
+                                    duration: session.duration,
+                                    locationId: 0)
+                    updateSession(session: s, callback: self)
+                }
+                
+            }
+        })
     }
 }
 
-extension EditSessionCoreView: SessionServiceCallback {
+extension EditSessionView: SessionServiceCallback {
     func success(id: Int, managedObjectID: NSManagedObjectID?) {
     }
-
+    
     func error(message: String) {
     }
 }

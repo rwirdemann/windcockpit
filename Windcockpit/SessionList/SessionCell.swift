@@ -1,5 +1,5 @@
 //
-//  SessionCellCoreData.swift
+//  SessionCell.swift
 //  Windcockpit
 //
 //  Created by Ralf Wirdemann on 18.08.22.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SessionCellCoreData: View {
+struct SessionCell: View {
     @Environment(\.colorScheme) var colorScheme
     
     @StateObject var session: SessionEntity
@@ -32,7 +32,7 @@ struct SessionCellCoreData: View {
             }
             
             VStack(alignment: .leading, spacing: 5) {
-                Text(session.location ?? "")
+                Text(session.spot?.name ?? "")
                     .fontWeight(.semibold)
                     .foregroundColor(.primary)
                 
