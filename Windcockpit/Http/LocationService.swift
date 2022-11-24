@@ -1,12 +1,12 @@
 import Foundation
 import CoreData
 
-protocol ManagedObjectLocationServiceCallback {
+protocol LocationServiceCallback {
     func success(id: Int, managedObjectID: NSManagedObjectID?)
     func error(message: String)
 }
 
-func create(location: Location, callback: ManagedObjectLocationServiceCallback, managedObjectID: NSManagedObjectID?) {
+func create(location: Location, callback: LocationServiceCallback, managedObjectID: NSManagedObjectID?) {
     guard let url = URL(string: "\(Constants.BASE_URL)/locations") else {
         callback.error(message: "Invalid URL")
         return
