@@ -11,7 +11,6 @@ import CoreData
 struct CreateSessionView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var spotListModel: SpotListModel
     @State private var selectedSpot: LocationEntity?
     @State private var sport = "Wingfoiling"
     @State private var date = Date()

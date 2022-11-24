@@ -40,7 +40,6 @@
 		BF1149182892D96F0081A360 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1149172892D96F0081A360 /* ContentView.swift */; };
 		BF11491A2892D97A0081A360 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1149192892D97A0081A360 /* Date.swift */; };
 		BF3A3EBF28C0B5A8007BE348 /* CreateSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3A3EBE28C0B5A8007BE348 /* CreateSessionView.swift */; };
-		BF3A3EC128C0D24B007BE348 /* SpotListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3A3EC028C0D24B007BE348 /* SpotListModel.swift */; };
 		BF3E792128AE4ACC00570B11 /* SessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3E792028AE4ACC00570B11 /* SessionCell.swift */; };
 		BF7B77D628AD2F21006484FF /* WatchConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B77D528AD2F21006484FF /* WatchConnectivityManager.swift */; };
 		BF7B77D728AD2F21006484FF /* WatchConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B77D528AD2F21006484FF /* WatchConnectivityManager.swift */; };
@@ -132,7 +131,6 @@
 		BF1149172892D96F0081A360 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BF1149192892D97A0081A360 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		BF3A3EBE28C0B5A8007BE348 /* CreateSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSessionView.swift; sourceTree = "<group>"; };
-		BF3A3EC028C0D24B007BE348 /* SpotListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotListModel.swift; sourceTree = "<group>"; };
 		BF3E792028AE4ACC00570B11 /* SessionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCell.swift; sourceTree = "<group>"; };
 		BF7B77D528AD2F21006484FF /* WatchConnectivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityManager.swift; sourceTree = "<group>"; };
 		BF83FD5628B77A6C00699C53 /* EditSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSessionView.swift; sourceTree = "<group>"; };
@@ -298,7 +296,6 @@
 				BF3E792028AE4ACC00570B11 /* SessionCell.swift */,
 				BF83FD5628B77A6C00699C53 /* EditSessionView.swift */,
 				BF3A3EBE28C0B5A8007BE348 /* CreateSessionView.swift */,
-				BF3A3EC028C0D24B007BE348 /* SpotListModel.swift */,
 				BF05045C289AB34A00EEB2AA /* DurationView.swift */,
 			);
 			path = SessionList;
@@ -465,7 +462,6 @@
 				BF05045D289AB34A00EEB2AA /* DurationView.swift in Sources */,
 				BFF0504C292E71EB00BA1DF8 /* HttpUtil.swift in Sources */,
 				BF9A5DAC289967DD009F438D /* Formatters.swift in Sources */,
-				BF3A3EC128C0D24B007BE348 /* SpotListModel.swift in Sources */,
 				BF1149182892D96F0081A360 /* ContentView.swift in Sources */,
 				BFF0504A292E717B00BA1DF8 /* LocationService.swift in Sources */,
 				BF1149022892C03C0081A360 /* SessionService.swift in Sources */,
