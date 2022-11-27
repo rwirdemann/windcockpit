@@ -30,6 +30,18 @@ struct SummaryView: View {
             ScrollView(.vertical) {
                 VStack(alignment: .leading) {
                     SummaryMetricvView(
+                        title: "What",
+                        value: workoutManager.selectedWorkout?.name ?? ""
+                    )
+                    .accentColor(Color.blue)
+
+                    SummaryMetricvView(
+                        title: "Where",
+                        value: workoutManager.location
+                    )
+                    .accentColor(Color.brown)
+
+                    SummaryMetricvView(
                         title: "Total Time",
                         value: durationFormatter.string(from: workoutManager.workout?.duration  ?? 0.0) ?? "")
                     .accentColor(Color.yellow)
@@ -62,7 +74,6 @@ struct SummaryView: View {
                     )
                     .accentColor(Color.mint)
                     
-                    
                     Button("Sync Session") {
                         WatchConnectivityManager.shared.send(buildSession())
                         DispatchQueue.main.async {
@@ -70,10 +81,6 @@ struct SummaryView: View {
                         }
                     }
                     .disabled(!WatchConnectivityManager.shared.isConnected())
-                    
-                    Button("Upload Session") {
-                        createSession(session: buildSession(), callback: self, managedObjectID:nil)
-                    }
                 }
                 .alert(errorMessage, isPresented: $showingAlert)  {
                     Button("OK", role: .cancel) {}
@@ -86,21 +93,18 @@ struct SummaryView: View {
     }
     
     func buildSession() -> Session {
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "de")
-        formatter.dateFormat = "d. MMMM y, HH:mm"
-        let location = workoutManager.currentPlacemark?.locality ?? "New: \(formatter.string(from: Date()))"
         let dist = workoutManager.workout?.totalDistance?.doubleValue(for: .meter()) ?? 0
         let duration = workoutManager.builder?.elapsedTime ?? 0
+        let sport = workoutManager.selectedWorkout?.name ?? ""
         return Session(id: 0,
-                       location: location,
-                       name: "Wingfoiling",
+                       location: workoutManager.location,
+                       name: sport,
                        date: Date(),
                        distance: dist,
                        maxspeed: workoutManager.maxSpeed,
                        duration: duration,
                        locationId: 0
-        )        
+        )
     }
 }
 
@@ -118,22 +122,8 @@ struct SummaryMetricvView: View {
         Text(title)
         Text(value)
             .font(.system(.title2, design: .rounded)
-                .lowercaseSmallCaps()
             )
             .foregroundColor(.accentColor)
         Divider()
-    }
-}
-
-extension SummaryView: SessionServiceCallback {
-    func success(id: Int, managedObjectID: NSManagedObjectID?) {
-        DispatchQueue.main.async {
-            dismiss()
-        }
-    }
-    
-    func error(message: String) {
-        self.errorMessage = message
-        showingAlert = true
     }
 }

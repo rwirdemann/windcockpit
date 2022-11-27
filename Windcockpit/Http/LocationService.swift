@@ -1,14 +1,21 @@
+//
+//  EditSessionView.swift
+//  Windcockpit
+//
+//  Created by Ralf Wirdemann on 28.06.22.
+//
+
 import Foundation
 import CoreData
 
 protocol LocationServiceCallback {
-    func success(id: Int, managedObjectID: NSManagedObjectID?)
-    func error(message: String)
+    func locationSuccess(id: Int, managedObjectID: NSManagedObjectID?)
+    func locationError(message: String)
 }
 
-func create(location: Location, callback: LocationServiceCallback, managedObjectID: NSManagedObjectID?) {
+func createLocation(location: Location, callback: LocationServiceCallback, managedObjectID: NSManagedObjectID?) {
     guard let url = URL(string: "\(Constants.BASE_URL)/locations") else {
-        callback.error(message: "Invalid URL")
+        callback.locationError(message: "Invalid URL")
         return
     }
     var request = URLRequest(url: url)
@@ -19,31 +26,31 @@ func create(location: Location, callback: LocationServiceCallback, managedObject
     request.httpBody = json
     let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
         guard let httpResponse = response as? HTTPURLResponse, error == nil else {
-            callback.error(message: "No valid response")
+            callback.locationError(message: "No valid response")
             return
         }
         
         if let error = error {
-            callback.error(message: error.localizedDescription)
+            callback.locationError(message: error.localizedDescription)
             return
         }
         
         guard 200 ..< 300 ~= httpResponse.statusCode else {
-            callback.error(message: "Status code was \(httpResponse.statusCode), but expected 2xx")
+            callback.locationError(message: "Status code was \(httpResponse.statusCode), but expected 2xx")
             return
         }
         
         guard let location = httpResponse.value(forHTTPHeaderField: "Location") else {
-            callback.error(message: "No Location header found")
+            callback.locationError(message: "No Location header found")
             return
         }
 
         guard let id = extractIdFromLocationHeader(url: location) else {
-            callback.error(message: "Location header contains no valid id")
+            callback.locationError(message: "Location header contains no valid id")
             return
         }
 
-        callback.success(id: id, managedObjectID: managedObjectID)
+        callback.locationSuccess(id: id, managedObjectID: managedObjectID)
     }
     task.resume()
 }

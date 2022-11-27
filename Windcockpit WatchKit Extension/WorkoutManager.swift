@@ -25,6 +25,7 @@ class WorkoutManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     let healthStore = HKHealthStore()
+    var location = ""
     var session: HKWorkoutSession?
     var builder: HKLiveWorkoutBuilder?
     
@@ -48,6 +49,10 @@ class WorkoutManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     func endWorkout() {
         session?.end()
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "de")
+        formatter.dateFormat = "d. MMMM y, HH:mm"
+        location = currentPlacemark?.locality ?? "New: \(formatter.string(from: Date()))"
         showingSummaryView = true
     }
     

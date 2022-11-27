@@ -14,22 +14,14 @@ struct SessionCell: View {
     
     var body: some View {
         HStack {
-            if session.name == "xWingfoiling" || session.name == "xWingding" {
-                Image(colorScheme == .light ? "wingfoiling-light" : "wingfoiling-dark")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 50, height: 50)
-                    .padding(.leading, -10)
-            } else {
-                ZStack {
-                    Circle()
-                        .stroke(.blue, lineWidth: 1)
-                    Text(short(name: session.name ?? "Wingfoiling"))
-                        .font(.system(size: 20))
-                }
-                .frame(width: 50, height: 50)
-                .padding(.leading, -10)
+            ZStack {
+                Circle()
+                    .stroke(.blue, lineWidth: 1)
+                Text(short(name: session.name ?? "Wingfoiling"))
+                    .font(.system(size: 20))
             }
+            .frame(width: 50, height: 50)
+            .padding(.leading, -10)
             
             VStack(alignment: .leading, spacing: 5) {
                 Text(session.spot?.name ?? "")
@@ -49,5 +41,5 @@ struct SessionCell: View {
             
             Spacer()
         }
-    }    
+    }
 }

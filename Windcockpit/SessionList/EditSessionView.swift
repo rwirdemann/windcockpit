@@ -1,5 +1,5 @@
 //
-//  EditSessionCoreView.swift
+//  EditSessionView.swift
 //  Windcockpit
 //
 //  Created by Ralf Wirdemann on 28.06.22.
@@ -174,8 +174,7 @@ struct EditSessionView: View {
                                     duration: session.duration,
                                     locationId: 0)
                     updateSession(session: s, callback: self)
-                }
-                
+                }                
             }
         })
     }

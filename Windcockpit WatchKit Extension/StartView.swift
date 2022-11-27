@@ -16,15 +16,6 @@ struct StartView: View {
     var body: some View {
         List(workoutTypes) { sessionType in
             VStack {
-                ZStack {
-                    Circle()
-                        .stroke(.green, lineWidth: 1)
-                    Text(short(name: sessionType.name))
-                        .font(.system(size: 20))
-                }
-                .frame(width: 40, height: 40)
-                .padding(.leading, -50)
-                
                 NavigationLink(
                     sessionType.name,
                     destination: SessionPagingView(),
@@ -67,14 +58,5 @@ extension HKWorkoutActivityType: Identifiable {
         default:
             return ""
         }
-    }
-}
-
-func short(name: String) -> String {
-    switch name {
-    case "Windsurfing": return "WS"
-    case "Wingfoiling": return "WF"
-    case "Kitesurfing": return "KS"
-    default: return name
     }
 }

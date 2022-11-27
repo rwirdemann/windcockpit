@@ -1,13 +1,11 @@
 import SwiftUI
 import CoreData
 
-struct SessionListView: View, SessionServiceCallback {
+struct SessionListView: View {
     @ObservedObject private var connectivityManager = WatchConnectivityManager.shared
-    
     @Environment(\.managedObjectContext) private var viewContext
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \SessionEntity.date, ascending: false)],
-        animation: .default)
+    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \SessionEntity.date, ascending: false)],
+                  animation: .default)
     private var items: FetchedResults<SessionEntity>
     
     @State private var showingAlert = false
@@ -39,7 +37,7 @@ struct SessionListView: View, SessionServiceCallback {
                     }
                 }
             }
-            .navigationTitle("My Sessions")
+            .navigationTitle("Sessions")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
@@ -68,6 +66,11 @@ struct SessionListView: View, SessionServiceCallback {
         newItem.maxspeed = session.maxspeed
         newItem.distance = session.distance
         newItem.duration = session.duration
+        
+        let spot = LocationEntity(context: viewContext)
+        spot.name = session.location
+        newItem.spot = spot
+
         newItem.published = false
         do {
             try viewContext.save()
@@ -78,6 +81,12 @@ struct SessionListView: View, SessionServiceCallback {
     }
     
     private func uploadSession(sessionEntity: SessionEntity) {
+        guard let spot = sessionEntity.spot else {
+            return
+        }
+        let location = Location(id: 0, name: spot.name ?? "")
+        createLocation(location: location, callback: self, managedObjectID: spot.objectID)
+        
         let name = sessionEntity.name ?? ""
         let date = sessionEntity.date ?? Date()
         let session = Session(id: 0,
@@ -89,32 +98,6 @@ struct SessionListView: View, SessionServiceCallback {
                               duration: sessionEntity.duration,
                               locationId: 0)
         createSession(session: session, callback: self, managedObjectID: sessionEntity.objectID)
-    }
-    
-    func success(id: Int, managedObjectID: NSManagedObjectID?) {
-        guard let managedObjectID = managedObjectID else {
-            return
-        }
-        
-        do {
-            let object = try viewContext.existingObject(
-                with: managedObjectID
-            )
-            
-            if let session = object as? SessionEntity {
-                session.cid = Int32(id)
-                session.published = true
-            }
-            
-        } catch {
-            let nsError = error as NSError
-            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-        }
-    }
-    
-    func error(message: String) {
-        self.errorMessage = message
-        showingAlert = true
     }
     
     private func addItem() {
@@ -146,6 +129,45 @@ struct SessionListView: View, SessionServiceCallback {
         }
     }
 }
+
+extension SessionListView: LocationServiceCallback {
+    func locationSuccess(id: Int, managedObjectID: NSManagedObjectID?) {
+    }
+    
+    func locationError(message: String) {
+        self.errorMessage = message
+        showingAlert = true
+    }
+}
+
+extension SessionListView: SessionServiceCallback {
+    func success(id: Int, managedObjectID: NSManagedObjectID?) {
+        guard let managedObjectID = managedObjectID else {
+            return
+        }
+        
+        do {
+            let object = try viewContext.existingObject(
+                with: managedObjectID
+            )
+            
+            if let session = object as? SessionEntity {
+                session.cid = Int32(id)
+                session.published = true
+            }
+            
+        } catch {
+            let nsError = error as NSError
+            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+        }
+    }
+    
+    func error(message: String) {
+        self.errorMessage = message
+        showingAlert = true
+    }
+}
+
 
 private let itemFormatter: DateFormatter = {
     let formatter = DateFormatter()
