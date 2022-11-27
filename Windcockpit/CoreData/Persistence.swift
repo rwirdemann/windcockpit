@@ -35,4 +35,27 @@ struct PersistenceController {
         })
         container.viewContext.automaticallyMergesChangesFromParent = true
     }
+    
+    func deleteAllSession(entityName: String) {
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult>
+        fetchRequest = NSFetchRequest(entityName: entityName)
+        let deleteRequest = NSBatchDeleteRequest(
+            fetchRequest: fetchRequest
+        )
+        deleteRequest.resultType = .resultTypeObjectIDs
+        let context = container.viewContext
+        let batchDelete = try? context.execute(deleteRequest) as? NSBatchDeleteResult
+
+        guard let deleteResult = batchDelete?.result
+            as? [NSManagedObjectID]
+            else { return }
+
+        let deletedObjects: [AnyHashable: Any] = [
+            NSDeletedObjectsKey: deleteResult
+        ]
+        NSManagedObjectContext.mergeChanges(
+            fromRemoteContextSave: deletedObjects,
+            into: [context]
+        )
+    }
 }

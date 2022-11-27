@@ -23,7 +23,7 @@ struct LocationListView: View {
                 }
                 .onDelete(perform: self.deleteItem)
             }
-            .navigationTitle("Spots CoreData")
+            .navigationTitle("Spots")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
