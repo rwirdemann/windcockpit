@@ -32,8 +32,7 @@ struct LocationListView: View {
                     NavigationLink(destination: CreateLocationView(),
                                    label: {Image(systemName: "plus")})
                 }
-            }
-            
+            }            
         }
     }
     

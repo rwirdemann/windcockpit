@@ -66,11 +66,7 @@ struct SessionListView: View {
         newItem.maxspeed = session.maxspeed
         newItem.distance = session.distance
         newItem.duration = session.duration
-        
-        let spot = LocationEntity(context: viewContext)
-        spot.name = session.location
-        newItem.spot = spot
-
+        newItem.spot = findOrCreateLocation(name: session.location)
         newItem.published = false
         do {
             try viewContext.save()
@@ -78,6 +74,29 @@ struct SessionListView: View {
             let nsError = error as NSError
             fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
         }
+    }
+    
+    private func findOrCreateLocation(name: String) -> LocationEntity {
+        let fetchRequest: NSFetchRequest<LocationEntity>
+        fetchRequest = LocationEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(
+            format: "name LIKE %@", name
+        )
+        do {
+            let objects = try viewContext.fetch(fetchRequest)
+            if !objects.isEmpty {
+                return objects[0]
+            }
+            return buildNewLocation(name: name)
+        } catch {
+            return buildNewLocation(name: name)
+        }
+    }
+    
+    private func buildNewLocation(name: String) -> LocationEntity {
+        let l = LocationEntity(context: viewContext)
+        l.name = name
+        return l
     }
     
     private func uploadSession(sessionEntity: SessionEntity) {
