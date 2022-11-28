@@ -1,5 +1,5 @@
 //
-//  SessionView.swift
+//  CreateSessionView.swift
 //  Windcockpit
 //
 //  Created by Ralf Wirdemann on 22.05.22.
@@ -23,7 +23,7 @@ struct CreateSessionView: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \LocationEntity.name, ascending: true)],
         animation: .default)
     private var items: FetchedResults<LocationEntity>
-
+    
     fileprivate func saveSession() {
         let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         print(urls[urls.count-1] as URL)
@@ -76,6 +76,11 @@ struct CreateSessionView: View {
         }
         .alert(errorMessage, isPresented: $showingAlert)  {
             Button("OK", role: .cancel) {}
+        }
+        .onAppear {
+            if !self.items.isEmpty {
+                self.selectedSpot = self.items.first
+            }
         }
         .navigationTitle("New Session")
         .toolbar{

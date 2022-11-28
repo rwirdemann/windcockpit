@@ -8,6 +8,11 @@ struct SessionListView: View {
                   animation: .default)
     private var items: FetchedResults<SessionEntity>
     
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \LocationEntity.name, ascending: true)],
+        animation: .default)
+    private var locations: FetchedResults<LocationEntity>
+    
     @State private var showingAlert = false
     @State private var errorMessage = ""
     
@@ -45,6 +50,7 @@ struct SessionListView: View {
                 ToolbarItem {
                     NavigationLink(destination: CreateSessionView(),
                                    label: {Image(systemName: "plus")})
+                    .disabled(locations.isEmpty)
                 }
             }
         }
