@@ -32,7 +32,7 @@ struct CreateLocationView: View {
             TextField("Spotname", text: $name)
                 .focused($nameInFocus)
         }
-        .navigationTitle("Neuen Spot")
+        .navigationTitle("New Spot")
         .onAppear {
           DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
             self.nameInFocus = true

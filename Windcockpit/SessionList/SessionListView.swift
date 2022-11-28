@@ -8,14 +8,19 @@ struct SessionListView: View {
                   animation: .default)
     private var items: FetchedResults<SessionEntity>
     
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \LocationEntity.name, ascending: true)],
-        animation: .default)
+    @FetchRequest(fetchRequest: locationRequest())
     private var locations: FetchedResults<LocationEntity>
     
     @State private var showingAlert = false
     @State private var errorMessage = ""
     
+    static func locationRequest() -> NSFetchRequest<LocationEntity> {
+        let request: NSFetchRequest<LocationEntity> = LocationEntity.fetchRequest()
+        request.fetchLimit = 1
+        request.sortDescriptors = [NSSortDescriptor(keyPath: \LocationEntity.name, ascending: true)]
+        return request
+    }
+
     var body: some View {
         NavigationView {
             List {
