@@ -44,6 +44,7 @@ struct EditSessionView: View {
         _distance = State(initialValue: s.distance)
         _maxspeed = State(initialValue: s.maxspeed)
         _duration = State(initialValue: s.duration)
+        _selectedSpot = State(initialValue: s.spot)
     }
     
     var body: some View {
