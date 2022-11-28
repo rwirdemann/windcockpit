@@ -17,14 +17,15 @@ struct StartView: View {
         List(workoutTypes) { sessionType in
             VStack {
                 NavigationLink(
-                    sessionType.name,
                     destination: SessionPagingView(),
                     tag: sessionType,
                     selection: $workoutManager.selectedWorkout
-                )
+                ) {
+                    SessionTypeRow(sessionType: sessionType.name)
+                }
             }
             .padding(
-                EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
+                EdgeInsets(top: 20, leading: 10, bottom: 20, trailing: 10)
             )
         }
         .listStyle(.carousel)
@@ -32,6 +33,19 @@ struct StartView: View {
         .onAppear {
             workoutManager.requestAuthorization()
             workoutManager.requestPermission()
+        }
+    }
+}
+
+struct SessionTypeRow: View {
+    var sessionType: String
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text(sessionType)
+                .fontWeight(.semibold)
+            Text("OPEN TARGET")
+                .foregroundColor(Color.green)
+                .fontWeight(.semibold)
         }
     }
 }
