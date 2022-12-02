@@ -19,7 +19,10 @@ struct LocationListView: View {
         NavigationView {
             List {
                 ForEach(items) { l in
-                    Text(l.name ?? "unknown")
+                    VStack {
+                        Text(l.name ?? "unknown")
+                    }
+                    .deleteDisabled(l.sessions != nil ? l.sessions!.count > 0 : false)
                 }
                 .onDelete(perform: self.deleteItem)
             }
@@ -36,6 +39,18 @@ struct LocationListView: View {
         }
     }
     
+    private func sessionsAsString(sessions: NSSet?) -> String {
+        guard let session = sessions else {
+            return ""
+        }
+        
+        for case let s as SessionEntity in session  {
+            return s.name ?? ""
+        }
+        
+        return ""
+    }
+    
     private func deleteItem(at indexSet: IndexSet) {
         for index in indexSet {
             let l = items[index]
@@ -46,4 +61,11 @@ struct LocationListView: View {
             }
         }
     }
+}
+
+extension NSSet {
+  func toArray<T>() -> [T] {
+    let array = self.map({ $0 as! T})
+    return array
+  }
 }
