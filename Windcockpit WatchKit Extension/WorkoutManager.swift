@@ -19,6 +19,9 @@ class WorkoutManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var showingSummaryView: Bool = false {
         didSet {
             if showingSummaryView == false {
+                if (workout != nil) {
+                    WatchConnectivityManager.shared.send(buildSession())
+                }
                 resetWorkout()
             }
         }
@@ -177,6 +180,21 @@ class WorkoutManager: NSObject, ObservableObject, CLLocationManagerDelegate {
             return 0
         }
         return speed
+    }
+    
+    func buildSession() -> Session {
+        let dist = workout?.totalDistance?.doubleValue(for: .meter()) ?? 0
+        let duration = builder?.elapsedTime ?? 0
+        let sport = selectedWorkout?.name ?? ""
+        return Session(id: 0,
+                       location: location,
+                       name: sport,
+                       date: Date(),
+                       distance: dist,
+                       maxspeed: maxSpeed,
+                       duration: duration,
+                       locationId: 0
+        )
     }
 }
 

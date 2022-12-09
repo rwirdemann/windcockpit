@@ -74,8 +74,7 @@ struct SummaryView: View {
                     )
                     .accentColor(Color.mint)
                     
-                    Button("Sync Session") {
-                        WatchConnectivityManager.shared.send(buildSession())
+                    Button("Done") {
                         DispatchQueue.main.async {
                             dismiss()
                         }
