@@ -10,13 +10,11 @@
 		BF05045D289AB34A00EEB2AA /* DurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF05045C289AB34A00EEB2AA /* DurationView.swift */; };
 		BF05045F289AFBD000EEB2AA /* DurationFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF05045E289AFBD000EEB2AA /* DurationFormatter.swift */; };
 		BF050460289AFBF700EEB2AA /* DurationFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF05045E289AFBD000EEB2AA /* DurationFormatter.swift */; };
-		BF0A812928A10C35008C4C41 /* SessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1149002892C03C0081A360 /* SessionService.swift */; };
 		BF1148B12892BE7A0081A360 /* WindcockpitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1148B02892BE7A0081A360 /* WindcockpitApp.swift */; };
 		BF1148B52892BE7B0081A360 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF1148B42892BE7B0081A360 /* Assets.xcassets */; };
 		BF1148B82892BE7B0081A360 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF1148B72892BE7B0081A360 /* Preview Assets.xcassets */; };
 		BF1148BC2892BE7B0081A360 /* Windcockpit WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = BF1148BB2892BE7B0081A360 /* Windcockpit WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BF1148C12892BE7C0081A360 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF1148C02892BE7C0081A360 /* Assets.xcassets */; };
-		BF1148C72892BE7D0081A360 /* Windcockpit WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BF1148C62892BE7D0081A360 /* Windcockpit WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BF1148CC2892BE7D0081A360 /* WindcockpitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1148CB2892BE7D0081A360 /* WindcockpitApp.swift */; };
 		BF1148D02892BE7D0081A360 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1148CF2892BE7D0081A360 /* NotificationController.swift */; };
 		BF1148D22892BE7D0081A360 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1148D12892BE7D0081A360 /* NotificationView.swift */; };
@@ -50,7 +48,6 @@
 		BFAB602628A678CC00CC6276 /* WindcockpitCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BFAB602428A678CC00CC6276 /* WindcockpitCoreData.xcdatamodeld */; };
 		BFAB602828A678DF00CC6276 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAB602728A678DF00CC6276 /* Persistence.swift */; };
 		BFC5CD38292E738200468776 /* HttpUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF0504B292E71EB00BA1DF8 /* HttpUtil.swift */; };
-		BFF0504A292E717B00BA1DF8 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF05049292E717B00BA1DF8 /* LocationService.swift */; };
 		BFF0504C292E71EB00BA1DF8 /* HttpUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF0504B292E71EB00BA1DF8 /* HttpUtil.swift */; };
 		BFF6AF2F292FE6DF0052F4BC /* CreateLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF6AF2D292FE6DF0052F4BC /* CreateLocationView.swift */; };
 		BFF6AF30292FE6DF0052F4BC /* LocationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF6AF2E292FE6DF0052F4BC /* LocationListView.swift */; };
@@ -64,27 +61,9 @@
 			remoteGlobalIDString = BF1148BA2892BE7B0081A360;
 			remoteInfo = "Windcockpit WatchKit App";
 		};
-		BF1148C82892BE7D0081A360 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BF1148A52892BE7A0081A360 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BF1148C52892BE7D0081A360;
-			remoteInfo = "Windcockpit WatchKit Extension";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		BF1148E12892BE7E0081A360 /* Embed App Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				BF1148C72892BE7D0081A360 /* Windcockpit WatchKit Extension.appex in Embed App Extensions */,
-			);
-			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		BF1148E52892BE7E0081A360 /* Embed Watch Content */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -107,7 +86,6 @@
 		BF1148B72892BE7B0081A360 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BF1148BB2892BE7B0081A360 /* Windcockpit WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Windcockpit WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF1148C02892BE7C0081A360 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		BF1148C62892BE7D0081A360 /* Windcockpit WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Windcockpit WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF1148CB2892BE7D0081A360 /* WindcockpitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindcockpitApp.swift; sourceTree = "<group>"; };
 		BF1148CF2892BE7D0081A360 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		BF1148D12892BE7D0081A360 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
@@ -136,12 +114,12 @@
 		BF3E792028AE4ACC00570B11 /* SessionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCell.swift; sourceTree = "<group>"; };
 		BF7B77D528AD2F21006484FF /* WatchConnectivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityManager.swift; sourceTree = "<group>"; };
 		BF83FD5628B77A6C00699C53 /* EditSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSessionView.swift; sourceTree = "<group>"; };
+		BF8463772944F27000C4A49B /* Windcockpit-WatchKit-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Windcockpit-WatchKit-App-Info.plist"; sourceTree = SOURCE_ROOT; };
 		BF9A5DAB289967DD009F438D /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
 		BFAB602228A6786500CC6276 /* SessionListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionListView.swift; sourceTree = "<group>"; };
 		BFAB602528A678CC00CC6276 /* CoreSample.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreSample.xcdatamodel; sourceTree = "<group>"; };
 		BFAB602728A678DF00CC6276 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		BFCF213F28AA2BA6004ED37D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		BFF05049292E717B00BA1DF8 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		BFF0504B292E71EB00BA1DF8 /* HttpUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpUtil.swift; sourceTree = "<group>"; };
 		BFF6AF2D292FE6DF0052F4BC /* CreateLocationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateLocationView.swift; sourceTree = "<group>"; };
 		BFF6AF2E292FE6DF0052F4BC /* LocationListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationListView.swift; sourceTree = "<group>"; };
@@ -170,7 +148,6 @@
 			isa = PBXGroup;
 			children = (
 				BF1149002892C03C0081A360 /* SessionService.swift */,
-				BFF05049292E717B00BA1DF8 /* LocationService.swift */,
 				BFF0504B292E71EB00BA1DF8 /* HttpUtil.swift */,
 			);
 			path = Http;
@@ -193,7 +170,6 @@
 			children = (
 				BF1148AD2892BE7A0081A360 /* Windcockpit.app */,
 				BF1148BB2892BE7B0081A360 /* Windcockpit WatchKit App.app */,
-				BF1148C62892BE7D0081A360 /* Windcockpit WatchKit Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -228,6 +204,7 @@
 		BF1148BF2892BE7B0081A360 /* Windcockpit WatchKit App */ = {
 			isa = PBXGroup;
 			children = (
+				BF8463772944F27000C4A49B /* Windcockpit-WatchKit-App-Info.plist */,
 				BF1148C02892BE7C0081A360 /* Assets.xcassets */,
 			);
 			path = "Windcockpit WatchKit App";
@@ -357,34 +334,17 @@
 			buildConfigurationList = BF1148E22892BE7E0081A360 /* Build configuration list for PBXNativeTarget "Windcockpit WatchKit App" */;
 			buildPhases = (
 				BF1148B92892BE7B0081A360 /* Resources */,
-				BF1148E12892BE7E0081A360 /* Embed App Extensions */,
+				BF1148C22892BE7D0081A360 /* Sources */,
+				BF1148C32892BE7D0081A360 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				BF1148C92892BE7D0081A360 /* PBXTargetDependency */,
 			);
 			name = "Windcockpit WatchKit App";
 			productName = "Windcockpit WatchKit App";
 			productReference = BF1148BB2892BE7B0081A360 /* Windcockpit WatchKit App.app */;
-			productType = "com.apple.product-type.application.watchapp2";
-		};
-		BF1148C52892BE7D0081A360 /* Windcockpit WatchKit Extension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BF1148DE2892BE7E0081A360 /* Build configuration list for PBXNativeTarget "Windcockpit WatchKit Extension" */;
-			buildPhases = (
-				BF1148C22892BE7D0081A360 /* Sources */,
-				BF1148C32892BE7D0081A360 /* Frameworks */,
-				BF1148C42892BE7D0081A360 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Windcockpit WatchKit Extension";
-			productName = "Windcockpit WatchKit Extension";
-			productReference = BF1148C62892BE7D0081A360 /* Windcockpit WatchKit Extension.appex */;
-			productType = "com.apple.product-type.watchkit2-extension";
+			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
@@ -394,15 +354,12 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1340;
-				LastUpgradeCheck = 1340;
+				LastUpgradeCheck = 1410;
 				TargetAttributes = {
 					BF1148AC2892BE7A0081A360 = {
 						CreatedOnToolsVersion = 13.4.1;
 					};
 					BF1148BA2892BE7B0081A360 = {
-						CreatedOnToolsVersion = 13.4.1;
-					};
-					BF1148C52892BE7D0081A360 = {
 						CreatedOnToolsVersion = 13.4.1;
 					};
 				};
@@ -422,7 +379,6 @@
 			targets = (
 				BF1148AC2892BE7A0081A360 /* Windcockpit */,
 				BF1148BA2892BE7B0081A360 /* Windcockpit WatchKit App */,
-				BF1148C52892BE7D0081A360 /* Windcockpit WatchKit Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -442,16 +398,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF1148C12892BE7C0081A360 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BF1148C42892BE7D0081A360 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 				BF1148D92892BE7E0081A360 /* Preview Assets.xcassets in Resources */,
 				BF1148D62892BE7E0081A360 /* Assets.xcassets in Resources */,
+				BF1148C12892BE7C0081A360 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,7 +416,6 @@
 				BFF0504C292E71EB00BA1DF8 /* HttpUtil.swift in Sources */,
 				BF9A5DAC289967DD009F438D /* Formatters.swift in Sources */,
 				BF1149182892D96F0081A360 /* ContentView.swift in Sources */,
-				BFF0504A292E717B00BA1DF8 /* LocationService.swift in Sources */,
 				BF1149022892C03C0081A360 /* SessionService.swift in Sources */,
 				BFF6AF2F292FE6DF0052F4BC /* CreateLocationView.swift in Sources */,
 				BF83FD5728B77A6C00699C53 /* EditSessionView.swift in Sources */,
@@ -496,7 +444,6 @@
 				BF1148F22892BF980081A360 /* StartView.swift in Sources */,
 				BFC5CD38292E738200468776 /* HttpUtil.swift in Sources */,
 				BF1148D42892BE7D0081A360 /* ComplicationController.swift in Sources */,
-				BF0A812928A10C35008C4C41 /* SessionService.swift in Sources */,
 				BF050460289AFBF700EEB2AA /* DurationFormatter.swift in Sources */,
 				BF1148FE2892BFEA0081A360 /* ElapsedTimeView.swift in Sources */,
 				BF1148CC2892BE7D0081A360 /* WindcockpitApp.swift in Sources */,
@@ -517,11 +464,6 @@
 			isa = PBXTargetDependency;
 			target = BF1148BA2892BE7B0081A360 /* Windcockpit WatchKit App */;
 			targetProxy = BF1148BD2892BE7B0081A360 /* PBXContainerItemProxy */;
-		};
-		BF1148C92892BE7D0081A360 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BF1148C52892BE7D0081A360 /* Windcockpit WatchKit Extension */;
-			targetProxy = BF1148C82892BE7D0081A360 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -559,6 +501,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -617,6 +560,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -635,87 +579,32 @@
 			};
 			name = Release;
 		};
-		BF1148DF2892BE7E0081A360 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				CODE_SIGN_ENTITLEMENTS = "Windcockpit WatchKit Extension/Windcockpit WatchKit Extension.entitlements";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Windcockpit WatchKit Extension/Preview Content\"";
-				DEVELOPMENT_TEAM = 8LW873B8B4;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Windcockpit WatchKit Extension/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Windcockpit WatchKit Extension";
-				INFOPLIST_KEY_CLKComplicationPrincipalClass = Windcockpit_WatchKit_Extension.ComplicationController;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = de.ralfwirdemann.Windcockpit.watchkitapp.watchkitextension;
-				PRODUCT_NAME = "${TARGET_NAME}";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 8.5;
-			};
-			name = Debug;
-		};
-		BF1148E02892BE7E0081A360 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				CODE_SIGN_ENTITLEMENTS = "Windcockpit WatchKit Extension/Windcockpit WatchKit Extension.entitlements";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Windcockpit WatchKit Extension/Preview Content\"";
-				DEVELOPMENT_TEAM = 8LW873B8B4;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Windcockpit WatchKit Extension/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Windcockpit WatchKit Extension";
-				INFOPLIST_KEY_CLKComplicationPrincipalClass = Windcockpit_WatchKit_Extension.ComplicationController;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = de.ralfwirdemann.Windcockpit.watchkitapp.watchkitextension;
-				PRODUCT_NAME = "${TARGET_NAME}";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 8.5;
-			};
-			name = Release;
-		};
 		BF1148E32892BE7E0081A360 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Windcockpit WatchKit Extension/Windcockpit WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8LW873B8B4;
 				GENERATE_INFOPLIST_FILE = YES;
-				IBSC_MODULE = Windcockpit_WatchKit_Extension;
+				INFOPLIST_FILE = "Windcockpit-WatchKit-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Windcockpit WatchKit App";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Want your health";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Want your health";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Track me harder";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = de.ralfwirdemann.Windcockpit;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = de.ralfwirdemann.Windcockpit.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -733,15 +622,27 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Windcockpit WatchKit Extension/Windcockpit WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8LW873B8B4;
 				GENERATE_INFOPLIST_FILE = YES;
-				IBSC_MODULE = Windcockpit_WatchKit_Extension;
+				INFOPLIST_FILE = "Windcockpit-WatchKit-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Windcockpit WatchKit App";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Want your health";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Want your health";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Track me harder";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = de.ralfwirdemann.Windcockpit;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = de.ralfwirdemann.Windcockpit.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -828,15 +729,6 @@
 			buildConfigurations = (
 				BF1148DC2892BE7E0081A360 /* Debug */,
 				BF1148DD2892BE7E0081A360 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		BF1148DE2892BE7E0081A360 /* Build configuration list for PBXNativeTarget "Windcockpit WatchKit Extension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BF1148DF2892BE7E0081A360 /* Debug */,
-				BF1148E02892BE7E0081A360 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -109,15 +109,41 @@ struct SessionListView: View {
             return
         }
 
-        if sessionEntity.spot?.extid != 0 {
-            let locationId = sessionEntity.spot?.extid ?? 0
-            createSession(session: buildSession(session: sessionEntity, locationId: locationId),
-                          callback: self, managedObjectID: sessionEntity.objectID)
+        if spot.extid != 0 {
+            createSession(
+                session: buildSession(session: sessionEntity, locationId: spot.extid),
+                success: { extid in
+                    sessionEntity.extid = extid
+                },
+                error: { message in
+                    self.errorMessage = message
+                    showingAlert = true
+                }
+            )
         } else {
             let location = Location(id: 0, name: spot.name ?? "")
-            createLocation(location: location, callback: self, managedObjectID: spot.objectID, session: sessionEntity)
+            createLocation(
+                location: location,
+                success: { extid in
+                    spot.extid = extid
+                    createSession(
+                        session: buildSession(session: sessionEntity, locationId: spot.extid),
+                        success: { extid in
+                            sessionEntity.extid = extid
+                        },
+                        error: { message in
+                            self.errorMessage = message
+                            showingAlert = true
+                        }
+                    )
+                },
+                error: { message in
+                    self.errorMessage = message
+                    showingAlert = true
+                }
+            )
         }
-        
+        try! viewContext.save()
     }
     
     private func deleteItem(session: SessionEntity) {
@@ -143,63 +169,6 @@ func buildSession(session: SessionEntity, locationId: Int16) -> Session {
                    duration: session.duration,
                    locationId: locationId)
 }
-
-extension SessionListView: LocationServiceCallback {
-    
-    func locationSuccess(locationId: Int16, managedObjectID: NSManagedObjectID?, session: SessionEntity) {
-        guard let managedObjectID = managedObjectID else {
-            return
-        }
-        
-        do {
-            let object = try viewContext.existingObject(
-                with: managedObjectID
-            )
-            
-            if let location = object as? LocationEntity {
-                location.extid = locationId
-            }
-            
-            createSession(session: buildSession(session: session, locationId:locationId), callback: self, managedObjectID: session.objectID)
-        } catch {
-            let nsError = error as NSError
-            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-        }
-    }
-    
-    func locationError(message: String) {
-        self.errorMessage = message
-        showingAlert = true
-    }
-}
-
-extension SessionListView: SessionServiceCallback {
-    func success(id: Int16, managedObjectID: NSManagedObjectID?) {
-        guard let managedObjectID = managedObjectID else {
-            return
-        }
-        
-        do {
-            let object = try viewContext.existingObject(
-                with: managedObjectID
-            )
-            
-            if let session = object as? SessionEntity {
-                session.extid = id
-                try viewContext.save()
-            }
-        } catch {
-            let nsError = error as NSError
-            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-        }
-    }
-    
-    func error(message: String) {
-        self.errorMessage = message
-        showingAlert = true
-    }
-}
-
 
 private let itemFormatter: DateFormatter = {
     let formatter = DateFormatter()

@@ -173,18 +173,16 @@ struct EditSessionView: View {
                                     distance: session.distance,
                                     maxspeed: session.maxspeed,
                                     duration: session.duration,
-                                    locationId: 0)
-                    updateSession(session: s, callback: self)
+                                    locationId: session.spot?.extid ?? 0)
+                    updateSession(
+                        session: s,
+                        error: { message in
+                            self.errorMessage = message
+                            showingAlert = true
+                        }
+                    )
                 }                
             }
         })
-    }
-}
-
-extension EditSessionView: SessionServiceCallback {
-    func success(id: Int16, managedObjectID: NSManagedObjectID?) {
-    }
-    
-    func error(message: String) {
     }
 }
