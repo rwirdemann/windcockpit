@@ -43,7 +43,9 @@ func createSession(session: Session, callback: SessionServiceCallback, managedOb
             return
         }
 
-        callback.success(id: id, managedObjectID: managedObjectID)
+        DispatchQueue.main.async {
+            callback.success(id: id, managedObjectID: managedObjectID)
+        }
     }
     task.resume()
 }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
-
+    
     var body: some View {
         TabView {
             SessionListView()
@@ -22,7 +22,7 @@ struct ContentView: View {
                     Image(systemName: "map")
                     Text("Spots")
                 }
-
+            
         }
     }
 }

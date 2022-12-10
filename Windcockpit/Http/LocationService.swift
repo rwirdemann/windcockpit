@@ -1,5 +1,5 @@
 //
-//  EditSessionView.swift
+//  LocationService.swift
 //  Windcockpit
 //
 //  Created by Ralf Wirdemann on 28.06.22.
@@ -9,11 +9,11 @@ import Foundation
 import CoreData
 
 protocol LocationServiceCallback {
-    func locationSuccess(id: Int, managedObjectID: NSManagedObjectID?)
+    func locationSuccess(locationId: Int, managedObjectID: NSManagedObjectID?, session: SessionEntity)
     func locationError(message: String)
 }
 
-func createLocation(location: Location, callback: LocationServiceCallback, managedObjectID: NSManagedObjectID?) {
+func createLocation(location: Location, callback: LocationServiceCallback, managedObjectID: NSManagedObjectID?, session: SessionEntity) {
     guard let url = URL(string: "\(Constants.BASE_URL)/locations") else {
         callback.locationError(message: "Invalid URL")
         return
@@ -50,7 +50,7 @@ func createLocation(location: Location, callback: LocationServiceCallback, manag
             return
         }
 
-        callback.locationSuccess(id: id, managedObjectID: managedObjectID)
+        callback.locationSuccess(locationId: id, managedObjectID: managedObjectID, session: session)
     }
     task.resume()
 }

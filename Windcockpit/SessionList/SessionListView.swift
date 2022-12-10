@@ -6,7 +6,7 @@ struct SessionListView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \SessionEntity.date, ascending: false)],
                   animation: .default)
-    private var items: FetchedResults<SessionEntity>
+    private var sessions: FetchedResults<SessionEntity>
     
     @FetchRequest(fetchRequest: locationRequest())
     private var locations: FetchedResults<LocationEntity>
@@ -24,26 +24,26 @@ struct SessionListView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(items) { item in
+                ForEach(sessions) { s in
                     NavigationLink {
-                        EditSessionView(s: item)
+                        EditSessionView(s: s)
                     } label: {
-                        SessionCell(session: item)
+                        SessionCell(session: s)
                     }
                     .swipeActions {
                         Button {
-                            deleteItem(session: item)
+                            deleteItem(session: s)
                         } label: {
                             Label("Delete", systemImage: "trash")
                         }
                         .tint(.red)
                         Button {
-                            uploadSession(sessionEntity: item)
+                            uploadSession(sessionEntity: s)
                         } label: {
                             Label("Upload", systemImage: "square.and.arrow.up")
                         }
                         .tint(.blue)
-                        .disabled(item.published)
+                        .disabled(s.published)
                     }
                 }
             }
@@ -63,11 +63,11 @@ struct SessionListView: View {
             Button("OK", role: .cancel) {}
         }
         .onChange(of: connectivityManager.newSession) {session in
-            addItem(session: session)
+            addSession(session: session)
         }
     }
     
-    private func addItem(session: Session?) {
+    private func addSession(session: Session?) {
         guard let session = session else {
             return
         }
@@ -114,37 +114,16 @@ struct SessionListView: View {
         guard let spot = sessionEntity.spot else {
             return
         }
-        let location = Location(id: 0, name: spot.name ?? "")
-        createLocation(location: location, callback: self, managedObjectID: spot.objectID)
-        
-        let name = sessionEntity.name ?? ""
-        let date = sessionEntity.date ?? Date()
-        let session = Session(id: 0,
-                              location: "",
-                              name: name,
-                              date: date,
-                              distance: sessionEntity.distance,
-                              maxspeed: sessionEntity.maxspeed,
-                              duration: sessionEntity.duration,
-                              locationId: 0)
-        createSession(session: session, callback: self, managedObjectID: sessionEntity.objectID)
-    }
-    
-    private func addItem() {
-        withAnimation {
-            let newItem = SessionEntity(context: viewContext)
-            newItem.date = Date()
-            newItem.name = "Wingfoil"
-            newItem.published = false
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
+
+        if sessionEntity.spot?.cid != 0 {
+            let locationId = Int(sessionEntity.spot?.cid ?? 0)
+            createSession(session: buildSession(session: sessionEntity, locationId: locationId),
+                          callback: self, managedObjectID: sessionEntity.objectID)
+        } else {
+            let location = Location(id: 0, name: spot.name ?? "")
+            createLocation(location: location, callback: self, managedObjectID: spot.objectID, session: sessionEntity)
         }
+        
     }
     
     private func deleteItem(session: SessionEntity) {
@@ -160,8 +139,38 @@ struct SessionListView: View {
     }
 }
 
+func buildSession(session: SessionEntity, locationId: Int) -> Session {
+    return Session(id: 0,
+                   location: "",
+                   name: session.name ?? "",
+                   date: session.date ?? Date(),
+                   distance: session.distance,
+                   maxspeed: session.maxspeed,
+                   duration: session.duration,
+                   locationId: locationId)
+}
+
 extension SessionListView: LocationServiceCallback {
-    func locationSuccess(id: Int, managedObjectID: NSManagedObjectID?) {
+    
+    func locationSuccess(locationId: Int, managedObjectID: NSManagedObjectID?, session: SessionEntity) {
+        guard let managedObjectID = managedObjectID else {
+            return
+        }
+        
+        do {
+            let object = try viewContext.existingObject(
+                with: managedObjectID
+            )
+            
+            if let location = object as? LocationEntity {
+                location.cid = Int32(locationId)
+            }
+            
+            createSession(session: buildSession(session: session, locationId:locationId), callback: self, managedObjectID: session.objectID)
+        } catch {
+            let nsError = error as NSError
+            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+        }
     }
     
     func locationError(message: String) {
@@ -184,8 +193,8 @@ extension SessionListView: SessionServiceCallback {
             if let session = object as? SessionEntity {
                 session.cid = Int32(id)
                 session.published = true
+                try viewContext.save()
             }
-            
         } catch {
             let nsError = error as NSError
             fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
