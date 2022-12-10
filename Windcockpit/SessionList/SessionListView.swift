@@ -43,7 +43,7 @@ struct SessionListView: View {
                             Label("Upload", systemImage: "square.and.arrow.up")
                         }
                         .tint(.blue)
-                        .disabled(s.published)
+                        .disabled(s.extid != 0)
                     }
                 }
             }
@@ -78,13 +78,7 @@ struct SessionListView: View {
         newItem.distance = session.distance
         newItem.duration = session.duration
         newItem.spot = findOrCreateLocation(name: session.location)
-        newItem.published = false
-        do {
-            try viewContext.save()
-        } catch {
-            let nsError = error as NSError
-            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-        }
+        try! viewContext.save()
     }
     
     private func findOrCreateLocation(name: String) -> LocationEntity {
@@ -115,8 +109,8 @@ struct SessionListView: View {
             return
         }
 
-        if sessionEntity.spot?.cid != 0 {
-            let locationId = Int(sessionEntity.spot?.cid ?? 0)
+        if sessionEntity.spot?.extid != 0 {
+            let locationId = sessionEntity.spot?.extid ?? 0
             createSession(session: buildSession(session: sessionEntity, locationId: locationId),
                           callback: self, managedObjectID: sessionEntity.objectID)
         } else {
@@ -139,7 +133,7 @@ struct SessionListView: View {
     }
 }
 
-func buildSession(session: SessionEntity, locationId: Int) -> Session {
+func buildSession(session: SessionEntity, locationId: Int16) -> Session {
     return Session(id: 0,
                    location: "",
                    name: session.name ?? "",
@@ -152,7 +146,7 @@ func buildSession(session: SessionEntity, locationId: Int) -> Session {
 
 extension SessionListView: LocationServiceCallback {
     
-    func locationSuccess(locationId: Int, managedObjectID: NSManagedObjectID?, session: SessionEntity) {
+    func locationSuccess(locationId: Int16, managedObjectID: NSManagedObjectID?, session: SessionEntity) {
         guard let managedObjectID = managedObjectID else {
             return
         }
@@ -163,7 +157,7 @@ extension SessionListView: LocationServiceCallback {
             )
             
             if let location = object as? LocationEntity {
-                location.cid = Int32(locationId)
+                location.extid = locationId
             }
             
             createSession(session: buildSession(session: session, locationId:locationId), callback: self, managedObjectID: session.objectID)
@@ -180,7 +174,7 @@ extension SessionListView: LocationServiceCallback {
 }
 
 extension SessionListView: SessionServiceCallback {
-    func success(id: Int, managedObjectID: NSManagedObjectID?) {
+    func success(id: Int16, managedObjectID: NSManagedObjectID?) {
         guard let managedObjectID = managedObjectID else {
             return
         }
@@ -191,8 +185,7 @@ extension SessionListView: SessionServiceCallback {
             )
             
             if let session = object as? SessionEntity {
-                session.cid = Int32(id)
-                session.published = true
+                session.extid = id
                 try viewContext.save()
             }
         } catch {

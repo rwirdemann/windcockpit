@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 
 protocol LocationServiceCallback {
-    func locationSuccess(locationId: Int, managedObjectID: NSManagedObjectID?, session: SessionEntity)
+    func locationSuccess(locationId: Int16, managedObjectID: NSManagedObjectID?, session: SessionEntity)
     func locationError(message: String)
 }
 

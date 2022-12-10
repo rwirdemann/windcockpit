@@ -2,7 +2,7 @@ import Foundation
 import CoreData
 
 protocol SessionServiceCallback {
-    func success(id: Int, managedObjectID: NSManagedObjectID?)
+    func success(id: Int16, managedObjectID: NSManagedObjectID?)
     func error(message: String)
 }
 

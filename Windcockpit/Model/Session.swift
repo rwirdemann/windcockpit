@@ -8,12 +8,12 @@
 import Foundation
 
 struct Session: Identifiable, Codable, Hashable {
-    var id: Int
+    var id: Int16
     var location: String
     var name: String
     var date: Date
     var distance: Double
     var maxspeed: Double
     var duration: Double
-    var locationId: Int
+    var locationId: Int16
 }

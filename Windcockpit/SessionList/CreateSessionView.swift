@@ -32,7 +32,6 @@ struct CreateSessionView: View {
         s.date = date
         s.name = sport
         s.spot = selectedSpot
-        s.published = false
         do {
             try viewContext.save()
         } catch {

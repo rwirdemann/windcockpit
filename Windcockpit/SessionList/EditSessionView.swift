@@ -165,8 +165,8 @@ struct EditSessionView: View {
                     fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
                 }
                 
-                if session.published {
-                    let s = Session(id: Int(session.cid),
+                if session.extid != 0 {
+                    let s = Session(id: session.extid,
                                     location: session.spot?.name ?? "",
                                     name: session.name ?? "",
                                     date: session.date ?? Date(),
@@ -182,7 +182,7 @@ struct EditSessionView: View {
 }
 
 extension EditSessionView: SessionServiceCallback {
-    func success(id: Int, managedObjectID: NSManagedObjectID?) {
+    func success(id: Int16, managedObjectID: NSManagedObjectID?) {
     }
     
     func error(message: String) {
