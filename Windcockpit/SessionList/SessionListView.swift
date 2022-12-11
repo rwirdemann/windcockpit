@@ -38,7 +38,7 @@ struct SessionListView: View {
                         }
                         .tint(.red)
                         Button {
-                            uploadSession(sessionEntity: s)
+                            uploadSessionAndSpot(sessionEntity: s)
                         } label: {
                             Label("Upload", systemImage: "square.and.arrow.up")
                         }
@@ -49,9 +49,6 @@ struct SessionListView: View {
             }
             .navigationTitle("Sessions")
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
                 ToolbarItem {
                     NavigationLink(destination: CreateSessionView(),
                                    label: {Image(systemName: "plus")})
@@ -104,38 +101,20 @@ struct SessionListView: View {
         return l
     }
     
-    private func uploadSession(sessionEntity: SessionEntity) {
+    private func uploadSessionAndSpot(sessionEntity: SessionEntity) {
         guard let spot = sessionEntity.spot else {
             return
         }
 
         if spot.extid != 0 {
-            createSession(
-                session: buildSession(session: sessionEntity, locationId: spot.extid),
-                success: { extid in
-                    sessionEntity.extid = extid
-                },
-                error: { message in
-                    self.errorMessage = message
-                    showingAlert = true
-                }
-            )
+            uploadSession(sessionEntity, spot)
         } else {
             let location = Location(id: 0, name: spot.name ?? "")
-            createLocation(
+            postLocation(
                 location: location,
                 success: { extid in
                     spot.extid = extid
-                    createSession(
-                        session: buildSession(session: sessionEntity, locationId: spot.extid),
-                        success: { extid in
-                            sessionEntity.extid = extid
-                        },
-                        error: { message in
-                            self.errorMessage = message
-                            showingAlert = true
-                        }
-                    )
+                    uploadSession(sessionEntity, spot)
                 },
                 error: { message in
                     self.errorMessage = message
@@ -143,7 +122,20 @@ struct SessionListView: View {
                 }
             )
         }
-        try! viewContext.save()
+    }
+    
+    fileprivate func uploadSession(_ sessionEntity: SessionEntity, _ spot: LocationEntity) {
+        postSession(
+            session: buildSession(session: sessionEntity, locationId: spot.extid),
+            success: { extid in
+                sessionEntity.extid = extid
+                try! viewContext.save()
+            },
+            error: { message in
+                self.errorMessage = message
+                showingAlert = true
+            }
+        )
     }
     
     private func deleteItem(session: SessionEntity) {

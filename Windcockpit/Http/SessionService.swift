@@ -1,7 +1,7 @@
 import Foundation
 import CoreData
 
-func createSession(session: Session, success: @escaping (_ : Int16) -> Void, error: @escaping (_ : String) -> Void) {
+func postSession(session: Session, success: @escaping (_ : Int16) -> Void, error: @escaping (_ : String) -> Void) {
     guard let url = URL(string: "\(Constants.BASE_URL)/events") else {
         error("Invalid URL")
         return
@@ -75,7 +75,7 @@ func updateSession(session: Session, error: @escaping (_ : String) -> Void) {
     task.resume()
 }
 
-func createLocation(location: Location, success: @escaping (_ : Int16) -> Void, error: @escaping (_ : String) -> Void) {
+func postLocation(location: Location, success: @escaping (_ : Int16) -> Void, error: @escaping (_ : String) -> Void) {
     guard let url = URL(string: "\(Constants.BASE_URL)/locations") else {
         error("Invalid URL")
         return

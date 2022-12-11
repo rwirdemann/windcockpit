@@ -28,9 +28,6 @@ struct LocationListView: View {
             }
             .navigationTitle("Spots")
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
                 ToolbarItem {
                     NavigationLink(destination: CreateLocationView(),
                                    label: {Image(systemName: "plus")})
