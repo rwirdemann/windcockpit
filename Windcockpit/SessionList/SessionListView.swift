@@ -26,7 +26,7 @@ struct SessionListView: View {
             List {
                 ForEach(sessions) { s in
                     NavigationLink {
-                        EditSessionView(s: s)
+                        SessionDetailView(session: s)
                     } label: {
                         SessionCell(session: s)
                     }

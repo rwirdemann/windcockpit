@@ -34,9 +34,9 @@ struct CreateLocationView: View {
         }
         .navigationTitle("New Spot")
         .onAppear {
-          DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
-            self.nameInFocus = true
-          }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
+                self.nameInFocus = true
+            }
         }
         .toolbar{
             ToolbarItemGroup(placement: .navigationBarTrailing) {

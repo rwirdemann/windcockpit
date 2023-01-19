@@ -19,7 +19,7 @@ struct EditSessionView: View {
     @State private var distance: Double
     @State private var maxspeed: Double
     @State private var duration: Double
-    
+
     @State private var showingAlert = false
     @State private var errorMessage = ""
     
@@ -132,8 +132,9 @@ struct EditSessionView: View {
                 Text("Duration")
                 Spacer()
                 if editMode?.wrappedValue.isEditing == true {
-                    TextField("Duration", value: $duration, formatter: Formatters.number)
+                    TextField("Duration", value: $duration, formatter: formatter)
                         .multilineTextAlignment(.trailing)
+                    
                 } else {
                     DurationView(duration: duration)
                         .font(.subheadline)

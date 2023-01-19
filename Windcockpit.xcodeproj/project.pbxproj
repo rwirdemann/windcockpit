@@ -51,6 +51,7 @@
 		BFF0504C292E71EB00BA1DF8 /* HttpUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF0504B292E71EB00BA1DF8 /* HttpUtil.swift */; };
 		BFF6AF2F292FE6DF0052F4BC /* CreateLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF6AF2D292FE6DF0052F4BC /* CreateLocationView.swift */; };
 		BFF6AF30292FE6DF0052F4BC /* LocationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF6AF2E292FE6DF0052F4BC /* LocationListView.swift */; };
+		BFF8F8832979A40300206E12 /* SessionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF8F8822979A40300206E12 /* SessionDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +124,7 @@
 		BFF0504B292E71EB00BA1DF8 /* HttpUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpUtil.swift; sourceTree = "<group>"; };
 		BFF6AF2D292FE6DF0052F4BC /* CreateLocationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateLocationView.swift; sourceTree = "<group>"; };
 		BFF6AF2E292FE6DF0052F4BC /* LocationListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationListView.swift; sourceTree = "<group>"; };
+		BFF8F8822979A40300206E12 /* SessionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,6 +279,7 @@
 				BF83FD5628B77A6C00699C53 /* EditSessionView.swift */,
 				BF3A3EBE28C0B5A8007BE348 /* CreateSessionView.swift */,
 				BF05045C289AB34A00EEB2AA /* DurationView.swift */,
+				BFF8F8822979A40300206E12 /* SessionDetailView.swift */,
 			);
 			path = SessionList;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				de,
 				Base,
 			);
 			mainGroup = BF1148A42892BE7A0081A360;
@@ -415,6 +419,7 @@
 				BF05045D289AB34A00EEB2AA /* DurationView.swift in Sources */,
 				BFF0504C292E71EB00BA1DF8 /* HttpUtil.swift in Sources */,
 				BF9A5DAC289967DD009F438D /* Formatters.swift in Sources */,
+				BFF8F8832979A40300206E12 /* SessionDetailView.swift in Sources */,
 				BF1149182892D96F0081A360 /* ContentView.swift in Sources */,
 				BF1149022892C03C0081A360 /* SessionService.swift in Sources */,
 				BFF6AF2F292FE6DF0052F4BC /* CreateLocationView.swift in Sources */,
