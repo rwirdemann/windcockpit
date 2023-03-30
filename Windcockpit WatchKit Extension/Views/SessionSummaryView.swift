@@ -35,14 +35,28 @@ struct SessionSummaryView: View {
                     value: durationFormatter.string(from: sessionManager.elapsedTime()) ?? "")
                 .accentColor(Color.yellow)
 
+                // Total distance
+                SummaryMetricvView(
+                    title: "Total Distance",
+                    value: Measurement(
+                        value: sessionManager.distance,
+                        unit: UnitLength.meters
+                    ).formatted(
+                        .measurement(width: .abbreviated,
+                                     usage: .road)
+                    )
+                )
+                .accentColor(Color.green)
+
                 // Close button
                 Button("Done") {
                     dismiss()
                 }
-                
-                
             }
+            .scenePadding()
         }
+        .navigationTitle("Summary")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
