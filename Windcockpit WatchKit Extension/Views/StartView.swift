@@ -17,7 +17,7 @@ struct StartView: View {
         List(sessionTypes, id: \.self) { sessionType in
             NavigationLink(
                 sessionType,
-                destination: Text(sessionType),
+                destination: SessionPagingView(),
                 tag: sessionType,
                 selection: $sessionManager.selectedSessionType
             ).padding(

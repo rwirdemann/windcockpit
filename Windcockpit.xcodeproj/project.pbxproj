@@ -53,6 +53,8 @@
 		BFF6AF30292FE6DF0052F4BC /* LocationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF6AF2E292FE6DF0052F4BC /* LocationListView.swift */; };
 		BFF8F8832979A40300206E12 /* SessionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF8F8822979A40300206E12 /* SessionDetailView.swift */; };
 		BFFA279429D5D38C00734176 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFA279329D5D38C00734176 /* SessionManager.swift */; };
+		BFFA279629D5D93200734176 /* SessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFA279529D5D93200734176 /* SessionView.swift */; };
+		BFFA279829D5DCF400734176 /* SessionSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFA279729D5DCF400734176 /* SessionSummaryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +129,8 @@
 		BFF6AF2E292FE6DF0052F4BC /* LocationListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationListView.swift; sourceTree = "<group>"; };
 		BFF8F8822979A40300206E12 /* SessionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailView.swift; sourceTree = "<group>"; };
 		BFFA279329D5D38C00734176 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		BFFA279529D5D93200734176 /* SessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionView.swift; sourceTree = "<group>"; };
+		BFFA279729D5DCF400734176 /* SessionSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionSummaryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -317,6 +321,8 @@
 			isa = PBXGroup;
 			children = (
 				BF1148F12892BF980081A360 /* StartView.swift */,
+				BFFA279529D5D93200734176 /* SessionView.swift */,
+				BFFA279729D5DCF400734176 /* SessionSummaryView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -469,11 +475,13 @@
 				BFC5CD38292E738200468776 /* HttpUtil.swift in Sources */,
 				BF1148D42892BE7D0081A360 /* ComplicationController.swift in Sources */,
 				BF050460289AFBF700EEB2AA /* DurationFormatter.swift in Sources */,
+				BFFA279629D5D93200734176 /* SessionView.swift in Sources */,
 				BF1148FE2892BFEA0081A360 /* ElapsedTimeView.swift in Sources */,
 				BF1148CC2892BE7D0081A360 /* WindcockpitApp.swift in Sources */,
 				BF7B77D728AD2F21006484FF /* WatchConnectivityManager.swift in Sources */,
 				BF1148F62892BFAE0081A360 /* WorkoutManager.swift in Sources */,
 				BF1148D22892BE7D0081A360 /* NotificationView.swift in Sources */,
+				BFFA279829D5DCF400734176 /* SessionSummaryView.swift in Sources */,
 				BF11490A2892C0630081A360 /* Session.swift in Sources */,
 				BF1149032892C0440081A360 /* Constants.swift in Sources */,
 				BF1148FA2892BFDE0081A360 /* MetricsView.swift in Sources */,

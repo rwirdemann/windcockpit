@@ -17,7 +17,7 @@ struct WindcockpitApp: App {
                 StartView()
             }
             .sheet(isPresented: $sessionManager.showingSummaryView) {
-                SummaryView()
+                SessionSummaryView()
             }
             .environmentObject(sessionManager)
         }

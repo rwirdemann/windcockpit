@@ -12,24 +12,25 @@ class SessionManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     var selectedSessionType: String? {
         didSet {
             guard let selectedSessionType = selectedSessionType else { return }
-            startSession(sessionType: selectedSessionType)
+            start(sessionType: selectedSessionType)
         }
     }
     
     @Published var showingSummaryView: Bool = false {
         didSet {
             if showingSummaryView == false {
-                resetSession()
+                reset()
             }
         }
     }
-
     
     @Published var authorizationStatus: CLAuthorizationStatus
     @Published var lastSeenLocation: CLLocation?
     @Published var currentPlacemark: CLPlacemark?
     @Published var maxSpeed: Double = 0
     @Published var running = false
+
+    var startDate: Date?
 
     private let locationManager: CLLocationManager
 
@@ -42,15 +43,19 @@ class SessionManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
     
-    func startSession(sessionType: String) {
+    func start(sessionType: String) {
+        startDate = Date()
+        running = true
         locationManager.startUpdatingLocation()
     }
     
-    func endSession() {
+    func end() {
         locationManager.stopUpdatingLocation()
+        running = false
+        showingSummaryView = true
     }
     
-    func resetSession() {
+    func reset() {
         
     }
     
@@ -86,5 +91,10 @@ class SessionManager: NSObject, ObservableObject, CLLocationManagerDelegate {
             return 0
         }
         return speed
+    }
+    
+    func elapsedTime() -> TimeInterval {
+        guard let startDate = startDate else { return TimeInterval() }
+        return Date().timeIntervalSince(startDate)
     }
 }

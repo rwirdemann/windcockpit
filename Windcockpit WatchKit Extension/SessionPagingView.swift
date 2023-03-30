@@ -19,7 +19,7 @@ struct SessionPagingView: View {
     var body: some View {
         TabView(selection: $selection) {
             ControlsView().tag(Tab.controls)
-            MetricsView().tag(Tab.metrics)
+            SessionView().tag(Tab.metrics)
         }
         .navigationTitle(sessionManager.selectedSessionType ?? "")
         .navigationBarBackButtonHidden(true)

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ControlsView: View {
-    @EnvironmentObject var workoutManager: WorkoutManager
+    @EnvironmentObject var sessionManager: SessionManager
     
     var body: some View {
         
@@ -17,7 +17,7 @@ struct ControlsView: View {
             HStack {
                 VStack {
                     Button {
-                        workoutManager.endWorkout()
+                        sessionManager.end()
                     } label: {
                         Image(systemName: "xmark")
                     }
