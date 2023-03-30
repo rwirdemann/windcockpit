@@ -45,7 +45,7 @@ struct MetricsView: View {
                 )
                 .foregroundColor(Color.red)
             }
-            .font(.system(size: 32.0, design: .rounded)
+            .font(.system(.title, design: .rounded)
                 .monospacedDigit()
                 .lowercaseSmallCaps()
             )

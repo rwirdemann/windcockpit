@@ -75,9 +75,9 @@ struct SummaryView: View {
                     .accentColor(Color.mint)
                     
                     Button("Done") {
-                        DispatchQueue.main.async {
+                        //DispatchQueue.main.async {
                             dismiss()
-                        }
+                        //}
                     }
                     .disabled(!WatchConnectivityManager.shared.isConnected())
                 }

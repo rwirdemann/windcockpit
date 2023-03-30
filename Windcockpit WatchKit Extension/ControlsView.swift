@@ -17,27 +17,6 @@ struct ControlsView: View {
             HStack {
                 VStack {
                     Button {
-                        WKInterfaceDevice.current().enableWaterLock()
-                    } label: {
-                        Image(systemName: "drop.fill")
-                    }
-                    .tint(Color.cyan)
-                    .font(.title2)
-                    Text("Lock")
-                }
-                VStack {
-                    Button {
-                    } label: {
-                        Image(systemName: "plus")
-                    }
-                    .tint(Color.green)
-                    .font(.title2)
-                    Text("New")
-                }
-            }
-            HStack {
-                VStack {
-                    Button {
                         workoutManager.endWorkout()
                     } label: {
                         Image(systemName: "xmark")
@@ -48,13 +27,13 @@ struct ControlsView: View {
                 }
                 VStack {
                     Button {
-                        workoutManager.togglePause()
+                        WKInterfaceDevice.current().enableWaterLock()
                     } label: {
-                        Image(systemName: workoutManager.running ? "pause" : "play")
+                        Image(systemName: "drop.fill")
                     }
-                    .tint(Color.yellow)
+                    .tint(Color.cyan)
                     .font(.title2)
-                    Text(workoutManager.running ? "Pause" : "Resume")
+                    Text("Lock")
                 }
             }
         }

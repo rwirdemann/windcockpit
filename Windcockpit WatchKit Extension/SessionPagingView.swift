@@ -10,10 +10,10 @@ import SwiftUI
 struct SessionPagingView: View {
     @Environment(\.isLuminanceReduced) var isLuminanceReduced
     @State private var selection: Tab = .metrics
-    @EnvironmentObject var workoutManager: WorkoutManager
+    @EnvironmentObject var sessionManager: SessionManager
     
     enum Tab {
-        case controls, metrics, nowPlaying
+        case controls, metrics
     }
     
     var body: some View {
@@ -21,10 +21,10 @@ struct SessionPagingView: View {
             ControlsView().tag(Tab.controls)
             MetricsView().tag(Tab.metrics)
         }
-        .navigationTitle(workoutManager.selectedWorkout?.name ?? "")
+        .navigationTitle(sessionManager.selectedSessionType ?? "")
         .navigationBarBackButtonHidden(true)
-        .navigationBarHidden(selection == .nowPlaying)
-        .onChange(of: workoutManager.running) { _ in
+        .navigationBarHidden(false)
+        .onChange(of: sessionManager.running) { _ in
             displayMetricsView()
         }
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: isLuminanceReduced ? .never : .automatic))
@@ -37,11 +37,5 @@ struct SessionPagingView: View {
         withAnimation {
             selection = .metrics
         }
-    }
-}
-
-struct SessionPagingView_Previews: PreviewProvider {
-    static var previews: some View {
-        SessionPagingView()
     }
 }

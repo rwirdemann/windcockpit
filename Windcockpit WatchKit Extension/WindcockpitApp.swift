@@ -9,17 +9,17 @@ import SwiftUI
 
 @main
 struct WindcockpitApp: App {
-    @StateObject var workoutManager = WorkoutManager()
+    @StateObject var sessionManager = SessionManager()
 
     @SceneBuilder var body: some Scene {
         WindowGroup {
             NavigationView {
                 StartView()
             }
-            .sheet(isPresented: $workoutManager.showingSummaryView) {
+            .sheet(isPresented: $sessionManager.showingSummaryView) {
                 SummaryView()
             }
-            .environmentObject(workoutManager)
+            .environmentObject(sessionManager)
         }
         WKNotificationScene(controller: NotificationController.self, category: "myCategory")
     }

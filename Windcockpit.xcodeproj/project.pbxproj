@@ -52,6 +52,7 @@
 		BFF6AF2F292FE6DF0052F4BC /* CreateLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF6AF2D292FE6DF0052F4BC /* CreateLocationView.swift */; };
 		BFF6AF30292FE6DF0052F4BC /* LocationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF6AF2E292FE6DF0052F4BC /* LocationListView.swift */; };
 		BFF8F8832979A40300206E12 /* SessionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF8F8822979A40300206E12 /* SessionDetailView.swift */; };
+		BFFA279429D5D38C00734176 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFA279329D5D38C00734176 /* SessionManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +126,7 @@
 		BFF6AF2D292FE6DF0052F4BC /* CreateLocationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateLocationView.swift; sourceTree = "<group>"; };
 		BFF6AF2E292FE6DF0052F4BC /* LocationListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationListView.swift; sourceTree = "<group>"; };
 		BFF8F8822979A40300206E12 /* SessionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailView.swift; sourceTree = "<group>"; };
+		BFFA279329D5D38C00734176 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,7 +217,8 @@
 		BF1148CA2892BE7D0081A360 /* Windcockpit WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
-				BF1148F12892BF980081A360 /* StartView.swift */,
+				BFFA279229D5D36500734176 /* Controller */,
+				BFFA279129D4C47000734176 /* Views */,
 				BF1148F32892BFA30081A360 /* SummaryView.swift */,
 				BF1148F52892BFAE0081A360 /* WorkoutManager.swift */,
 				BF1148F72892BFD10081A360 /* SessionPagingView.swift */,
@@ -308,6 +311,22 @@
 				BFF6AF2E292FE6DF0052F4BC /* LocationListView.swift */,
 			);
 			path = LocationList;
+			sourceTree = "<group>";
+		};
+		BFFA279129D4C47000734176 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BF1148F12892BF980081A360 /* StartView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BFFA279229D5D36500734176 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BFFA279329D5D38C00734176 /* SessionManager.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -459,6 +478,7 @@
 				BF1149032892C0440081A360 /* Constants.swift in Sources */,
 				BF1148FA2892BFDE0081A360 /* MetricsView.swift in Sources */,
 				BF1148F42892BFA30081A360 /* SummaryView.swift in Sources */,
+				BFFA279429D5D38C00734176 /* SessionManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

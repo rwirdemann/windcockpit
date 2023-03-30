@@ -12,16 +12,17 @@ import CoreLocation
 class WorkoutManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     var selectedWorkout: HKWorkoutActivityType? {
         didSet {
-            startWorkout(workoutType: .cycling)
+            guard let selectedWorkout = selectedWorkout else { return }
+            startWorkout(workoutType: .surfingSports)
         }
     }
     
     @Published var showingSummaryView: Bool = false {
         didSet {
             if showingSummaryView == false {
-                if (workout != nil) {
-                    WatchConnectivityManager.shared.send(buildSession())
-                }
+                //                if (workout != nil) {
+                //                    WatchConnectivityManager.shared.send(buildSession())
+                //                }
                 resetWorkout()
             }
         }
@@ -34,31 +35,6 @@ class WorkoutManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     @Published var running = false
 
-    func pause() {
-        session?.pause()
-    }
-    
-    func resume() {
-        session?.resume()
-    }
-    
-    func togglePause() {
-        if running == true {
-            pause()
-        } else {
-            resume()
-        }
-    }
-    
-    func endWorkout() {
-        session?.end()
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "de")
-        formatter.dateFormat = "d. MMMM y, HH:mm"
-        location = currentPlacemark?.locality ?? "New: \(formatter.string(from: Date()))"
-        showingSummaryView = true
-    }
-    
     func startWorkout(workoutType: HKWorkoutActivityType) {
         let configuration = HKWorkoutConfiguration()
         configuration.activityType = workoutType
@@ -87,6 +63,32 @@ class WorkoutManager: NSObject, ObservableObject, CLLocationManagerDelegate {
 
         locationManager.startUpdatingLocation()
     }
+
+    func pause() {
+        session?.pause()
+    }
+    
+    func resume() {
+        session?.resume()
+    }
+    
+    func togglePause() {
+        if running == true {
+            pause()
+        } else {
+            resume()
+        }
+    }
+    
+    func endWorkout() {
+        session?.end()
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "de")
+        formatter.dateFormat = "d. MMMM y, HH:mm"
+        location = currentPlacemark?.locality ?? "New: \(formatter.string(from: Date()))"
+        showingSummaryView = true
+    }
+    
     
     func requestAuthorization() {
         let typesToShare: Set = [
@@ -109,7 +111,7 @@ class WorkoutManager: NSObject, ObservableObject, CLLocationManagerDelegate {
 
         DispatchQueue.main.async {
             switch statistics.quantityType {
-            case HKQuantityType.quantityType(forIdentifier: .distanceCycling):
+            case HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning):
                 let meterUnit = HKUnit.meter()
                 self.distance = statistics.sumQuantity()?.doubleValue(for: meterUnit) ?? 0
             default:
