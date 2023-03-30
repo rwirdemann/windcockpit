@@ -27,6 +27,7 @@ class SessionManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var authorizationStatus: CLAuthorizationStatus
     @Published var lastSeenLocation: CLLocation?
     @Published var currentPlacemark: CLPlacemark?
+    @Published var distance: Double = 0
     @Published var maxSpeed: Double = 0
     @Published var running = false
 

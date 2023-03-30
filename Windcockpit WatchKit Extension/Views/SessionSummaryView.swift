@@ -8,17 +8,55 @@
 import SwiftUI
 
 struct SessionSummaryView: View {
+    @EnvironmentObject var sessionManager: SessionManager
     @Environment(\.dismiss) var dismiss
     
+    @State private var durationFormatter: DateComponentsFormatter = {
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.hour, .minute, .second]
+        formatter.zeroFormattingBehavior = .pad
+        return formatter
+    }()
+
     var body: some View {
         ScrollView(.vertical) {
             VStack(alignment: .leading) {
-                Text("Session Summary")
+                
+                // Session Type
+                SummaryMetricvView(
+                    title: "What",
+                    value: sessionManager.selectedSessionType ?? "Wingfoiling"
+                )
+                .accentColor(Color.blue)
+
+                // Total time
+                SummaryMetricvView(
+                    title: "Total Time",
+                    value: durationFormatter.string(from: sessionManager.elapsedTime()) ?? "")
+                .accentColor(Color.yellow)
+
+                // Close button
                 Button("Done") {
                     dismiss()
                 }
+                
+                
             }
         }
+    }
+}
+
+struct SummaryMetricvView: View {
+    var title: String
+    var value: String
+    
+    var body: some View {
+        Text(title)
+        Text(value)
+            .font(.system(.title2, design: .rounded)
+            )
+            .foregroundColor(.accentColor)
+        Divider()
     }
 }
 

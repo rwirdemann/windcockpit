@@ -112,17 +112,3 @@ struct SummaryView_Previews: PreviewProvider {
         SummaryView()
     }
 }
-
-struct SummaryMetricvView: View {
-    var title: String
-    var value: String
-    
-    var body: some View {
-        Text(title)
-        Text(value)
-            .font(.system(.title2, design: .rounded)
-            )
-            .foregroundColor(.accentColor)
-        Divider()
-    }
-}

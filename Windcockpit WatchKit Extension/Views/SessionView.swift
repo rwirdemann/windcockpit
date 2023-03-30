@@ -15,10 +15,24 @@ struct SessionView: View {
             SessionTimelineSchedule(from: sessionManager.startDate ?? Date())
         ) { context in
             VStack(alignment: .leading) {
+
+                // Time
                 ElapsedTimeView(
                     elapsedTime: sessionManager.elapsedTime(),
                     showSubseconds: context.cadence == .live)
                 .foregroundColor(Color.yellow)
+
+                // Distance
+                Text(
+                    Measurement(
+                        value: sessionManager.distance,
+                        unit: UnitLength.meters
+                    ).formatted(
+                        .measurement(width: .abbreviated,
+                                     usage: .road)
+                    )
+                )
+                .foregroundColor(Color.green)
             }
             .font(.system(.title, design: .rounded)
                 .monospacedDigit()
