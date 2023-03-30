@@ -27,13 +27,14 @@ class SessionManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var authorizationStatus: CLAuthorizationStatus
     @Published var lastSeenLocation: CLLocation?
     @Published var currentPlacemark: CLPlacemark?
-    @Published var distance: Double = 0
     @Published var maxSpeed: Double = 0
     @Published var running = false
 
     var startDate: Date?
+    var distance = Measurement(value: 0, unit: UnitLength.meters)
 
     private let locationManager: CLLocationManager
+    private var locationList: [CLLocation] = []
 
     override init() {
         locationManager = CLLocationManager()
@@ -58,6 +59,8 @@ class SessionManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     func reset() {
         selectedSessionType = nil
+        distance = Measurement(value: 0, unit: UnitLength.meters)
+        locationList.removeAll()
     }
     
     func requestLocationManagerPermission() {
@@ -69,12 +72,16 @@ class SessionManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        lastSeenLocation = locations.first
-        fetchCountryAndCity(for: locations.first)
-
-        let currentSpeed = self.lastSeenLocation?.speed ?? 0
-        if currentSpeed > maxSpeed {
-            maxSpeed = currentSpeed
+        for newLocation in locations {
+            let howRecent = newLocation.timestamp.timeIntervalSinceNow
+            guard newLocation.horizontalAccuracy < 20 && abs(howRecent) < 10 else { continue }
+            
+            if let lastLocation = locationList.last {
+                let delta = newLocation.distance(from: lastLocation)
+                distance = distance + Measurement(value: delta, unit: UnitLength.meters)
+            }
+            
+            locationList.append(newLocation)
         }
     }
 

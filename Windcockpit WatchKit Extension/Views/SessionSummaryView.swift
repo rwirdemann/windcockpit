@@ -38,13 +38,7 @@ struct SessionSummaryView: View {
                 // Total distance
                 SummaryMetricvView(
                     title: "Total Distance",
-                    value: Measurement(
-                        value: sessionManager.distance,
-                        unit: UnitLength.meters
-                    ).formatted(
-                        .measurement(width: .abbreviated,
-                                     usage: .road)
-                    )
+                    value: sessionManager.distance.formatted(.measurement(width: .abbreviated, usage: .road))
                 )
                 .accentColor(Color.green)
 

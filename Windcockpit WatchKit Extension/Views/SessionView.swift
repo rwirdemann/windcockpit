@@ -23,15 +23,7 @@ struct SessionView: View {
                 .foregroundColor(Color.yellow)
 
                 // Distance
-                Text(
-                    Measurement(
-                        value: sessionManager.distance,
-                        unit: UnitLength.meters
-                    ).formatted(
-                        .measurement(width: .abbreviated,
-                                     usage: .road)
-                    )
-                )
+                Text(sessionManager.distance.formatted(.measurement(width: .abbreviated, usage: .road)))
                 .foregroundColor(Color.green)
             }
             .font(.system(.title, design: .rounded)
