@@ -25,7 +25,6 @@ class SessionManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     @Published var authorizationStatus: CLAuthorizationStatus
-    @Published var lastSeenLocation: CLLocation?
     @Published var currentPlacemark: CLPlacemark?
     @Published var maxSpeed: Double = 0
     @Published var running = false
@@ -94,11 +93,10 @@ class SessionManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     func currentSpeed() -> CLLocationSpeed {
-        let speed = lastSeenLocation?.speed ?? 0
-        if speed < 0 {
-            return 0
+        if let lastLocation = locationList.last {
+            return max(0, lastLocation.speed)
         }
-        return speed
+        return 0
     }
     
     func elapsedTime() -> TimeInterval {

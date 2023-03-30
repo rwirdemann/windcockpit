@@ -22,6 +22,15 @@ struct SessionView: View {
                     showSubseconds: context.cadence == .live)
                 .foregroundColor(Color.yellow)
 
+                // Speed
+                Text(
+                    Measurement(
+                        value: sessionManager.currentSpeed(),
+                        unit: UnitSpeed.metersPerSecond
+                    ).formatted(
+                    )
+                )
+
                 // Distance
                 Text(sessionManager.distance.formatted(.measurement(width: .abbreviated, usage: .road)))
                 .foregroundColor(Color.green)
