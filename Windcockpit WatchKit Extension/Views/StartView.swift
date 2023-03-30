@@ -31,22 +31,3 @@ struct StartView: View {
         }
     }
 }
-
-extension HKWorkoutActivityType: Identifiable {
-    public var id: UInt {
-        rawValue
-    }
-    
-    var name: String {
-        switch self {
-        case .cycling:
-            return "Wingfoiling"
-        case .sailing:
-            return "Windsurfing"
-        case .surfingSports:
-            return "Kitesurfing"
-        default:
-            return ""
-        }
-    }
-}

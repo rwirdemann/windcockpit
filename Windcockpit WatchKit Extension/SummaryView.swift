@@ -31,7 +31,7 @@ struct SummaryView: View {
                 VStack(alignment: .leading) {
                     SummaryMetricvView(
                         title: "What",
-                        value: workoutManager.selectedWorkout?.name ?? ""
+                        value: ""
                     )
                     .accentColor(Color.blue)
 
@@ -94,7 +94,7 @@ struct SummaryView: View {
     func buildSession() -> Session {
         let dist = workoutManager.workout?.totalDistance?.doubleValue(for: .meter()) ?? 0
         let duration = workoutManager.builder?.elapsedTime ?? 0
-        let sport = workoutManager.selectedWorkout?.name ?? ""
+        let sport = ""
         return Session(id: 0,
                        location: workoutManager.location,
                        name: sport,

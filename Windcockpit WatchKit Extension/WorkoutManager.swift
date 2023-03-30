@@ -187,7 +187,7 @@ class WorkoutManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     func buildSession() -> Session {
         let dist = workout?.totalDistance?.doubleValue(for: .meter()) ?? 0
         let duration = builder?.elapsedTime ?? 0
-        let sport = selectedWorkout?.name ?? ""
+        let sport = ""
         return Session(id: 0,
                        location: location,
                        name: sport,
