@@ -8,8 +8,17 @@
 import SwiftUI
 
 struct SessionSummaryView: View {
+    @Environment(\.dismiss) var dismiss
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView(.vertical) {
+            VStack(alignment: .leading) {
+                Text("Session Summary")
+                Button("Done") {
+                    dismiss()
+                }
+            }
+        }
     }
 }
 

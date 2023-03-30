@@ -56,7 +56,7 @@ class SessionManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     func reset() {
-        
+        selectedSessionType = nil
     }
     
     func requestLocationManagerPermission() {
