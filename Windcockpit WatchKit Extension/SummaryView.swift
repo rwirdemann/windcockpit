@@ -29,23 +29,23 @@ struct SummaryView: View {
         } else {
             ScrollView(.vertical) {
                 VStack(alignment: .leading) {
-                    SummaryMetricvView(
+                    SummaryMetricView(
                         title: "What",
                         value: ""
                     )
                     .accentColor(Color.blue)
 
-                    SummaryMetricvView(
+                    SummaryMetricView(
                         title: "Where",
                         value: workoutManager.location
                     )
                     .accentColor(Color.brown)
 
-                    SummaryMetricvView(
+                    SummaryMetricView(
                         title: "Total Time",
                         value: durationFormatter.string(from: workoutManager.workout?.duration  ?? 0.0) ?? "")
                     .accentColor(Color.yellow)
-                    SummaryMetricvView(
+                    SummaryMetricView(
                         title: "Total Distance",
                         value: Measurement(
                             value: workoutManager.workout?.totalDistance?.doubleValue(for: .meter()) ?? 0,
@@ -56,7 +56,7 @@ struct SummaryView: View {
                         )
                     )
                     .accentColor(Color.green)
-                    SummaryMetricvView(
+                    SummaryMetricView(
                         title: "Max Speed",
                         value: Measurement(
                             value: workoutManager.maxSpeed,
@@ -68,7 +68,7 @@ struct SummaryView: View {
                     
                     let formatter = DurationFormatter()
                     let duration = formatter.string(for: workoutManager.builder?.elapsedTime ?? 0) ?? "00:00:00"
-                    SummaryMetricvView(
+                    SummaryMetricView(
                         title: "Duration",
                         value: duration
                     )

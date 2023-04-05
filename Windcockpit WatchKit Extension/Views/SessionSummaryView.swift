@@ -23,24 +23,28 @@ struct SessionSummaryView: View {
             VStack(alignment: .leading) {
                 
                 // Session Type
-                SummaryMetricvView(
+                SummaryMetricView(
                     title: "What",
                     value: sessionManager.selectedSessionType ?? "Wingfoiling"
                 )
                 .accentColor(Color.blue)
 
                 // Total time
-                SummaryMetricvView(
+                SummaryMetricView(
                     title: "Total Time",
-                    value: durationFormatter.string(from: sessionManager.elapsedTime()) ?? "")
-                .accentColor(Color.yellow)
+                    value: durationFormatter.string(from: sessionManager.workout?.duration ?? 0.0) ?? "")
+                    .foregroundStyle(.yellow)
 
                 // Total distance
-                SummaryMetricvView(
+                SummaryMetricView(
                     title: "Total Distance",
-                    value: sessionManager.distance.formatted(.measurement(width: .abbreviated, usage: .road))
-                )
-                .accentColor(Color.green)
+                    value: Measurement(
+                        value: sessionManager.workout?.totalDistance?.doubleValue(for: .meter()) ?? 0,
+                        unit: UnitLength.meters)
+                    .formatted(.measurement(width: .abbreviated,
+                                            usage: .road,
+                                            numberFormatStyle: .number.precision(.fractionLength(2)))))
+                .foregroundStyle(.green)
 
                 // Close button
                 Button("Done") {
@@ -54,7 +58,7 @@ struct SessionSummaryView: View {
     }
 }
 
-struct SummaryMetricvView: View {
+struct SummaryMetricView: View {
     var title: String
     var value: String
     

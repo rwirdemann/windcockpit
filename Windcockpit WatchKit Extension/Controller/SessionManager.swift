@@ -31,6 +31,7 @@ class SessionManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var maxSpeed: Double = 0
     @Published var running = false
     @Published var hkDistance: Double = 0
+    @Published var workout: HKWorkout?
 
     var startDate: Date?
     var distance = Measurement(value: 0, unit: UnitLength.meters)
@@ -87,6 +88,7 @@ class SessionManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     func reset() {
         selectedSessionType = nil
         builder = nil
+        workout = nil
         workoutSession =  nil
         distance = Measurement(value: 0, unit: UnitLength.meters)
         hkDistance = 0
@@ -170,6 +172,16 @@ extension SessionManager: HKWorkoutSessionDelegate {
     func workoutSession(_ workoutSession: HKWorkoutSession, didChangeTo toState: HKWorkoutSessionState, from fromState: HKWorkoutSessionState, date: Date) {
         DispatchQueue.main.async {
             self.running = toState == .running
+        }
+        
+        if toState == .ended {
+            builder?.endCollection(withEnd: date) { (success, error) in
+                self.builder?.finishWorkout { (workout, error) in
+                    DispatchQueue.main.async {
+                        self.workout = workout
+                    }
+                }
+            }
         }
     }
 }
