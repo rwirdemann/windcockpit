@@ -28,6 +28,7 @@ struct StartView: View {
         .navigationTitle("Windcockpit")
         .onAppear {
             sessionManager.requestLocationManagerPermission()
+            sessionManager.requestAuthorization()
         }
     }
 }

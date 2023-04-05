@@ -7,8 +7,10 @@
 
 import Foundation
 import CoreLocation
+import HealthKit
 
 class SessionManager: NSObject, ObservableObject, CLLocationManagerDelegate {
+
     var selectedSessionType: String? {
         didSet {
             guard let selectedSessionType = selectedSessionType else { return }
@@ -28,12 +30,17 @@ class SessionManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var currentPlacemark: CLPlacemark?
     @Published var maxSpeed: Double = 0
     @Published var running = false
+    @Published var hkDistance: Double = 0
 
     var startDate: Date?
     var distance = Measurement(value: 0, unit: UnitLength.meters)
 
     private let locationManager: CLLocationManager
     private var locationList: [CLLocation] = []
+
+    let healthStore = HKHealthStore()
+    var workoutSession: HKWorkoutSession?
+    var builder: HKLiveWorkoutBuilder?
 
     override init() {
         locationManager = CLLocationManager()
@@ -45,20 +52,44 @@ class SessionManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     func start(sessionType: String) {
+        let configuration = HKWorkoutConfiguration()
+        configuration.activityType = .cycling
+        configuration.locationType = .outdoor
+        
+        do {
+            workoutSession = try HKWorkoutSession(healthStore: healthStore, configuration: configuration)
+            builder = workoutSession?.associatedWorkoutBuilder()
+        } catch {
+            return
+        }
+        workoutSession?.delegate = self
+        builder?.delegate = self
+
+        builder?.dataSource = HKLiveWorkoutDataSource(healthStore: healthStore,
+                                                     workoutConfiguration: configuration)
+
         startDate = Date()
-        running = true
+        let sd = Date()
+
         locationManager.startUpdatingLocation()
+        
+        workoutSession?.startActivity(with: sd)
+        builder?.beginCollection(withStart: sd) { (success, error) in
+        }
     }
     
     func end() {
         locationManager.stopUpdatingLocation()
-        running = false
+        workoutSession?.end()
         showingSummaryView = true
     }
     
     func reset() {
         selectedSessionType = nil
+        builder = nil
+        workoutSession =  nil
         distance = Measurement(value: 0, unit: UnitLength.meters)
+        hkDistance = 0
         locationList.removeAll()
     }
     
@@ -102,5 +133,62 @@ class SessionManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     func elapsedTime() -> TimeInterval {
         guard let startDate = startDate else { return TimeInterval() }
         return Date().timeIntervalSince(startDate)
+    }
+    
+    func requestAuthorization() {
+        let typesToShare: Set = [
+            HKQuantityType.workoutType()
+        ]
+
+        let typesToRead: Set = [
+            HKQuantityType.quantityType(forIdentifier: .distanceCycling)!,
+        ]
+
+        healthStore.requestAuthorization(toShare: typesToShare, read: typesToRead) { (success, error) in
+        }
+    }
+    
+    func updateForStatistics(_ statistics: HKStatistics?) {
+        guard let statistics = statistics else { return }
+
+        DispatchQueue.main.async {
+            switch statistics.quantityType {
+            case HKQuantityType.quantityType(forIdentifier: .distanceCycling):
+                let meterUnit = HKUnit.meter()
+                self.hkDistance = statistics.sumQuantity()?.doubleValue(for: meterUnit) ?? 0
+            default:
+                return
+            }
+        }
+    }
+}
+
+extension SessionManager: HKWorkoutSessionDelegate {
+    func workoutSession(_ workoutSession: HKWorkoutSession, didFailWithError error: Error) {
+    }
+    
+    func workoutSession(_ workoutSession: HKWorkoutSession, didChangeTo toState: HKWorkoutSessionState, from fromState: HKWorkoutSessionState, date: Date) {
+        DispatchQueue.main.async {
+            self.running = toState == .running
+        }
+    }
+}
+
+extension SessionManager: HKLiveWorkoutBuilderDelegate {
+    func workoutBuilderDidCollectEvent(_ workoutBuilder: HKLiveWorkoutBuilder) {
+
+    }
+
+    func workoutBuilder(_ workoutBuilder: HKLiveWorkoutBuilder, didCollectDataOf collectedTypes: Set<HKSampleType>) {
+        for type in collectedTypes {
+            guard let quantityType = type as? HKQuantityType else {
+                return // Nothing to do.
+            }
+
+            let statistics = workoutBuilder.statistics(for: quantityType)
+
+            // Update the published values.
+            updateForStatistics(statistics)
+        }
     }
 }

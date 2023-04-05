@@ -31,9 +31,15 @@ struct SessionView: View {
                     )
                 )
 
-                // Distance
-                Text(sessionManager.distance.formatted(.measurement(width: .abbreviated, usage: .road)))
+                // LK Distance
+                Text("LK: " + sessionManager.distance.formatted(.measurement(width: .abbreviated, usage: .road)))
                 .foregroundColor(Color.green)
+                
+                // HK Distance
+                Text("HK: " + Measurement(value: sessionManager.hkDistance, unit: UnitLength.meters).formatted(.measurement(width: .abbreviated, usage: .road)))
+
+                .foregroundColor(Color.green)
+
             }
             .font(.system(.title, design: .rounded)
                 .monospacedDigit()

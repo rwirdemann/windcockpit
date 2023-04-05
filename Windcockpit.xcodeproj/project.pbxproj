@@ -124,6 +124,7 @@
 		BFAB602528A678CC00CC6276 /* CoreSample.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreSample.xcdatamodel; sourceTree = "<group>"; };
 		BFAB602728A678DF00CC6276 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		BFCF213F28AA2BA6004ED37D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		BFE9686A29D6C51E00B6DE2C /* ExtensionKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExtensionKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS9.1.sdk/System/Library/Frameworks/ExtensionKit.framework; sourceTree = DEVELOPER_DIR; };
 		BFF0504B292E71EB00BA1DF8 /* HttpUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpUtil.swift; sourceTree = "<group>"; };
 		BFF6AF2D292FE6DF0052F4BC /* CreateLocationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateLocationView.swift; sourceTree = "<group>"; };
 		BFF6AF2E292FE6DF0052F4BC /* LocationListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationListView.swift; sourceTree = "<group>"; };
@@ -253,6 +254,7 @@
 		BF1148EE2892BF1A0081A360 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BFE9686A29D6C51E00B6DE2C /* ExtensionKit.framework */,
 				BF1148EF2892BF1A0081A360 /* HealthKit.framework */,
 			);
 			name = Frameworks;
@@ -615,7 +617,6 @@
 		BF1148E32892BE7E0081A360 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -626,7 +627,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Windcockpit-WatchKit-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Windcockpit WatchKit App";
-				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = Windcockpit_WatchKit_App.ComplicationController;
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Want your health";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Want your health";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -653,7 +654,6 @@
 		BF1148E42892BE7E0081A360 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -664,7 +664,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Windcockpit-WatchKit-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Windcockpit WatchKit App";
-				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = Windcockpit_WatchKit_App.ComplicationController;
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Want your health";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Want your health";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";

@@ -33,20 +33,6 @@ struct SessionDetailView: View {
                     }
                 }
             }
-            if let distance = Binding<Double?>($session.distance) {
-                TextField("Distance", value: distance, formatter: formatter)
-            }
-            let distance = Measurement(value: session.distance, unit: UnitLength.meters )
-                .formatted( .measurement(width: .abbreviated, usage: .road)
-                )
-            Text(distance)
-
-            HStack {
-                if let duration = Binding<Double?>($session.duration) {
-                    TextField("Duration", value: duration, formatter: formatter)
-                }
-                DurationView(duration: session.duration)
-            }
         }
         .navigationTitle("Your Session")
         .toolbar{
