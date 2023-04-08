@@ -39,7 +39,7 @@ class SessionTracker: NSObject, ObservableObject, CLLocationManagerDelegate {
 
     // Collect sessions for sync with iPhone
     private var currentSession: Session?
-    var sessionList: [Session] = []
+    @Published var sessionList: [Session] = []
 
     var distance = Measurement(value: 0, unit: UnitLength.meters)
 
