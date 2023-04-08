@@ -10,7 +10,7 @@ import SwiftUI
 struct SessionPagingView: View {
     @Environment(\.isLuminanceReduced) var isLuminanceReduced
     @State private var selection: Tab = .metrics
-    @EnvironmentObject var sessionManager: SessionManager
+    @EnvironmentObject var sessionManager: SessionTracker
     
     enum Tab {
         case controls, metrics

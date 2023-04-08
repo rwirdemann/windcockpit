@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct WindcockpitApp: App {
-    @StateObject var sessionManager = SessionManager()
+    @StateObject var sessionManager = SessionTracker()
 
     @SceneBuilder var body: some Scene {
         WindowGroup {

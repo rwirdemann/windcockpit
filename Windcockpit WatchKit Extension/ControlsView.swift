@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ControlsView: View {
-    @EnvironmentObject var sessionManager: SessionManager
+    @EnvironmentObject var sessionManager: SessionTracker
     
     var body: some View {
         

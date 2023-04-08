@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SessionSummaryView: View {
-    @EnvironmentObject var sessionManager: SessionManager
+    @EnvironmentObject var sessionManager: SessionTracker
     @Environment(\.dismiss) var dismiss
     
     @State private var durationFormatter: DateComponentsFormatter = {

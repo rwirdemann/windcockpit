@@ -8,17 +8,17 @@
 import SwiftUI
 
 struct SessionView: View {
-    @EnvironmentObject var sessionManager: SessionManager
+    @EnvironmentObject var sessionManager: SessionTracker
 
     var body: some View {
         TimelineView(
-            SessionTimelineSchedule(from: sessionManager.startDate ?? Date())
+            SessionTimelineSchedule(from: sessionManager.builder?.startDate ?? Date())
         ) { context in
             VStack(alignment: .leading) {
 
                 // Time
                 ElapsedTimeView(
-                    elapsedTime: sessionManager.elapsedTime(),
+                    elapsedTime: sessionManager.builder?.elapsedTime(at: context.date) ?? 0,
                     showSubseconds: context.cadence == .live)
                 .foregroundColor(Color.yellow)
 

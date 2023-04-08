@@ -9,7 +9,7 @@ import Foundation
 import CoreLocation
 import HealthKit
 
-class SessionManager: NSObject, ObservableObject, CLLocationManagerDelegate {
+class SessionTracker: NSObject, ObservableObject, CLLocationManagerDelegate {
 
     var selectedSessionType: String? {
         didSet {
@@ -21,6 +21,10 @@ class SessionManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var showingSummaryView: Bool = false {
         didSet {
             if showingSummaryView == false {
+                if var currentSession = currentSession {
+                    currentSession.distance = workout?.totalDistance?.doubleValue(for: .meter()) ?? 0
+                    sessionList.append(currentSession)
+                }
                 reset()
             }
         }
@@ -33,7 +37,10 @@ class SessionManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var hkDistance: Double = 0
     @Published var workout: HKWorkout?
 
-    var startDate: Date?
+    // Collect sessions for sync with iPhone
+    private var currentSession: Session?
+    var sessionList: [Session] = []
+
     var distance = Measurement(value: 0, unit: UnitLength.meters)
 
     private let locationManager: CLLocationManager
@@ -69,13 +76,22 @@ class SessionManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         builder?.dataSource = HKLiveWorkoutDataSource(healthStore: healthStore,
                                                      workoutConfiguration: configuration)
 
-        startDate = Date()
-        let sd = Date()
+        let startDate = Date()
+        currentSession = Session(
+            id: 0,
+            location: "",
+            name: sessionType,
+            date: startDate,
+            distance: 0,
+            maxspeed: 0,
+            duration: 0,
+            locationId: 0
+        )
 
         locationManager.startUpdatingLocation()
         
-        workoutSession?.startActivity(with: sd)
-        builder?.beginCollection(withStart: sd) { (success, error) in
+        workoutSession?.startActivity(with: startDate)
+        builder?.beginCollection(withStart: startDate) { (success, error) in
         }
     }
     
@@ -87,6 +103,7 @@ class SessionManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     func reset() {
         selectedSessionType = nil
+        currentSession = nil
         builder = nil
         workout = nil
         workoutSession =  nil
@@ -132,11 +149,6 @@ class SessionManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         return 0
     }
     
-    func elapsedTime() -> TimeInterval {
-        guard let startDate = startDate else { return TimeInterval() }
-        return Date().timeIntervalSince(startDate)
-    }
-    
     func requestAuthorization() {
         let typesToShare: Set = [
             HKQuantityType.workoutType()
@@ -165,7 +177,7 @@ class SessionManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
 }
 
-extension SessionManager: HKWorkoutSessionDelegate {
+extension SessionTracker: HKWorkoutSessionDelegate {
     func workoutSession(_ workoutSession: HKWorkoutSession, didFailWithError error: Error) {
     }
     
@@ -186,7 +198,7 @@ extension SessionManager: HKWorkoutSessionDelegate {
     }
 }
 
-extension SessionManager: HKLiveWorkoutBuilderDelegate {
+extension SessionTracker: HKLiveWorkoutBuilderDelegate {
     func workoutBuilderDidCollectEvent(_ workoutBuilder: HKLiveWorkoutBuilder) {
 
     }

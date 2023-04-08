@@ -47,12 +47,14 @@
 		BFAB602328A6786500CC6276 /* SessionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAB602228A6786500CC6276 /* SessionListView.swift */; };
 		BFAB602628A678CC00CC6276 /* WindcockpitCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BFAB602428A678CC00CC6276 /* WindcockpitCoreData.xcdatamodeld */; };
 		BFAB602828A678DF00CC6276 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAB602728A678DF00CC6276 /* Persistence.swift */; };
+		BFAC2EED29DDC27E003A47B8 /* AllSessionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAC2EEC29DDC27E003A47B8 /* AllSessionsView.swift */; };
+		BFAC2EEE29DDC459003A47B8 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1149192892D97A0081A360 /* Date.swift */; };
 		BFC5CD38292E738200468776 /* HttpUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF0504B292E71EB00BA1DF8 /* HttpUtil.swift */; };
 		BFF0504C292E71EB00BA1DF8 /* HttpUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF0504B292E71EB00BA1DF8 /* HttpUtil.swift */; };
 		BFF6AF2F292FE6DF0052F4BC /* CreateLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF6AF2D292FE6DF0052F4BC /* CreateLocationView.swift */; };
 		BFF6AF30292FE6DF0052F4BC /* LocationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF6AF2E292FE6DF0052F4BC /* LocationListView.swift */; };
 		BFF8F8832979A40300206E12 /* SessionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF8F8822979A40300206E12 /* SessionDetailView.swift */; };
-		BFFA279429D5D38C00734176 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFA279329D5D38C00734176 /* SessionManager.swift */; };
+		BFFA279429D5D38C00734176 /* SessionTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFA279329D5D38C00734176 /* SessionTracker.swift */; };
 		BFFA279629D5D93200734176 /* SessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFA279529D5D93200734176 /* SessionView.swift */; };
 		BFFA279829D5DCF400734176 /* SessionSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFA279729D5DCF400734176 /* SessionSummaryView.swift */; };
 /* End PBXBuildFile section */
@@ -123,13 +125,14 @@
 		BFAB602228A6786500CC6276 /* SessionListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionListView.swift; sourceTree = "<group>"; };
 		BFAB602528A678CC00CC6276 /* CoreSample.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreSample.xcdatamodel; sourceTree = "<group>"; };
 		BFAB602728A678DF00CC6276 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		BFAC2EEC29DDC27E003A47B8 /* AllSessionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSessionsView.swift; sourceTree = "<group>"; };
 		BFCF213F28AA2BA6004ED37D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		BFE9686A29D6C51E00B6DE2C /* ExtensionKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExtensionKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS9.1.sdk/System/Library/Frameworks/ExtensionKit.framework; sourceTree = DEVELOPER_DIR; };
 		BFF0504B292E71EB00BA1DF8 /* HttpUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpUtil.swift; sourceTree = "<group>"; };
 		BFF6AF2D292FE6DF0052F4BC /* CreateLocationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateLocationView.swift; sourceTree = "<group>"; };
 		BFF6AF2E292FE6DF0052F4BC /* LocationListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationListView.swift; sourceTree = "<group>"; };
 		BFF8F8822979A40300206E12 /* SessionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailView.swift; sourceTree = "<group>"; };
-		BFFA279329D5D38C00734176 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		BFFA279329D5D38C00734176 /* SessionTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionTracker.swift; sourceTree = "<group>"; };
 		BFFA279529D5D93200734176 /* SessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionView.swift; sourceTree = "<group>"; };
 		BFFA279729D5DCF400734176 /* SessionSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionSummaryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -325,6 +328,7 @@
 				BF1148F12892BF980081A360 /* StartView.swift */,
 				BFFA279529D5D93200734176 /* SessionView.swift */,
 				BFFA279729D5DCF400734176 /* SessionSummaryView.swift */,
+				BFAC2EEC29DDC27E003A47B8 /* AllSessionsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -332,7 +336,7 @@
 		BFFA279229D5D36500734176 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				BFFA279329D5D38C00734176 /* SessionManager.swift */,
+				BFFA279329D5D38C00734176 /* SessionTracker.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -486,9 +490,11 @@
 				BFFA279829D5DCF400734176 /* SessionSummaryView.swift in Sources */,
 				BF11490A2892C0630081A360 /* Session.swift in Sources */,
 				BF1149032892C0440081A360 /* Constants.swift in Sources */,
+				BFAC2EEE29DDC459003A47B8 /* Date.swift in Sources */,
 				BF1148FA2892BFDE0081A360 /* MetricsView.swift in Sources */,
 				BF1148F42892BFA30081A360 /* SummaryView.swift in Sources */,
-				BFFA279429D5D38C00734176 /* SessionManager.swift in Sources */,
+				BFFA279429D5D38C00734176 /* SessionTracker.swift in Sources */,
+				BFAC2EED29DDC27E003A47B8 /* AllSessionsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
