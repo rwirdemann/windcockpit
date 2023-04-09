@@ -37,7 +37,6 @@ struct SessionView: View {
                 
                 // HK Distance
                 Text("HK: " + Measurement(value: sessionManager.hkDistance, unit: UnitLength.meters).formatted(.measurement(width: .abbreviated, usage: .road)))
-
                 .foregroundColor(Color.green)
 
             }

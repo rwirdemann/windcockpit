@@ -14,7 +14,7 @@ struct WindcockpitApp: App {
     @SceneBuilder var body: some Scene {
         WindowGroup {
             NavigationView {
-                StartView()
+                SessionSelectView()
             }
             .sheet(isPresented: $sessionManager.showingSummaryView) {
                 SessionSummaryView()

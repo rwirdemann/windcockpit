@@ -22,7 +22,7 @@
 		BF1148D62892BE7E0081A360 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF1148D52892BE7E0081A360 /* Assets.xcassets */; };
 		BF1148D92892BE7E0081A360 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF1148D82892BE7E0081A360 /* Preview Assets.xcassets */; };
 		BF1148F02892BF1A0081A360 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1148EF2892BF1A0081A360 /* HealthKit.framework */; };
-		BF1148F22892BF980081A360 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1148F12892BF980081A360 /* StartView.swift */; };
+		BF1148F22892BF980081A360 /* SessionSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1148F12892BF980081A360 /* SessionSelectView.swift */; };
 		BF1148F42892BFA30081A360 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1148F32892BFA30081A360 /* SummaryView.swift */; };
 		BF1148F62892BFAE0081A360 /* WorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1148F52892BFAE0081A360 /* WorkoutManager.swift */; };
 		BF1148F82892BFD10081A360 /* SessionPagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1148F72892BFD10081A360 /* SessionPagingView.swift */; };
@@ -102,7 +102,7 @@
 		BF1148DB2892BE7E0081A360 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		BF1148ED2892BF1A0081A360 /* Windcockpit WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Windcockpit WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		BF1148EF2892BF1A0081A360 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS8.5.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
-		BF1148F12892BF980081A360 /* StartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
+		BF1148F12892BF980081A360 /* SessionSelectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionSelectView.swift; sourceTree = "<group>"; };
 		BF1148F32892BFA30081A360 /* SummaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
 		BF1148F52892BFAE0081A360 /* WorkoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutManager.swift; sourceTree = "<group>"; };
 		BF1148F72892BFD10081A360 /* SessionPagingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionPagingView.swift; sourceTree = "<group>"; };
@@ -229,7 +229,6 @@
 				BFFA279129D4C47000734176 /* Views */,
 				BF1148F32892BFA30081A360 /* SummaryView.swift */,
 				BF1148F52892BFAE0081A360 /* WorkoutManager.swift */,
-				BF1148F72892BFD10081A360 /* SessionPagingView.swift */,
 				BF1148CB2892BE7D0081A360 /* WindcockpitApp.swift */,
 				BF1148FB2892BFE40081A360 /* ControlsView.swift */,
 				BF1148FD2892BFEA0081A360 /* ElapsedTimeView.swift */,
@@ -325,7 +324,8 @@
 		BFFA279129D4C47000734176 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				BF1148F12892BF980081A360 /* StartView.swift */,
+				BF1148F72892BFD10081A360 /* SessionPagingView.swift */,
+				BF1148F12892BF980081A360 /* SessionSelectView.swift */,
 				BFFA279529D5D93200734176 /* SessionView.swift */,
 				BFFA279729D5DCF400734176 /* SessionSummaryView.swift */,
 				BFAC2EEC29DDC27E003A47B8 /* AllSessionsView.swift */,
@@ -388,7 +388,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1340;
-				LastUpgradeCheck = 1410;
+				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					BF1148AC2892BE7A0081A360 = {
 						CreatedOnToolsVersion = 13.4.1;
@@ -477,7 +477,7 @@
 				BF1148F82892BFD10081A360 /* SessionPagingView.swift in Sources */,
 				BF1148D02892BE7D0081A360 /* NotificationController.swift in Sources */,
 				BF1148FC2892BFE40081A360 /* ControlsView.swift in Sources */,
-				BF1148F22892BF980081A360 /* StartView.swift in Sources */,
+				BF1148F22892BF980081A360 /* SessionSelectView.swift in Sources */,
 				BFC5CD38292E738200468776 /* HttpUtil.swift in Sources */,
 				BF1148D42892BE7D0081A360 /* ComplicationController.swift in Sources */,
 				BF050460289AFBF700EEB2AA /* DurationFormatter.swift in Sources */,
@@ -513,6 +513,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -572,6 +573,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -653,7 +655,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+				WATCHOS_DEPLOYMENT_TARGET = 9.3;
 			};
 			name = Debug;
 		};
@@ -691,7 +693,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+				WATCHOS_DEPLOYMENT_TARGET = 9.3;
 			};
 			name = Release;
 		};

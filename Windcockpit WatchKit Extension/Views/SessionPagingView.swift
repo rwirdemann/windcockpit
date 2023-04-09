@@ -12,7 +12,7 @@ struct SessionPagingView: View {
     @State private var selection: Tab = .metrics
     @EnvironmentObject var sessionManager: SessionTracker
     
-    enum Tab {
+    private enum Tab {
         case controls, metrics
     }
     

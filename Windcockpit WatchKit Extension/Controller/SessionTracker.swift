@@ -23,6 +23,7 @@ class SessionTracker: NSObject, ObservableObject, CLLocationManagerDelegate {
             if showingSummaryView == false {
                 if var currentSession = currentSession {
                     currentSession.distance = workout?.totalDistance?.doubleValue(for: .meter()) ?? 0
+                    currentSession.duration = builder?.elapsedTime ?? 0
                     sessionList.append(currentSession)
                 }
                 reset()
@@ -173,6 +174,20 @@ class SessionTracker: NSObject, ObservableObject, CLLocationManagerDelegate {
             default:
                 return
             }
+        }
+    }
+    
+    func sync() {
+        for s in sessionList {
+            let session = Session(id: 0,
+                                  location: s.location,
+                                  name: s.name,
+                                  date: s.date,
+                                  distance: s.distance,
+                                  maxspeed: s.maxspeed,
+                                  duration: s.duration,
+                                  locationId: 0
+            )
         }
     }
 }

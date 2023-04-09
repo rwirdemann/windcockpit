@@ -8,11 +8,18 @@
 import SwiftUI
 
 struct AllSessionsView: View {
-    @EnvironmentObject var sessionManager: SessionTracker
+    @EnvironmentObject var sessionTracker: SessionTracker
     
     var body: some View {
         VStack {
-            List(sessionManager.sessionList, id: \.self) { s in
+            Button("Sync") {
+                sessionTracker.sync()
+                sessionTracker.sessionList.removeAll()
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(.blue)
+            .disabled(sessionTracker.sessionList.isEmpty)
+            List(sessionTracker.sessionList, id: \.self) { s in
                 let distance = Measurement(
                     value: s.distance,
                     unit: UnitLength.meters)
@@ -22,9 +29,6 @@ struct AllSessionsView: View {
                 
                 Text("\(s.name) \(toString(from: s.date)) \(distance)")
                     .font(.footnote)
-            }
-            Button("Sync") {
-                sessionManager.sessionList.removeAll()
             }
         }
         .navigationTitle("All Sessions")
