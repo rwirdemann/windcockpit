@@ -179,15 +179,7 @@ class SessionTracker: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     func sync() {
         for s in sessionList {
-            let session = Session(id: 0,
-                                  location: s.location,
-                                  name: s.name,
-                                  date: s.date,
-                                  distance: s.distance,
-                                  maxspeed: s.maxspeed,
-                                  duration: s.duration,
-                                  locationId: 0
-            )
+            WatchConnectivityManager.shared.send(s)
         }
     }
 }

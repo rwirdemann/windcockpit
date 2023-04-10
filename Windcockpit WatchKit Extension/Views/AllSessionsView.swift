@@ -13,8 +13,10 @@ struct AllSessionsView: View {
     var body: some View {
         VStack {
             Button("Sync") {
-                sessionTracker.sync()
-                sessionTracker.sessionList.removeAll()
+                if WatchConnectivityManager.shared.isConnected() {
+                    sessionTracker.sync()
+                    sessionTracker.sessionList.removeAll()
+                }
             }
             .buttonStyle(.borderedProminent)
             .tint(.blue)
