@@ -174,6 +174,7 @@ class WorkoutManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
             self.currentPlacemark = placemarks?.first
         }
+        
     }
     
     func currentSpeed() -> CLLocationSpeed {

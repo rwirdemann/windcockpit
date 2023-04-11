@@ -32,7 +32,6 @@ class SessionTracker: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     @Published var authorizationStatus: CLAuthorizationStatus
-    @Published var currentPlacemark: CLPlacemark?
     @Published var maxSpeed: Double = 0
     @Published var running = false
     @Published var hkDistance: Double = 0
@@ -46,6 +45,7 @@ class SessionTracker: NSObject, ObservableObject, CLLocationManagerDelegate {
 
     private let locationManager: CLLocationManager
     private var locationList: [CLLocation] = []
+    var currentPlacemark: CLPlacemark?
 
     let healthStore = HKHealthStore()
     var workoutSession: HKWorkoutSession?
@@ -99,6 +99,10 @@ class SessionTracker: NSObject, ObservableObject, CLLocationManagerDelegate {
     func end() {
         locationManager.stopUpdatingLocation()
         workoutSession?.end()
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "de")
+        formatter.dateFormat = "d. MMMM y, HH:mm"
+        currentSession?.location = currentPlacemark?.locality ?? "New: \(formatter.string(from: Date()))"
         showingSummaryView = true
     }
     
@@ -122,6 +126,7 @@ class SessionTracker: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        fetchCountryAndCity(for: locations.first)
         for newLocation in locations {
             let howRecent = newLocation.timestamp.timeIntervalSinceNow
             guard newLocation.horizontalAccuracy < 20 && abs(howRecent) < 10 else { continue }

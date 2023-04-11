@@ -29,7 +29,7 @@ struct AllSessionsView: View {
                                             usage: .road,
                                             numberFormatStyle: .number.precision(.fractionLength(2))))
                 
-                Text("\(s.name) \(toString(from: s.date)) \(distance)")
+                Text("\(s.name), \(s.location), \(toString(from: s.date)) \(distance)")
                     .font(.footnote)
             }
         }
