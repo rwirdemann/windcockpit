@@ -10,6 +10,7 @@ import SwiftUI
 struct SessionDetailView: View {
     @Environment(\.managedObjectContext) private var context
     @Environment(\.presentationMode) var presentationMode
+    @Environment(\.editMode) private var editMode
     
     @ObservedObject var session: SessionEntity
     
@@ -26,23 +27,51 @@ struct SessionDetailView: View {
     
     var body: some View {
         Form {
-            if let spot = Binding<LocationEntity>($session.spot) {
-                Picker("Spot", selection: spot) {
-                    ForEach(spots, id: \.self) { s in
-                        Text(s.name!)
+            let distance = Measurement(value: session.distance, unit: UnitLength.meters)
+                .formatted(.measurement(width: .abbreviated, usage: .road))
+            
+            if editMode?.wrappedValue.isEditing == true {
+                if let spot = Binding<LocationEntity>($session.spot) {
+                    Picker("Spot", selection: spot) {
+                        ForEach(spots, id: \.self) { s in
+                            Text(s.name!)
+                        }
                     }
+                }
+            } else {
+                DetailView(title: "Spot", value: session.spot?.name ?? "Unknwon")
+                DetailView(title: "Sport", value: session.name!)
+                DetailView(title: "Distance", value: distance)
+                HStack {
+                    Text("Duration")
+                    Spacer()
+                    DurationView(duration: session.duration)
                 }
             }
         }
         .navigationTitle("Your Session")
         .toolbar{
-            ToolbarItemGroup(placement: .navigationBarTrailing) {
-                Button("Save") {
-                    
-                    try? context.save()
-                    presentationMode.wrappedValue.dismiss()
-                }
-            }
+            EditButton()
+
+//            ToolbarItemGroup(placement: .navigationBarTrailing) {
+//                Button("Save") {
+//                    try? context.save()
+//                    presentationMode.wrappedValue.dismiss()
+//                }
+//            }
+        }
+    }
+}
+
+struct DetailView: View {
+    var title: String
+    var value: String
+    
+    var body: some View {
+        HStack {
+            Text(title)
+            Spacer()
+            Text(value)
         }
     }
 }
