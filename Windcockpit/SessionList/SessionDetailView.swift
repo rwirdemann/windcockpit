@@ -41,6 +41,7 @@ struct SessionDetailView: View {
             } else {
                 DetailView(title: "Spot", value: session.spot?.name ?? "Unknwon")
                 DetailView(title: "Sport", value: session.name!)
+                DetailView(title: "When", value: toString(from: session.date ?? Date()))
                 DetailView(title: "Distance", value: distance)
                 HStack {
                     Text("Duration")
@@ -52,14 +53,12 @@ struct SessionDetailView: View {
         .navigationTitle("Your Session")
         .toolbar{
             EditButton()
-
-//            ToolbarItemGroup(placement: .navigationBarTrailing) {
-//                Button("Save") {
-//                    try? context.save()
-//                    presentationMode.wrappedValue.dismiss()
-//                }
-//            }
         }
+        .onChange(of: editMode!.wrappedValue, perform: { value in
+            if !value.isEditing {
+                try? context.save()
+            }
+        })
     }
 }
 
