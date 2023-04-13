@@ -20,6 +20,6 @@ func short(name: String) -> String {
     case "Wingfoiling", "Wingding": return "WF"
     case "Windsurfing": return "WS"
     case "Kitesurfing": return "KS"
-    default: return name
+    default: return "UN"
     }
 }

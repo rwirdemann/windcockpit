@@ -20,7 +20,7 @@ struct AllSessionsView: View {
             }
             .buttonStyle(.borderedProminent)
             .tint(.blue)
-            .disabled(sessionTracker.sessionList.isEmpty)
+            .disabled(sessionTracker.sessionList.isEmpty || !WatchConnectivityManager.shared.isConnected())
             List(sessionTracker.sessionList, id: \.self) { s in
                 let distance = Measurement(
                     value: s.distance,
