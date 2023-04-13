@@ -99,10 +99,15 @@ class SessionTracker: NSObject, ObservableObject, CLLocationManagerDelegate {
     func end() {
         locationManager.stopUpdatingLocation()
         workoutSession?.end()
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "de")
-        formatter.dateFormat = "d. MMMM y, HH:mm"
-        currentSession?.location = currentPlacemark?.locality ?? "New: \(formatter.string(from: Date()))"
+
+        // Use current date as location fallba
+        if currentSession?.location == nil || currentSession?.location.isEmpty == true {
+            let formatter = DateFormatter()
+            formatter.locale = Locale(identifier: "de")
+            formatter.dateFormat = "d. MMMM y, HH:mm"
+            currentSession?.location = "New: \(formatter.string(from: Date()))"
+        }
+                
         showingSummaryView = true
     }
     
@@ -126,7 +131,6 @@ class SessionTracker: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        fetchCountryAndCity(for: locations.first)
         for newLocation in locations {
             let howRecent = newLocation.timestamp.timeIntervalSinceNow
             guard newLocation.horizontalAccuracy < 20 && abs(howRecent) < 10 else { continue }
@@ -138,16 +142,24 @@ class SessionTracker: NSObject, ObservableObject, CLLocationManagerDelegate {
             
             locationList.append(newLocation)
         }
-    }
-
-    func fetchCountryAndCity(for location: CLLocation?) {
-        guard let location = location else { return }
-        let geocoder = CLGeocoder()
-        geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
-            self.currentPlacemark = placemarks?.first
-        }
+        fetchCity(location: locationList.last)
     }
     
+    func fetchCity(location: CLLocation?) {
+        if currentSession?.location.isEmpty == false {
+            return
+        }
+        
+        guard let location = location else { return }
+        location.placemark { placemark, error in
+            guard let placemark = placemark else {
+                print("Error:", error ?? "nil")
+                return
+            }
+            self.currentSession?.location = placemark.locality!
+        }
+    }
+
     func currentSpeed() -> CLLocationSpeed {
         if let lastLocation = locationList.last {
             return max(0, lastLocation.speed)
@@ -225,6 +237,14 @@ extension SessionTracker: HKLiveWorkoutBuilderDelegate {
 
             // Update the published values.
             updateForStatistics(statistics)
+        }
+    }
+}
+
+extension CLLocation {
+    func placemark(completion: @escaping (_ placemark: CLPlacemark?, _ error: Error?) -> ()) {
+        CLGeocoder().reverseGeocodeLocation(self) {
+            completion($0?.first, $1)
         }
     }
 }
