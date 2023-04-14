@@ -30,22 +30,8 @@ struct SessionListView: View {
                     } label: {
                         SessionCell(session: s)
                     }
-                    .swipeActions {
-                        Button {
-                            deleteItem(session: s)
-                        } label: {
-                            Label("Delete", systemImage: "trash")
-                        }
-                        .tint(.red)
-                        Button {
-                            uploadSessionAndSpot(sessionEntity: s)
-                        } label: {
-                            Label("Upload", systemImage: "square.and.arrow.up")
-                        }
-                        .tint(.blue)
-                        .disabled(s.extid != 0)
-                    }
                 }
+                .onDelete(perform: delete)
             }
             .navigationTitle("Sessions")
             .toolbar {
@@ -138,6 +124,13 @@ struct SessionListView: View {
         )
     }
     
+    func delete(at offsets: IndexSet) {
+        for index in offsets {
+            let session = sessions[index]
+            viewContext.delete(session)
+        }
+    }
+
     private func deleteItem(session: SessionEntity) {
         viewContext.delete(session)
         do {

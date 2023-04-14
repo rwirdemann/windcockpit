@@ -14,16 +14,17 @@ struct AllSessionsView: View {
                   animation: .default)
     private var sessions: FetchedResults<SessionEntity>
     
+    @State private var showingAlert = false
+    @State private var message = ""
+
     var body: some View {
         VStack {
             Button("Sync with iPhone") {
-                if WatchConnectivityManager.shared.isConnected() {
-                    sync()
-                }
+                sync()
             }
             .buttonStyle(.borderedProminent)
             .tint(.blue)
-            .disabled(sessions.isEmpty || !WatchConnectivityManager.shared.isConnected())
+            .disabled(sessions.isEmpty)
             List(sessions, id: \.self) { s in
                 let distance = Measurement(
                     value: s.distance,
@@ -37,9 +38,17 @@ struct AllSessionsView: View {
             }
         }
         .navigationTitle("All Sessions")
+        .alert(message, isPresented: $showingAlert)  {
+            Button("OK", role: .cancel) {}
+        }
     }
     
     func sync() {
+        if !WatchConnectivityManager.shared.isConnected() {
+            message = "iPhone not connected"
+            showingAlert = true
+            return
+        }
         for s in sessions {
             let session = Session(
                 id: 0,
@@ -55,11 +64,5 @@ struct AllSessionsView: View {
             viewContext.delete(s)
         }
         try! viewContext.save()
-    }
-}
-
-struct AllSessionsView_Previews: PreviewProvider {
-    static var previews: some View {
-        AllSessionsView()
     }
 }
