@@ -135,8 +135,8 @@ class SessionTracker: NSObject, ObservableObject, CLLocationManagerDelegate {
         }
         fetchCity(location: locationList.last)
         let currentSpeed = locationList.last?.speed ?? 0
-        if currentSpeed > currentSession?.maxSpeed ?? 0 {
-            currentSession?.maxSpeed = currentSpeed
+        if currentSpeed > currentSession?.maxspeed ?? 0 {
+            currentSession?.maxspeed = currentSpeed
         }
     }
     

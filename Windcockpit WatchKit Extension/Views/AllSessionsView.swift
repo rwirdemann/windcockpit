@@ -19,12 +19,12 @@ struct AllSessionsView: View {
 
     var body: some View {
         VStack {
-            Button("Sync with iPhone") {
+            Button("Sync with iPhone 2") {
                 sync()
             }
             .buttonStyle(.borderedProminent)
             .tint(.blue)
-            .disabled(sessions.isEmpty)
+            .disabled(sessions.isEmpty || !WatchConnectivityManager.shared.isConnected())
             List(sessions, id: \.self) { s in
                 let distance = Measurement(
                     value: s.distance,
@@ -41,6 +41,9 @@ struct AllSessionsView: View {
         .alert(message, isPresented: $showingAlert)  {
             Button("OK", role: .cancel) {}
         }
+        .onAppear {
+            _ = WatchConnectivityManager.shared.isConnected()
+        }
     }
     
     func sync() {
@@ -56,7 +59,7 @@ struct AllSessionsView: View {
                 name: s.name!,
                 date: s.date!,
                 distance: s.distance,
-                maxspeed: s.maxSpeed,
+                maxspeed: s.maxspeed,
                 duration: s.duration,
                 locationId: 0
             )

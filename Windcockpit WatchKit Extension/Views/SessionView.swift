@@ -34,7 +34,7 @@ struct SessionView: View {
                 // Max speed
                 Text(
                     Measurement(
-                        value: sessionManager.currentSession?.maxSpeed ?? 0,
+                        value: sessionManager.currentSession?.maxspeed ?? 0,
                         unit: UnitSpeed.metersPerSecond
                     ).formatted(
                     )
