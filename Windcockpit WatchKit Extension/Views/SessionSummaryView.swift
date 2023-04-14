@@ -29,6 +29,13 @@ struct SessionSummaryView: View {
                 )
                 .accentColor(Color.blue)
 
+                // Location
+                SummaryMetricView(
+                    title: "Where",
+                    value: sessionManager.currentSession?.location ?? "Unknwon"
+                )
+                .accentColor(Color.brown)
+
                 // Total time
                 SummaryMetricView(
                     title: "Total Time",
@@ -45,6 +52,17 @@ struct SessionSummaryView: View {
                                             usage: .road,
                                             numberFormatStyle: .number.precision(.fractionLength(2)))))
                 .foregroundStyle(.green)
+                
+                // Max speed
+                SummaryMetricView(
+                    title: "Max Speed",
+                    value: Measurement(
+                        value: sessionManager.currentSession?.maxSpeed ?? 0,
+                        unit: UnitSpeed.metersPerSecond
+                    ).formatted(
+                    )
+                )
+                .accentColor(Color.orange)
 
                 // Close button
                 Button("Done") {

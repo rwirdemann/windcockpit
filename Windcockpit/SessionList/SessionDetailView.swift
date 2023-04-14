@@ -29,6 +29,8 @@ struct SessionDetailView: View {
         Form {
             let distance = Measurement(value: session.distance, unit: UnitLength.meters)
                 .formatted(.measurement(width: .abbreviated, usage: .road))
+            let maxSpeed = Measurement(value: session.maxspeed, unit: UnitSpeed.metersPerSecond)
+                .formatted()
             
             if editMode?.wrappedValue.isEditing == true {
                 if let spot = Binding<LocationEntity>($session.spot) {
@@ -43,6 +45,7 @@ struct SessionDetailView: View {
                 DetailView(title: "Sport", value: session.name)
                 DetailView(title: "When", value: toString(from: session.date ?? Date()))
                 DetailView(title: "Distance", value: distance)
+                DetailView(title: "Max Speed", value: maxSpeed)
                 HStack {
                     Text("Duration")
                     Spacer()

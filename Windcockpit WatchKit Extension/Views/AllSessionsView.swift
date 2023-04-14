@@ -56,7 +56,7 @@ struct AllSessionsView: View {
                 name: s.name!,
                 date: s.date!,
                 distance: s.distance,
-                maxspeed: 0,
+                maxspeed: s.maxSpeed,
                 duration: s.duration,
                 locationId: 0
             )

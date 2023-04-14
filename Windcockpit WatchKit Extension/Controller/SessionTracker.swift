@@ -32,13 +32,12 @@ class SessionTracker: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     @Published var authorizationStatus: CLAuthorizationStatus
-    @Published var maxSpeed: Double = 0
     @Published var running = false
     @Published var hkDistance: Double = 0
     @Published var workout: HKWorkout?
 
     // Collect session data for sync with iPhone
-    private var currentSession: SessionEntity?
+    var currentSession: SessionEntity?
 
     var distance = Measurement(value: 0, unit: UnitLength.meters)
 
@@ -135,6 +134,10 @@ class SessionTracker: NSObject, ObservableObject, CLLocationManagerDelegate {
             locationList.append(newLocation)
         }
         fetchCity(location: locationList.last)
+        let currentSpeed = locationList.last?.speed ?? 0
+        if currentSpeed > currentSession?.maxSpeed ?? 0 {
+            currentSession?.maxSpeed = currentSpeed
+        }
     }
     
     func fetchCity(location: CLLocation?) {

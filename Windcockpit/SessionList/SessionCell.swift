@@ -19,8 +19,7 @@ struct SessionCell: View {
                 .foregroundColor(.primary)
             
             let sport = session.name ?? ""
-            let published = session.extid != 0 ? "published" : "local"
-            Text("\(sport) (\(published))")
+            Text("\(sport)")
                 .font(.footnote)
                 .foregroundColor(.blue)
             

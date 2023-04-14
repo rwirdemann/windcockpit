@@ -31,7 +31,17 @@ struct SessionView: View {
                     )
                 )
 
-                // HK Distance
+                // Max speed
+                Text(
+                    Measurement(
+                        value: sessionManager.currentSession?.maxSpeed ?? 0,
+                        unit: UnitSpeed.metersPerSecond
+                    ).formatted(
+                    )
+                )
+                .foregroundColor(.orange)
+
+                // Distance
                 Text(Measurement(value: sessionManager.hkDistance, unit: UnitLength.meters).formatted(.measurement(width: .abbreviated, usage: .road)))
                 .foregroundColor(Color.green)
 
