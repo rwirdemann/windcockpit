@@ -12,7 +12,6 @@ import CoreLocation
 class WorkoutManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     var selectedWorkout: HKWorkoutActivityType? {
         didSet {
-            guard let selectedWorkout = selectedWorkout else { return }
             startWorkout(workoutType: .surfingSports)
         }
     }

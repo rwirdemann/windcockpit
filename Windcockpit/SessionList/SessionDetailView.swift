@@ -40,7 +40,7 @@ struct SessionDetailView: View {
                 }
             } else {
                 DetailView(title: "Spot", value: session.spot?.name ?? "Unknwon")
-                DetailView(title: "Sport", value: session.name!)
+                DetailView(title: "Sport", value: session.name)
                 DetailView(title: "When", value: toString(from: session.date ?? Date()))
                 DetailView(title: "Distance", value: distance)
                 HStack {
@@ -64,13 +64,15 @@ struct SessionDetailView: View {
 
 struct DetailView: View {
     var title: String
-    var value: String
+    var value: String?
     
     var body: some View {
         HStack {
             Text(title)
             Spacer()
-            Text(value)
+            if value != nil {
+                Text(value!)
+            }
         }
     }
 }

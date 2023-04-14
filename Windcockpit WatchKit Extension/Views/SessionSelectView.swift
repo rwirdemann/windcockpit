@@ -10,7 +10,7 @@ import HealthKit
 
 struct SessionSelectView: View {
     @EnvironmentObject var sessionManager: SessionTracker
-    
+
     var sessionTypes: [String] = ["Wingfoiling", "Windsurfing", "Kitesurfing", "Kitefoilen", "Windfoilen"]
     
     var body: some View {

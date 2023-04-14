@@ -20,7 +20,7 @@ struct SessionListView: View {
         request.sortDescriptors = [NSSortDescriptor(keyPath: \LocationEntity.name, ascending: true)]
         return request
     }
-
+    
     var body: some View {
         NavigationView {
             List {
@@ -105,7 +105,7 @@ struct SessionListView: View {
         guard let spot = sessionEntity.spot else {
             return
         }
-
+        
         if spot.extid != 0 {
             uploadSession(sessionEntity, spot)
         } else {
@@ -139,14 +139,12 @@ struct SessionListView: View {
     }
     
     private func deleteItem(session: SessionEntity) {
-        withAnimation {
-            viewContext.delete(session)
-            do {
-                try viewContext.save()
-            } catch {
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
+        viewContext.delete(session)
+        do {
+            try viewContext.save()
+        } catch {
+            let nsError = error as NSError
+            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
         }
     }
 }

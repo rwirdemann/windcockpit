@@ -9,19 +9,22 @@ import SwiftUI
 
 struct AllSessionsView: View {
     @EnvironmentObject var sessionTracker: SessionTracker
+    @Environment(\.managedObjectContext) private var viewContext
+    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \SessionEntity.date, ascending: false)],
+                  animation: .default)
+    private var sessions: FetchedResults<SessionEntity>
     
     var body: some View {
         VStack {
-            Button("Sync") {
+            Button("Sync with iPhone") {
                 if WatchConnectivityManager.shared.isConnected() {
-                    sessionTracker.sync()
-                    sessionTracker.sessionList.removeAll()
+                    sync()
                 }
             }
             .buttonStyle(.borderedProminent)
             .tint(.blue)
-            .disabled(sessionTracker.sessionList.isEmpty || !WatchConnectivityManager.shared.isConnected())
-            List(sessionTracker.sessionList, id: \.self) { s in
+            .disabled(sessions.isEmpty || !WatchConnectivityManager.shared.isConnected())
+            List(sessions, id: \.self) { s in
                 let distance = Measurement(
                     value: s.distance,
                     unit: UnitLength.meters)
@@ -29,11 +32,29 @@ struct AllSessionsView: View {
                                             usage: .road,
                                             numberFormatStyle: .number.precision(.fractionLength(2))))
                 
-                Text("\(s.name), \(s.location), \(toString(from: s.date)) \(distance)")
+                Text("\(s.name!), \(s.location!), \(toString(from: s.date!)) \(distance)")
                     .font(.footnote)
             }
         }
         .navigationTitle("All Sessions")
+    }
+    
+    func sync() {
+        for s in sessions {
+            let session = Session(
+                id: 0,
+                location: s.location!,
+                name: s.name!,
+                date: s.date!,
+                distance: s.distance,
+                maxspeed: 0,
+                duration: s.duration,
+                locationId: 0
+            )
+            WatchConnectivityManager.shared.send(session)
+            viewContext.delete(s)
+        }
+        try! viewContext.save()
     }
 }
 

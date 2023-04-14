@@ -9,8 +9,9 @@ import SwiftUI
 
 @main
 struct WindcockpitApp: App {
+    let persistenceController = PersistenceController.shared
     @StateObject var sessionManager = SessionTracker()
-
+    
     @SceneBuilder var body: some Scene {
         WindowGroup {
             NavigationView {
@@ -19,9 +20,9 @@ struct WindcockpitApp: App {
             .sheet(isPresented: $sessionManager.showingSummaryView) {
                 SessionSummaryView()
             }
+            .environment(\.managedObjectContext, persistenceController.container.viewContext)
             .environmentObject(sessionManager)
         }
         WKNotificationScene(controller: NotificationController.self, category: "myCategory")
     }
 }
-

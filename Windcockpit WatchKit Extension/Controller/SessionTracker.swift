@@ -8,9 +8,9 @@
 import Foundation
 import CoreLocation
 import HealthKit
+import WatchKit
 
 class SessionTracker: NSObject, ObservableObject, CLLocationManagerDelegate {
-
     var selectedSessionType: String? {
         didSet {
             guard let selectedSessionType = selectedSessionType else { return }
@@ -21,10 +21,10 @@ class SessionTracker: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var showingSummaryView: Bool = false {
         didSet {
             if showingSummaryView == false {
-                if var currentSession = currentSession {
+                if let currentSession = currentSession {
                     currentSession.distance = workout?.totalDistance?.doubleValue(for: .meter()) ?? 0
                     currentSession.duration = builder?.elapsedTime ?? 0
-                    sessionList.append(currentSession)
+                    try! PersistenceController.shared.container.viewContext.save()
                 }
                 reset()
             }
@@ -37,9 +37,8 @@ class SessionTracker: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var hkDistance: Double = 0
     @Published var workout: HKWorkout?
 
-    // Collect sessions for sync with iPhone
-    private var currentSession: Session?
-    @Published var sessionList: [Session] = []
+    // Collect session data for sync with iPhone
+    private var currentSession: SessionEntity?
 
     var distance = Measurement(value: 0, unit: UnitLength.meters)
 
@@ -59,7 +58,7 @@ class SessionTracker: NSObject, ObservableObject, CLLocationManagerDelegate {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
-    
+        
     func start(sessionType: String) {
         let configuration = HKWorkoutConfiguration()
         configuration.activityType = .cycling
@@ -78,16 +77,9 @@ class SessionTracker: NSObject, ObservableObject, CLLocationManagerDelegate {
                                                      workoutConfiguration: configuration)
 
         let startDate = Date()
-        currentSession = Session(
-            id: 0,
-            location: "",
-            name: sessionType,
-            date: startDate,
-            distance: 0,
-            maxspeed: 0,
-            duration: 0,
-            locationId: 0
-        )
+        currentSession = SessionEntity(context: PersistenceController.shared.container.viewContext)
+        currentSession?.name = sessionType
+        currentSession?.date = startDate
 
         locationManager.startUpdatingLocation()
         
@@ -100,8 +92,8 @@ class SessionTracker: NSObject, ObservableObject, CLLocationManagerDelegate {
         locationManager.stopUpdatingLocation()
         workoutSession?.end()
 
-        // Use current date as location fallba
-        if currentSession?.location == nil || currentSession?.location.isEmpty == true {
+        // Use current date as location fallback
+        if currentSession?.location == nil {
             let formatter = DateFormatter()
             formatter.locale = Locale(identifier: "de")
             formatter.dateFormat = "d. MMMM y, HH:mm"
@@ -146,7 +138,7 @@ class SessionTracker: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     func fetchCity(location: CLLocation?) {
-        if currentSession?.location.isEmpty == false {
+        if currentSession?.location != nil {
             return
         }
         
@@ -193,13 +185,7 @@ class SessionTracker: NSObject, ObservableObject, CLLocationManagerDelegate {
             }
         }
     }
-    
-    func sync() {
-        for s in sessionList {
-            WatchConnectivityManager.shared.send(s)
-        }
     }
-}
 
 extension SessionTracker: HKWorkoutSessionDelegate {
     func workoutSession(_ workoutSession: HKWorkoutSession, didFailWithError error: Error) {
