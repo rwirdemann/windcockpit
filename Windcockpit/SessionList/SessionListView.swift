@@ -45,8 +45,17 @@ struct SessionListView: View {
         .alert(errorMessage, isPresented: $showingAlert)  {
             Button("OK", role: .cancel) {}
         }
-        .onChange(of: connectivityManager.newSession) {session in
-            addSession(session: session)
+        .onChange(of: connectivityManager.newSessions) {sessions in
+            addSessions(sessions: sessions)
+        }
+    }
+    
+    private func addSessions(sessions: [Session]?) {
+        guard let sessions = sessions else {
+            return
+        }
+        for s in sessions {
+            addSession(session: s)
         }
     }
     

@@ -19,7 +19,7 @@ struct AllSessionsView: View {
 
     var body: some View {
         VStack {
-            Button("Sync with iPhone 2") {
+            Button("Sync with iPhone 4") {
                 sync()
             }
             .buttonStyle(.borderedProminent)
@@ -52,6 +52,8 @@ struct AllSessionsView: View {
             showingAlert = true
             return
         }
+        
+        var allSessions: [Session] = []
         for s in sessions {
             let session = Session(
                 id: 0,
@@ -63,9 +65,10 @@ struct AllSessionsView: View {
                 duration: s.duration,
                 locationId: 0
             )
-            WatchConnectivityManager.shared.send(session)
+            allSessions.append(session)
             viewContext.delete(s)
         }
+        WatchConnectivityManager.shared.send(allSessions)
         try! viewContext.save()
     }
 }

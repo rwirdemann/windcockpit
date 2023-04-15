@@ -20,7 +20,7 @@ struct NotificationMessage: Identifiable, Equatable {
 final class WatchConnectivityManager: NSObject, ObservableObject {
     static let shared = WatchConnectivityManager()
     @Published var notificationMessage: NotificationMessage? = nil
-    @Published var newSession: Session? = nil
+    @Published var newSessions: [Session]? = nil
 
     private override init() {
         super.init()
@@ -37,7 +37,7 @@ final class WatchConnectivityManager: NSObject, ObservableObject {
         return WCSession.default.activationState == .activated
     }
     
-    func send(_ session: Session) {
+    func send(_ sessions: [Session]) {
         guard WCSession.default.activationState == .activated else {
           return
         }
@@ -52,11 +52,12 @@ final class WatchConnectivityManager: NSObject, ObservableObject {
         #endif
  
         let encoder = JSONEncoder()
-        let data = try! encoder.encode(session)
+        let data = try! encoder.encode(sessions)
         WCSession.default.sendMessageData(data, replyHandler: nil) { error in
             print("Cannot send data: \(String(describing: error))")
         }
     }
+
 
     func send(_ message: String) {
         guard WCSession.default.activationState == .activated else {
@@ -89,9 +90,9 @@ extension WatchConnectivityManager: WCSessionDelegate {
     
     func session(_ session: WCSession, didReceiveMessageData messageData: Data) {
         let decoder = JSONDecoder()
-        let session = try! decoder.decode(Session.self, from: messageData)
+        let sessions = try! decoder.decode([Session].self, from: messageData)
         DispatchQueue.main.async { [weak self] in
-            self?.newSession = session
+            self?.newSessions = sessions
         }
     }
     
