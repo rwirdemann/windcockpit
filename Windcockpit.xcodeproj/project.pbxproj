@@ -170,9 +170,10 @@
 		BF1148A42892BE7A0081A360 = {
 			isa = PBXGroup;
 			children = (
-				BF7B77D428AD2EE8006484FF /* WatchConnectivity */,
 				BF1148AF2892BE7A0081A360 /* Windcockpit */,
 				BF1148BF2892BE7B0081A360 /* Windcockpit WatchKit App */,
+				BF72ABAB28A3E64400D7F496 /* SharedPersistence */,
+				BF7B77D428AD2EE8006484FF /* WatchConnectivity */,
 				BF1148CA2892BE7D0081A360 /* Windcockpit WatchKit Extension */,
 				BF1148AE2892BE7A0081A360 /* Products */,
 				BF1148EE2892BF1A0081A360 /* Frameworks */,
@@ -193,7 +194,6 @@
 			children = (
 				BF3E791F28AE4A8300570B11 /* SessionList */,
 				BFF6AF2C292FE6DF0052F4BC /* LocationList */,
-				BF72ABAB28A3E64400D7F496 /* SharedPersistence */,
 				BF0A812628A10B16008C4C41 /* Http */,
 				BF1149052892C05F0081A360 /* Model */,
 				BF1148B62892BE7B0081A360 /* Preview Content */,
