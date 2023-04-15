@@ -91,12 +91,8 @@ class SessionTracker: NSObject, ObservableObject, CLLocationManagerDelegate {
         locationManager.stopUpdatingLocation()
         workoutSession?.end()
 
-        // Use current date as location fallback
         if currentSession?.location == nil {
-            let formatter = DateFormatter()
-            formatter.locale = Locale(identifier: "de")
-            formatter.dateFormat = "d. MMMM y, HH:mm"
-            currentSession?.location = "New: \(formatter.string(from: Date()))"
+            currentSession?.location = "World"
         }
                 
         showingSummaryView = true

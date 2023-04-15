@@ -171,10 +171,10 @@
 			isa = PBXGroup;
 			children = (
 				BF1148AF2892BE7A0081A360 /* Windcockpit */,
+				BF1148CA2892BE7D0081A360 /* Windcockpit WatchKit Extension */,
 				BF1148BF2892BE7B0081A360 /* Windcockpit WatchKit App */,
 				BF72ABAB28A3E64400D7F496 /* SharedPersistence */,
 				BF7B77D428AD2EE8006484FF /* WatchConnectivity */,
-				BF1148CA2892BE7D0081A360 /* Windcockpit WatchKit Extension */,
 				BF1148AE2892BE7A0081A360 /* Products */,
 				BF1148EE2892BF1A0081A360 /* Frameworks */,
 			);
@@ -227,14 +227,10 @@
 		BF1148CA2892BE7D0081A360 /* Windcockpit WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				BFCCCDC229EAE9B400460B01 /* Unused */,
 				BFFA279229D5D36500734176 /* Controller */,
 				BFFA279129D4C47000734176 /* Views */,
-				BF1148F32892BFA30081A360 /* SummaryView.swift */,
-				BF1148F52892BFAE0081A360 /* WorkoutManager.swift */,
 				BF1148CB2892BE7D0081A360 /* WindcockpitApp.swift */,
-				BF1148FB2892BFE40081A360 /* ControlsView.swift */,
-				BF1148FD2892BFEA0081A360 /* ElapsedTimeView.swift */,
-				BF1148F92892BFDE0081A360 /* MetricsView.swift */,
 				BF1148ED2892BF1A0081A360 /* Windcockpit WatchKit Extension.entitlements */,
 				BF1148CF2892BE7D0081A360 /* NotificationController.swift */,
 				BF1148D12892BE7D0081A360 /* NotificationView.swift */,
@@ -314,6 +310,16 @@
 			path = WatchConnectivity;
 			sourceTree = "<group>";
 		};
+		BFCCCDC229EAE9B400460B01 /* Unused */ = {
+			isa = PBXGroup;
+			children = (
+				BF1148F32892BFA30081A360 /* SummaryView.swift */,
+				BF1148F52892BFAE0081A360 /* WorkoutManager.swift */,
+				BF1148F92892BFDE0081A360 /* MetricsView.swift */,
+			);
+			path = Unused;
+			sourceTree = "<group>";
+		};
 		BFF6AF2C292FE6DF0052F4BC /* LocationList */ = {
 			isa = PBXGroup;
 			children = (
@@ -326,11 +332,13 @@
 		BFFA279129D4C47000734176 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BFAC2EEC29DDC27E003A47B8 /* AllSessionsView.swift */,
+				BF1148FD2892BFEA0081A360 /* ElapsedTimeView.swift */,
+				BF1148FB2892BFE40081A360 /* ControlsView.swift */,
 				BF1148F72892BFD10081A360 /* SessionPagingView.swift */,
 				BF1148F12892BF980081A360 /* SessionSelectView.swift */,
 				BFFA279529D5D93200734176 /* SessionView.swift */,
 				BFFA279729D5DCF400734176 /* SessionSummaryView.swift */,
-				BFAC2EEC29DDC27E003A47B8 /* AllSessionsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
