@@ -40,6 +40,8 @@ struct SessionDetailView: View {
                         }
                     }
                 }
+                TextField("Distance", value: $session.distance, formatter: formatter)
+                    .multilineTextAlignment(.trailing)                
             } else {
                 DetailView(title: "Spot", value: session.spot?.name ?? "Unknwon")
                 DetailView(title: "Sport", value: session.name)

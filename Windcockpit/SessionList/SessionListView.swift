@@ -138,6 +138,7 @@ struct SessionListView: View {
             let session = sessions[index]
             viewContext.delete(session)
         }
+        try! viewContext.save()
     }
 
     private func deleteItem(session: SessionEntity) {

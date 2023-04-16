@@ -19,7 +19,7 @@ struct AllSessionsView: View {
 
     var body: some View {
         VStack {
-            Button("Sync with iPhone 4") {
+            Button("Sync with iPhone 8") {
                 sync()
             }
             .buttonStyle(.borderedProminent)
@@ -53,22 +53,20 @@ struct AllSessionsView: View {
             return
         }
         
-        var allSessions: [Session] = []
-        for s in sessions {
-            let session = Session(
-                id: 0,
-                location: s.location!,
-                name: s.name!,
-                date: s.date!,
-                distance: s.distance,
-                maxspeed: s.maxspeed,
-                duration: s.duration,
-                locationId: 0
-            )
-            allSessions.append(session)
-            viewContext.delete(s)
+        let allSessions = sessions.map {
+            return Session.fromSesssionEntity(entity: $0)
         }
-        WatchConnectivityManager.shared.send(allSessions)
-        try! viewContext.save()
+        WatchConnectivityManager.shared.send(
+            allSessions,
+            replyHandler: { _ in
+                for s in sessions {
+                    viewContext.delete(s)
+                }
+                try! viewContext.save()
+            },
+            errorHandler: { error in
+                message = "Cannot send data: \(String(describing: error))"
+                showingAlert = true
+            })
     }
 }

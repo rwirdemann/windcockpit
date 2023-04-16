@@ -8,18 +8,8 @@
 import Foundation
 import WatchConnectivity
 
-struct NotificationMessage: Identifiable, Equatable {
-    let id = UUID()
-    let text: String
-    
-    static func ==(lhs: NotificationMessage, rhs: NotificationMessage) -> Bool {
-        return lhs.id == rhs.id
-    }
-}
-
 final class WatchConnectivityManager: NSObject, ObservableObject {
     static let shared = WatchConnectivityManager()
-    @Published var notificationMessage: NotificationMessage? = nil
     @Published var newSessions: [Session]? = nil
 
     private override init() {
@@ -31,13 +21,15 @@ final class WatchConnectivityManager: NSObject, ObservableObject {
         }
     }
     
-    private let kMessageKey = "message"
-
     func isConnected() -> Bool {
         return WCSession.default.activationState == .activated
     }
     
-    func send(_ sessions: [Session]) {
+    enum ConnectivityError: Error {
+      case companionAppNotInstalled
+    }
+    
+    func send(_ sessions: [Session], replyHandler: @escaping ((Data) -> Void), errorHandler: @escaping ((Error) -> Void)) {
         guard WCSession.default.activationState == .activated else {
           return
         }
@@ -47,52 +39,24 @@ final class WatchConnectivityManager: NSObject, ObservableObject {
         }
         #else
         guard WCSession.default.isCompanionAppInstalled else {
+            errorHandler(ConnectivityError.companionAppNotInstalled)
             return
         }
         #endif
  
         let encoder = JSONEncoder()
         let data = try! encoder.encode(sessions)
-        WCSession.default.sendMessageData(data, replyHandler: nil) { error in
-            print("Cannot send data: \(String(describing: error))")
-        }
-    }
-
-
-    func send(_ message: String) {
-        guard WCSession.default.activationState == .activated else {
-          return
-        }
-        #if os(iOS)
-        guard WCSession.default.isWatchAppInstalled else {
-            return
-        }
-        #else
-        guard WCSession.default.isCompanionAppInstalled else {
-            return
-        }
-        #endif
-        
-        WCSession.default.sendMessage([kMessageKey : message], replyHandler: nil) { error in
-            print("Cannot send message: \(String(describing: error))")
-        }
+        WCSession.default.sendMessageData(data, replyHandler: replyHandler, errorHandler: errorHandler)
     }
 }
 
 extension WatchConnectivityManager: WCSessionDelegate {
-    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
-        if let notificationText = message[kMessageKey] as? String {
-            DispatchQueue.main.async { [weak self] in
-                self?.notificationMessage = NotificationMessage(text: notificationText)
-            }
-        }
-    }
-    
-    func session(_ session: WCSession, didReceiveMessageData messageData: Data) {
+    func session(_ session: WCSession, didReceiveMessageData messageData: Data, replyHandler: @escaping (Data) -> Void) {
         let decoder = JSONDecoder()
         let sessions = try! decoder.decode([Session].self, from: messageData)
         DispatchQueue.main.async { [weak self] in
             self?.newSessions = sessions
+            replyHandler(Data("ok".utf8))
         }
     }
     
