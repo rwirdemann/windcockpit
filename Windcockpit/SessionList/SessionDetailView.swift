@@ -19,12 +19,6 @@ struct SessionDetailView: View {
         animation: .default)
     private var spots: FetchedResults<LocationEntity>
     
-    let formatter: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        return formatter
-    }()
-    
     var body: some View {
         Form {
             let distance = Measurement(value: session.distance, unit: UnitLength.meters)
@@ -33,33 +27,12 @@ struct SessionDetailView: View {
                 .formatted()
             
             if editMode?.wrappedValue.isEditing == true {
-                if let spot = Binding<LocationEntity>($session.spot) {
-                    Picker("Spot", selection: spot) {
-                        ForEach(spots, id: \.self) { s in
-                            Text(s.name!)
-                        }
-                    }
-                }
-                
-                HStack {
-                    Text("Distance")
-                    Spacer()
-                    TextField("",
-                              value: $session.distance,
-                              formatter: formatter)
-                    .multilineTextAlignment(.trailing)
-                    Text("m")
-                }
-                
-                HStack {
-                    Text("Maxspeed")
-                    Spacer()
-                    TextField("",
-                              value: $session.maxspeed,
-                              formatter: formatter)
-                    .multilineTextAlignment(.trailing)
-                    Text("km/h")
-                }
+                EditEntityPickerView(title: "Spot", selection: $session.spot, values: spots)
+                EditStringPickerView(title: "Sport", selection: $session.name)
+                EditDateView(title: "When", date: $session.date)
+                EditDoubleFieldView(title: "Distance", value: $session.distance, unit: "m")
+                EditDoubleFieldView(title: "Max Speed", value: $session.maxspeed, unit: "km/h")
+                EditDurationView(title: "Duration", value: $session.duration, unit: "minutes")
             } else {
                 DetailView(title: "Spot", value: session.spot?.name ?? "Unknwon")
                 DetailView(title: "Sport", value: session.name)
@@ -80,9 +53,11 @@ struct SessionDetailView: View {
         .onChange(of: editMode!.wrappedValue, perform: { value in
             if !value.isEditing {
                 session.maxspeed = session.maxspeed / 3.6
+                session.duration = session.duration * 60
                 try? context.save()
             } else {
                 session.maxspeed = session.maxspeed * 3.6
+                session.duration = session.duration / 60
             }
         })
     }
@@ -98,6 +73,103 @@ struct DetailView: View {
             Spacer()
             if value != nil {
                 Text(value!)
+            }
+        }
+    }
+}
+
+struct EditDoubleFieldView: View {
+    var title: String
+    var value: Binding<Double>
+    var unit: String
+    
+    let formatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        return formatter
+    }()
+    
+    var body: some View {
+        HStack {
+            Text(title)
+            Spacer()
+            TextField("", value: value, formatter: formatter).multilineTextAlignment(.trailing)
+            Text(unit)
+        }
+    }
+}
+
+struct EditDurationView: View {
+    var title: String
+    var value: Binding<Double>
+    var unit: String
+    
+    let formatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        return formatter
+    }()
+
+    var body: some View {
+        HStack {
+            Text(title)
+            Spacer()
+            TextField("", value: value, formatter: formatter).multilineTextAlignment(.trailing)
+            Text(unit)
+        }
+    }
+}
+
+struct EditEntityPickerView: View {
+    var title: String
+    var selection: Binding<LocationEntity?>
+    var values: FetchedResults<LocationEntity>
+    
+    var body: some View {
+        HStack {
+            Text(title)
+            Spacer()
+            if let selection = Binding<LocationEntity>(selection) {
+                Picker(title, selection: selection) {
+                    ForEach(values, id: \.self) { s in
+                        Text(s.name!)
+                    }
+                }
+            }
+        }
+    }
+}
+
+struct EditStringPickerView: View {
+    var title: String
+    var selection: Binding<String?>
+    
+    var body: some View {
+        HStack {
+            Text(title)
+            Spacer()
+            if let selection = Binding<String>(selection) {
+                Picker(title, selection: selection) {
+                    ForEach(Constants.SPORTS, id: \.self) { s in
+                        Text(s)
+                    }
+                }
+            }
+        }
+    }
+}
+
+struct EditDateView: View {
+    var title: String
+    var date: Binding<Date?>
+    
+    var body: some View {
+        HStack {
+            Text(title)
+            Spacer()
+            if let date = Binding<Date>(date) {
+                DatePicker("", selection: date, displayedComponents: .date)
+                    .environment(\.locale, Locale.init(identifier: "de_DE"))
             }
         }
     }
