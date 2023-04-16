@@ -44,11 +44,21 @@ struct SessionDetailView: View {
                 HStack {
                     Text("Distance")
                     Spacer()
-                    TextField("Distance",
+                    TextField("",
                               value: $session.distance,
                               formatter: formatter)
                     .multilineTextAlignment(.trailing)
                     Text("m")
+                }
+                
+                HStack {
+                    Text("Maxspeed")
+                    Spacer()
+                    TextField("",
+                              value: $session.maxspeed,
+                              formatter: formatter)
+                    .multilineTextAlignment(.trailing)
+                    Text("km/h")
                 }
             } else {
                 DetailView(title: "Spot", value: session.spot?.name ?? "Unknwon")
@@ -69,7 +79,10 @@ struct SessionDetailView: View {
         }
         .onChange(of: editMode!.wrappedValue, perform: { value in
             if !value.isEditing {
+                session.maxspeed = session.maxspeed / 3.6
                 try? context.save()
+            } else {
+                session.maxspeed = session.maxspeed * 3.6
             }
         })
     }
