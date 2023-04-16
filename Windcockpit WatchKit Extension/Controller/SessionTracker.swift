@@ -60,7 +60,7 @@ class SessionTracker: NSObject, ObservableObject, CLLocationManagerDelegate {
         
     func start(sessionType: String) {
         let configuration = HKWorkoutConfiguration()
-        configuration.activityType = .cycling
+        configuration.activityType = .running
         configuration.locationType = .outdoor
         
         do {
@@ -164,7 +164,7 @@ class SessionTracker: NSObject, ObservableObject, CLLocationManagerDelegate {
         ]
 
         let typesToRead: Set = [
-            HKQuantityType.quantityType(forIdentifier: .distanceCycling)!,
+            HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning)!,
         ]
 
         healthStore.requestAuthorization(toShare: typesToShare, read: typesToRead) { (success, error) in
@@ -176,7 +176,7 @@ class SessionTracker: NSObject, ObservableObject, CLLocationManagerDelegate {
 
         DispatchQueue.main.async {
             switch statistics.quantityType {
-            case HKQuantityType.quantityType(forIdentifier: .distanceCycling):
+            case HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning):
                 let meterUnit = HKUnit.meter()
                 self.hkDistance = statistics.sumQuantity()?.doubleValue(for: meterUnit) ?? 0
             default:
