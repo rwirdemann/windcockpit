@@ -11,8 +11,6 @@ import HealthKit
 struct SessionSelectView: View {
     @EnvironmentObject var sessionManager: SessionTracker
 
-    var sessionTypes: [String] = ["Wingfoiling", "Windsurfing", "Kitesurfing", "Kitefoilen", "Windfoilen"]
-    
     var body: some View {
         VStack {
             NavigationLink(destination: AllSessionsView()) {
@@ -20,7 +18,7 @@ struct SessionSelectView: View {
             }
             .buttonStyle(.borderedProminent)
             .tint(.blue)
-            List(sessionTypes, id: \.self) { sessionType in
+            List(Constants.SPORTS, id: \.self) { sessionType in
                 NavigationLink(
                     sessionType,
                     destination: SessionPagingView(),

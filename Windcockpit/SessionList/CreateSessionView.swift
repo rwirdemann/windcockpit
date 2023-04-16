@@ -17,8 +17,6 @@ struct CreateSessionView: View {
     @State private var showingAlert = false
     @State private var errorMessage = ""
     
-    let sports = ["Wingfoiling", "Windsurfing", "Kitesurfing"]
-
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \LocationEntity.name, ascending: true)],
         animation: .default)
@@ -56,17 +54,17 @@ struct CreateSessionView: View {
             }
 
             HStack {
-                Text("Wann")
+                Text("When")
                 Spacer()
                 DatePicker("", selection: $date, displayedComponents: .date)
                     .environment(\.locale, Locale.init(identifier: "de_DE"))
             }
 
             HStack {
-                Text("Aktivität")
+                Text("Sport")
                 Spacer()
                 Picker("", selection: $sport) {
-                    ForEach(sports, id: \.self) {
+                    ForEach(Constants.SPORTS, id: \.self) {
                         Text($0)
                     }
                 }
