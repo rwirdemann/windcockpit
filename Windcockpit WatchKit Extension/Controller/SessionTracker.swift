@@ -85,6 +85,7 @@ class SessionTracker: NSObject, ObservableObject, CLLocationManagerDelegate {
         workoutSession?.startActivity(with: startDate)
         builder?.beginCollection(withStart: startDate) { (success, error) in
         }
+        WKInterfaceDevice.current().play(.start)
     }
     
     func end() {
@@ -96,6 +97,7 @@ class SessionTracker: NSObject, ObservableObject, CLLocationManagerDelegate {
         }
                 
         showingSummaryView = true
+        WKInterfaceDevice.current().play(.stop)
     }
     
     func reset() {
@@ -117,6 +119,7 @@ class SessionTracker: NSObject, ObservableObject, CLLocationManagerDelegate {
         authorizationStatus = manager.authorizationStatus
     }
     
+    var lastMaxSpeedBeep: Date?
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         for newLocation in locations {
             let howRecent = newLocation.timestamp.timeIntervalSinceNow
@@ -133,6 +136,19 @@ class SessionTracker: NSObject, ObservableObject, CLLocationManagerDelegate {
         let currentSpeed = locationList.last?.speed ?? 0
         if currentSpeed > currentSession?.maxspeed ?? 0 {
             currentSession?.maxspeed = currentSpeed
+
+            guard let maxspeed = currentSession?.maxspeed else { return }
+            if maxspeed > 5 {
+                guard let lastMaxSpeedBeep = lastMaxSpeedBeep else {
+                    WKInterfaceDevice.current().play(.success)
+                    self.lastMaxSpeedBeep = Date.now
+                    return
+                }
+                if lastMaxSpeedBeep.addingTimeInterval(5) < Date.now {
+                    WKInterfaceDevice.current().play(.success)
+                    self.lastMaxSpeedBeep = Date.now
+                }
+            }
         }
     }
     

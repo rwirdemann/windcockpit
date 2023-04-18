@@ -21,11 +21,6 @@ struct SessionDetailView: View {
     
     var body: some View {
         Form {
-            let distance = Measurement(value: session.distance, unit: UnitLength.meters)
-                .formatted(.measurement(width: .abbreviated, usage: .road))
-            let maxSpeed = Measurement(value: session.maxspeed, unit: UnitSpeed.metersPerSecond)
-                .formatted()
-            
             if editMode?.wrappedValue.isEditing == true {
                 EditEntityPickerView(title: "Spot", selection: $session.spot, values: spots)
                 EditStringPickerView(title: "Sport", selection: $session.name)
@@ -37,7 +32,11 @@ struct SessionDetailView: View {
                 DetailView(title: "Spot", value: session.spot?.name ?? "Unknwon")
                 DetailView(title: "Sport", value: session.name)
                 DetailView(title: "When", value: toString(from: session.date ?? Date()))
+                let distance = Measurement(value: session.distance, unit: UnitLength.meters)
+                    .formatted(.measurement(width: .abbreviated, usage: .road))
                 DetailView(title: "Distance", value: distance)
+                let maxSpeed = Measurement(value: session.maxspeed, unit: UnitSpeed.metersPerSecond)
+                    .formatted()
                 DetailView(title: "Max Speed", value: maxSpeed)
                 HStack {
                     Text("Duration")
@@ -109,7 +108,7 @@ struct EditDurationView: View {
         formatter.numberStyle = .decimal
         return formatter
     }()
-
+    
     var body: some View {
         HStack {
             Text(title)

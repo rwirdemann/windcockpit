@@ -10,15 +10,17 @@ import HealthKit
 
 struct SessionSelectView: View {
     @EnvironmentObject var sessionManager: SessionTracker
-
+    
     var body: some View {
-        VStack {
-            NavigationLink(destination: AllSessionsView()) {
-                Text("All Sessions")
-            }
-            .buttonStyle(.borderedProminent)
-            .tint(.blue)
-            List(Constants.SPORTS, id: \.self) { sessionType in
+        List {
+            NavigationLink {
+                AllSessionsView()
+            } label: {
+                Label("All Sessions...", systemImage: "figure.surfing")
+            }.padding(
+                EdgeInsets(top: 15, leading: 5, bottom: 15, trailing: 5)
+            )
+            ForEach(Constants.SPORTS, id: \.self) { sessionType in
                 NavigationLink(
                     sessionType,
                     destination: SessionPagingView(),
@@ -28,8 +30,17 @@ struct SessionSelectView: View {
                     EdgeInsets(top: 15, leading: 5, bottom: 15, trailing: 5)
                 )
             }
-            .listStyle(.carousel)
+            
+            NavigationLink {
+                Text("Settings")
+            } label: {
+                Label("Settings...", systemImage: "gear")
+            }.padding(
+                EdgeInsets(top: 15, leading: 5, bottom: 15, trailing: 5)
+            )
+            
         }
+        .listStyle(.carousel)
         .navigationTitle("Windcockpit")
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {

@@ -19,7 +19,7 @@ struct AllSessionsView: View {
 
     var body: some View {
         VStack {
-            Button("Sync with iPhone 8") {
+            Button("Sync with iPhone 9") {
                 sync()
             }
             .buttonStyle(.borderedProminent)
