@@ -17,6 +17,27 @@ struct ControlsView: View {
             HStack {
                 VStack {
                     Button {
+                        WKInterfaceDevice.current().enableWaterLock()
+                    } label: {
+                        Image(systemName: "drop.fill")
+                    }
+                    .tint(Color.cyan)
+                    .font(.title2)
+                    Text("Lock")
+                }
+                VStack {
+                    Button {
+                    } label: {
+                        Image(systemName: "pause")
+                    }
+                    .tint(Color.yellow)
+                    .font(.title2)
+                    Text("Pause")
+                }
+            }
+            HStack {
+                VStack {
+                    Button {
                         sessionManager.end()
                     } label: {
                         Image(systemName: "xmark")
@@ -27,13 +48,12 @@ struct ControlsView: View {
                 }
                 VStack {
                     Button {
-                        WKInterfaceDevice.current().enableWaterLock()
                     } label: {
-                        Image(systemName: "drop.fill")
+                        Image(systemName: "gear")
                     }
-                    .tint(Color.cyan)
+                    .tint(Color.gray)
                     .font(.title2)
-                    Text("Lock")
+                    Text("Settings")
                 }
             }
         }

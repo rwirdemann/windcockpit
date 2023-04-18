@@ -20,6 +20,7 @@ struct SessionSelectView: View {
             }.padding(
                 EdgeInsets(top: 15, leading: 5, bottom: 15, trailing: 5)
             )
+            
             ForEach(Constants.SPORTS, id: \.self) { sessionType in
                 NavigationLink(
                     sessionType,
