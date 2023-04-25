@@ -22,7 +22,7 @@ class SessionTracker: NSObject, ObservableObject, CLLocationManagerDelegate {
         didSet {
             if showingSummaryView == false {
                 if let currentSession = currentSession {
-                    currentSession.distance = workout?.totalDistance?.doubleValue(for: .meter()) ?? 0
+                    currentSession.distance = workout?.totalDistance?.doubleValue(for: .meter()) ?? hkDistance
                     currentSession.duration = builder?.elapsedTime ?? 0
                     try! PersistenceController.shared.container.viewContext.save()
                 }
@@ -60,7 +60,7 @@ class SessionTracker: NSObject, ObservableObject, CLLocationManagerDelegate {
         
     func start(sessionType: String) {
         let configuration = HKWorkoutConfiguration()
-        configuration.activityType = .running
+        configuration.activityType = .cycling
         configuration.locationType = .outdoor
         
         do {
@@ -180,7 +180,7 @@ class SessionTracker: NSObject, ObservableObject, CLLocationManagerDelegate {
         ]
 
         let typesToRead: Set = [
-            HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning)!,
+            HKQuantityType.quantityType(forIdentifier: .distanceCycling)!,
         ]
 
         healthStore.requestAuthorization(toShare: typesToShare, read: typesToRead) { (success, error) in
@@ -192,7 +192,7 @@ class SessionTracker: NSObject, ObservableObject, CLLocationManagerDelegate {
 
         DispatchQueue.main.async {
             switch statistics.quantityType {
-            case HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning):
+            case HKQuantityType.quantityType(forIdentifier: .distanceCycling):
                 let meterUnit = HKUnit.meter()
                 self.hkDistance = statistics.sumQuantity()?.doubleValue(for: meterUnit) ?? 0
             default:

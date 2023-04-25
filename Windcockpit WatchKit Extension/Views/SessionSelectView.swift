@@ -30,16 +30,7 @@ struct SessionSelectView: View {
                 ).padding(
                     EdgeInsets(top: 15, leading: 5, bottom: 15, trailing: 5)
                 )
-            }
-            
-            NavigationLink {
-                Text("Settings")
-            } label: {
-                Label("Settings...", systemImage: "gear")
-            }.padding(
-                EdgeInsets(top: 15, leading: 5, bottom: 15, trailing: 5)
-            )
-            
+            }            
         }
         .listStyle(.carousel)
         .navigationTitle("Windcockpit")

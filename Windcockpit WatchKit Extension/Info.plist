@@ -19,10 +19,10 @@
 		<string>workout-processing</string>
 	</array>
 	<key>NSHealthShareUsageDescription</key>
-	<string>Want your health</string>
+	<string>Track distance and duration</string>
 	<key>NSHealthUpdateUsageDescription</key>
-	<string>Want your health</string>
+	<string>Track distance and duration</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Track me harder</string>
+	<string>Track your water location</string>
 </dict>
 </plist>
