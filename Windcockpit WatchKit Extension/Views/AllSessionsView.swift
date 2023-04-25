@@ -19,12 +19,12 @@ struct AllSessionsView: View {
 
     var body: some View {
         VStack {
-            Button("Sync with iPhone 11") {
+            Button("Sync with iPhone 12") {
                 sync()
             }
             .buttonStyle(.borderedProminent)
             .tint(.blue)
-            .disabled(sessions.isEmpty || !WatchConnectivityManager.shared.isConnected())
+            .disabled(sessions.isEmpty)
             List(sessions, id: \.self) { s in
                 let distance = Measurement(
                     value: s.distance,
