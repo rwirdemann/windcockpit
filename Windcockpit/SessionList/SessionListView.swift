@@ -23,15 +23,21 @@ struct SessionListView: View {
     
     var body: some View {
         NavigationView {
-            List {
-                ForEach(sessions) { s in
-                    NavigationLink {
-                        SessionDetailView(session: s)
-                    } label: {
-                        SessionCell(session: s)
+            VStack {
+                if sessions.isEmpty {
+                    Text("No tracked sessions yet")
+                } else {
+                    List {
+                        ForEach(sessions) { s in
+                            NavigationLink {
+                                SessionDetailView(session: s)
+                            } label: {
+                                SessionCell(session: s)
+                            }
+                        }
+                        .onDelete(perform: delete)
                     }
                 }
-                .onDelete(perform: delete)
             }
             .navigationTitle("Sessions")
             .toolbar {
@@ -49,7 +55,7 @@ struct SessionListView: View {
             addSessions(sessions: sessions)
         }
     }
-    
+        
     private func addSessions(sessions: [Session]?) {
         guard let sessions = sessions else {
             return

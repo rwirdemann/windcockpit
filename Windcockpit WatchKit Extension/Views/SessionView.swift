@@ -46,7 +46,7 @@ struct SessionView: View {
                 .foregroundColor(Color.green)
 
             }
-            .font(.system(.title, design: .rounded)
+            .font(.system(size: 32, design: .rounded)
                 .monospacedDigit()
                 .lowercaseSmallCaps()
             )

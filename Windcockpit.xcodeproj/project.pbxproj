@@ -656,10 +656,10 @@
 				INFOPLIST_FILE = "Windcockpit-WatchKit-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Windcockpit WatchKit App";
 				INFOPLIST_KEY_CLKComplicationPrincipalClass = Windcockpit_WatchKit_App.ComplicationController;
-				INFOPLIST_KEY_NSHealthShareUsageDescription = "Want your health";
-				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Want your health";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Distance tracked via HealthKit";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Distance tracked via HealthKit";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Track me harder";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Need to find our your session location";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = de.ralfwirdemann.Windcockpit;
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
@@ -693,10 +693,10 @@
 				INFOPLIST_FILE = "Windcockpit-WatchKit-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Windcockpit WatchKit App";
 				INFOPLIST_KEY_CLKComplicationPrincipalClass = Windcockpit_WatchKit_App.ComplicationController;
-				INFOPLIST_KEY_NSHealthShareUsageDescription = "Want your health";
-				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Want your health";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Distance tracked via HealthKit";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Distance tracked via HealthKit";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Track me harder";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Need to find our your session location";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = de.ralfwirdemann.Windcockpit;
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
@@ -729,6 +729,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Windcockpit/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -760,6 +761,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Windcockpit/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

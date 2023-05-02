@@ -13,18 +13,24 @@ struct LocationListView: View {
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \LocationEntity.name, ascending: true)],
         animation: .default)
-    private var items: FetchedResults<LocationEntity>
+    private var locations: FetchedResults<LocationEntity>
     
     var body: some View {
         NavigationView {
-            List {
-                ForEach(items) { l in
-                    VStack {
-                        Text(l.name ?? "unknown")
+            VStack {
+                if locations.isEmpty {
+                    Text("Your location list is still empty")
+                } else {
+                    List {
+                        ForEach(locations) { l in
+                            VStack {
+                                Text(l.name ?? "unknown")
+                            }
+                            .deleteDisabled(l.sessions != nil ? l.sessions!.count > 0 : false)
+                        }
+                        .onDelete(perform: self.deleteItem)
                     }
-                    .deleteDisabled(l.sessions != nil ? l.sessions!.count > 0 : false)
                 }
-                .onDelete(perform: self.deleteItem)
             }
             .navigationTitle("Spots")
             .toolbar {
@@ -50,7 +56,7 @@ struct LocationListView: View {
     
     private func deleteItem(at indexSet: IndexSet) {
         for index in indexSet {
-            let l = items[index]
+            let l = locations[index]
             viewContext.delete(l)
             do {
                 try viewContext.save()
