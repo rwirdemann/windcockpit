@@ -21,7 +21,7 @@ struct MapView: UIViewRepresentable {
     
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
-    }    
+    }
 }
 
 class Coordinator: NSObject, MKMapViewDelegate {
@@ -35,7 +35,7 @@ class Coordinator: NSObject, MKMapViewDelegate {
         if let routePolyline = overlay as? MKPolyline {
             let renderer = MKPolylineRenderer(polyline: routePolyline)
             renderer.strokeColor = UIColor.systemBlue
-            renderer.lineWidth = 0.5
+            renderer.lineWidth = 1
             return renderer
         }
         return MKOverlayRenderer()

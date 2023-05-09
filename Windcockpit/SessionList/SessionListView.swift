@@ -75,6 +75,7 @@ struct SessionListView: View {
         newItem.maxspeed = session.maxspeed
         newItem.distance = session.distance
         newItem.duration = session.duration
+        newItem.locations = session.locations
         newItem.spot = findOrCreateLocation(name: session.location)
         try! viewContext.save()
     }
@@ -166,7 +167,9 @@ func buildSession(session: SessionEntity, locationId: Int16) -> Session {
                    distance: session.distance,
                    maxspeed: session.maxspeed,
                    duration: session.duration,
-                   locationId: locationId)
+                   locationId: locationId,
+                   locations: Data()
+    )
 }
 
 private let itemFormatter: DateFormatter = {

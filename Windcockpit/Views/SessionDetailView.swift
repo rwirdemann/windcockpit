@@ -20,16 +20,6 @@ struct SessionDetailView: View {
         animation: .default)
     private var spots: FetchedResults<LocationEntity>
     
-    struct Location: Identifiable {
-        let id = UUID()
-        let coordinate: CLLocation
-    }
-    
-    let locations = [
-        Location(coordinate: CLLocation(latitude: 54.499998, longitude: 11.2166658)),
-        Location(coordinate: CLLocation(latitude: 54.518, longitude: 11.0904))
-    ]
-    
     var body: some View {
         Form {
             if editMode?.wrappedValue.isEditing == true {
@@ -56,13 +46,16 @@ struct SessionDetailView: View {
                 }
             }
             
-            MapView(region: MKCoordinateRegion(
-                center: locations[0].coordinate.coordinate,
-                span: MKCoordinateSpan(latitudeDelta: 0.06, longitudeDelta: 0.06)), lineCoordinates: locations.map( {
-                    l in return l.coordinate.coordinate
-                }))
-            .frame(height: 200)
-            
+            if let locations = unarchiveLocations(session: session) {
+                if let center = center(locations: locations) {
+                    MapView(region:
+                                MKCoordinateRegion(
+                                    center: center,
+                                    span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)),
+                            lineCoordinates: locations)
+                    .frame(height: 250)
+                }
+            }
         }
         .navigationTitle("Your Session")
         .toolbar{
@@ -80,14 +73,25 @@ struct SessionDetailView: View {
         })
     }
     
-    func locations(session: SessionEntity) -> [CLLocationCoordinate2D] {
+    func unarchiveLocations(session: SessionEntity) -> [CLLocationCoordinate2D]? {
         if let locations = session.locations {
-            if let locationsArr = try! NSKeyedUnarchiver.unarchivedObject(ofClass: NSArray.self, from: locations) as? [CLLocation] {
-                return locationsArr.map({l in return l.coordinate})
+            do {
+                if let locationsArr = try NSKeyedUnarchiver.unarchivedArrayOfObjects(ofClasses: [CLLocation.self], from: locations) as? [CLLocation] {
+                    return locationsArr.map({l in return l.coordinate})
+                }
+            } catch {
+                print("Error info: \(error)")
             }
         }
-        return []
-    }    
+        return nil
+    }
+    
+    func center(locations: [CLLocationCoordinate2D]) -> CLLocationCoordinate2D? {
+        if !locations.isEmpty {
+            return locations.first
+        }
+        return nil
+    }
 }
 
 struct DetailView: View {

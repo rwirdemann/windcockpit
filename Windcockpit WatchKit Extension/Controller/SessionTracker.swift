@@ -25,8 +25,8 @@ class SessionTracker: NSObject, ObservableObject, CLLocationManagerDelegate {
                     currentSession.distance = workout?.totalDistance?.doubleValue(for: .meter()) ?? hkDistance
                     currentSession.duration = builder?.elapsedTime ?? 0
                     currentSession.locations = try! NSKeyedArchiver.archivedData(
-                        withRootObject: locationList,
-                        requiringSecureCoding: false)
+                        withRootObject: locationsArray,
+                        requiringSecureCoding: true)
                     try! PersistenceController.shared.container.viewContext.save()
                 }
                 reset()
@@ -45,7 +45,7 @@ class SessionTracker: NSObject, ObservableObject, CLLocationManagerDelegate {
     var distance = Measurement(value: 0, unit: UnitLength.meters)
 
     private let locationManager: CLLocationManager
-    private var locationList: [CLLocation] = []
+    private var locationsArray: [CLLocation] = []
     var currentPlacemark: CLPlacemark?
 
     let healthStore = HKHealthStore()
@@ -60,7 +60,7 @@ class SessionTracker: NSObject, ObservableObject, CLLocationManagerDelegate {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
-        
+    
     func start(sessionType: String) {
         let configuration = HKWorkoutConfiguration()
         configuration.activityType = .cycling
@@ -111,7 +111,7 @@ class SessionTracker: NSObject, ObservableObject, CLLocationManagerDelegate {
         workoutSession =  nil
         distance = Measurement(value: 0, unit: UnitLength.meters)
         hkDistance = 0
-        locationList.removeAll()
+        locationsArray.removeAll()
     }
     
     func requestLocationManagerPermission() {
@@ -128,15 +128,15 @@ class SessionTracker: NSObject, ObservableObject, CLLocationManagerDelegate {
             let howRecent = newLocation.timestamp.timeIntervalSinceNow
             guard newLocation.horizontalAccuracy < 20 && abs(howRecent) < 10 else { continue }
             
-            if let lastLocation = locationList.last {
+            if let lastLocation = locations.last {
                 let delta = newLocation.distance(from: lastLocation)
                 distance = distance + Measurement(value: delta, unit: UnitLength.meters)
             }
             
-            locationList.append(newLocation)
+            locationsArray.append(newLocation)
         }
-        fetchCity(location: locationList.last)
-        let currentSpeed = locationList.last?.speed ?? 0
+        fetchCity(location: locations.last)
+        let currentSpeed = locations.last?.speed ?? 0
         if currentSpeed > currentSession?.maxspeed ?? 0 {
             currentSession?.maxspeed = currentSpeed
 
@@ -171,7 +171,7 @@ class SessionTracker: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
 
     func currentSpeed() -> CLLocationSpeed {
-        if let lastLocation = locationList.last {
+        if let lastLocation = locationsArray.last {
             return max(0, lastLocation.speed)
         }
         return 0

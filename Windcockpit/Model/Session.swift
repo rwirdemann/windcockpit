@@ -16,6 +16,7 @@ struct Session: Identifiable, Codable, Hashable {
     var maxspeed: Double
     var duration: Double
     var locationId: Int16
+    var locations: Data
     
     static func fromSesssionEntity(entity: SessionEntity) -> Session {
         return Session(
@@ -26,7 +27,8 @@ struct Session: Identifiable, Codable, Hashable {
             distance: entity.distance,
             maxspeed: entity.maxspeed,
             duration: entity.duration,
-            locationId: 0
+            locationId: 0,
+            locations: entity.locations ?? Data()
         )
     }
 }

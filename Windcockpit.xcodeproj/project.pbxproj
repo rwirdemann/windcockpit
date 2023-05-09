@@ -23,10 +23,7 @@
 		BF1148D92892BE7E0081A360 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF1148D82892BE7E0081A360 /* Preview Assets.xcassets */; };
 		BF1148F02892BF1A0081A360 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1148EF2892BF1A0081A360 /* HealthKit.framework */; };
 		BF1148F22892BF980081A360 /* SessionSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1148F12892BF980081A360 /* SessionSelectView.swift */; };
-		BF1148F42892BFA30081A360 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1148F32892BFA30081A360 /* SummaryView.swift */; };
-		BF1148F62892BFAE0081A360 /* WorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1148F52892BFAE0081A360 /* WorkoutManager.swift */; };
 		BF1148F82892BFD10081A360 /* SessionPagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1148F72892BFD10081A360 /* SessionPagingView.swift */; };
-		BF1148FA2892BFDE0081A360 /* MetricsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1148F92892BFDE0081A360 /* MetricsView.swift */; };
 		BF1148FC2892BFE40081A360 /* ControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1148FB2892BFE40081A360 /* ControlsView.swift */; };
 		BF1148FE2892BFEA0081A360 /* ElapsedTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1148FD2892BFEA0081A360 /* ElapsedTimeView.swift */; };
 		BF1149022892C03C0081A360 /* SessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1149002892C03C0081A360 /* SessionService.swift */; };
@@ -42,7 +39,6 @@
 		BF441B7E29EC4AAD0038E653 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF441B7C29EC4AAD0038E653 /* Constants.swift */; };
 		BF7B77D628AD2F21006484FF /* WatchConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B77D528AD2F21006484FF /* WatchConnectivityManager.swift */; };
 		BF7B77D728AD2F21006484FF /* WatchConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B77D528AD2F21006484FF /* WatchConnectivityManager.swift */; };
-		BF83FD5728B77A6C00699C53 /* EditSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF83FD5628B77A6C00699C53 /* EditSessionView.swift */; };
 		BF8742582A0A4D5C004EA831 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8742572A0A4D5C004EA831 /* MapView.swift */; };
 		BF9A5DAC289967DD009F438D /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9A5DAB289967DD009F438D /* Formatters.swift */; };
 		BFAB602328A6786500CC6276 /* SessionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAB602228A6786500CC6276 /* SessionListView.swift */; };
@@ -106,10 +102,7 @@
 		BF1148ED2892BF1A0081A360 /* Windcockpit WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Windcockpit WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		BF1148EF2892BF1A0081A360 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS8.5.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
 		BF1148F12892BF980081A360 /* SessionSelectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionSelectView.swift; sourceTree = "<group>"; };
-		BF1148F32892BFA30081A360 /* SummaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
-		BF1148F52892BFAE0081A360 /* WorkoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutManager.swift; sourceTree = "<group>"; };
 		BF1148F72892BFD10081A360 /* SessionPagingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionPagingView.swift; sourceTree = "<group>"; };
-		BF1148F92892BFDE0081A360 /* MetricsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetricsView.swift; sourceTree = "<group>"; };
 		BF1148FB2892BFE40081A360 /* ControlsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlsView.swift; sourceTree = "<group>"; };
 		BF1148FD2892BFEA0081A360 /* ElapsedTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElapsedTimeView.swift; sourceTree = "<group>"; };
 		BF1149002892C03C0081A360 /* SessionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionService.swift; sourceTree = "<group>"; };
@@ -122,7 +115,6 @@
 		BF3E792028AE4ACC00570B11 /* SessionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCell.swift; sourceTree = "<group>"; };
 		BF441B7C29EC4AAD0038E653 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BF7B77D528AD2F21006484FF /* WatchConnectivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityManager.swift; sourceTree = "<group>"; };
-		BF83FD5628B77A6C00699C53 /* EditSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSessionView.swift; sourceTree = "<group>"; };
 		BF8463772944F27000C4A49B /* Windcockpit-WatchKit-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Windcockpit-WatchKit-App-Info.plist"; sourceTree = SOURCE_ROOT; };
 		BF8742572A0A4D5C004EA831 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		BF9A5DAB289967DD009F438D /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
@@ -230,7 +222,6 @@
 		BF1148CA2892BE7D0081A360 /* Windcockpit WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
-				BFCCCDC229EAE9B400460B01 /* Unused */,
 				BFFA279229D5D36500734176 /* Controller */,
 				BFFA279129D4C47000734176 /* Views */,
 				BF1148CB2892BE7D0081A360 /* WindcockpitApp.swift */,
@@ -287,7 +278,6 @@
 			children = (
 				BFAB602228A6786500CC6276 /* SessionListView.swift */,
 				BF3E792028AE4ACC00570B11 /* SessionCell.swift */,
-				BF83FD5628B77A6C00699C53 /* EditSessionView.swift */,
 				BF3A3EBE28C0B5A8007BE348 /* CreateSessionView.swift */,
 				BF05045C289AB34A00EEB2AA /* DurationView.swift */,
 			);
@@ -327,16 +317,6 @@
 				BFF8F8822979A40300206E12 /* SessionDetailView.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		BFCCCDC229EAE9B400460B01 /* Unused */ = {
-			isa = PBXGroup;
-			children = (
-				BF1148F32892BFA30081A360 /* SummaryView.swift */,
-				BF1148F52892BFAE0081A360 /* WorkoutManager.swift */,
-				BF1148F92892BFDE0081A360 /* MetricsView.swift */,
-			);
-			path = Unused;
 			sourceTree = "<group>";
 		};
 		BFF6AF2C292FE6DF0052F4BC /* LocationList */ = {
@@ -485,7 +465,6 @@
 				BF1149182892D96F0081A360 /* ContentView.swift in Sources */,
 				BF1149022892C03C0081A360 /* SessionService.swift in Sources */,
 				BFF6AF2F292FE6DF0052F4BC /* CreateLocationView.swift in Sources */,
-				BF83FD5728B77A6C00699C53 /* EditSessionView.swift in Sources */,
 				BF3E792128AE4ACC00570B11 /* SessionCell.swift in Sources */,
 				BFF6AF30292FE6DF0052F4BC /* LocationListView.swift in Sources */,
 				BFAB602828A678DF00CC6276 /* PersistenceController.swift in Sources */,
@@ -517,13 +496,10 @@
 				BF1148CC2892BE7D0081A360 /* WindcockpitApp.swift in Sources */,
 				BF7B77D728AD2F21006484FF /* WatchConnectivityManager.swift in Sources */,
 				BFCCCDC029E9B3C900460B01 /* PersistenceController.swift in Sources */,
-				BF1148F62892BFAE0081A360 /* WorkoutManager.swift in Sources */,
 				BF1148D22892BE7D0081A360 /* NotificationView.swift in Sources */,
 				BFFA279829D5DCF400734176 /* SessionSummaryView.swift in Sources */,
 				BF11490A2892C0630081A360 /* Session.swift in Sources */,
 				BFAC2EEE29DDC459003A47B8 /* Date.swift in Sources */,
-				BF1148FA2892BFDE0081A360 /* MetricsView.swift in Sources */,
-				BF1148F42892BFA30081A360 /* SummaryView.swift in Sources */,
 				BFFA279429D5D38C00734176 /* SessionTracker.swift in Sources */,
 				BFAC2EED29DDC27E003A47B8 /* AllSessionsView.swift in Sources */,
 				BF441B7E29EC4AAD0038E653 /* Constants.swift in Sources */,
