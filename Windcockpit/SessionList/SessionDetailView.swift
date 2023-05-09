@@ -20,43 +20,55 @@ struct SessionDetailView: View {
         animation: .default)
     private var spots: FetchedResults<LocationEntity>
     
+    struct Location: Identifiable {
+        let id = UUID()
+        let coordinate: CLLocation
+    }
+    
     let locations = [
-        CLLocation(latitude: 54.499998, longitude: 11.2166658),
-        CLLocation(latitude: 54.4434512, longitude: 11.1798955),
+        Location(coordinate: CLLocation(latitude: 54.499998, longitude: 11.2166658)),
+        Location(coordinate: CLLocation(latitude: 54.518, longitude: 11.0904))
     ]
-
+    
     var body: some View {
-            Form {
-                if editMode?.wrappedValue.isEditing == true {
-                    EditEntityPickerView(title: "Spot", selection: $session.spot, values: spots)
-                    EditStringPickerView(title: "Sport", selection: $session.name)
-                    EditDateView(title: "When", date: $session.date)
-                    EditDoubleFieldView(title: "Distance", value: $session.distance, unit: "m")
-                    EditDoubleFieldView(title: "Max Speed", value: $session.maxspeed, unit: "km/h")
-                    EditDurationView(title: "Duration", value: $session.duration, unit: "minutes")
-                } else {
-                    DetailView(title: "Spot", value: session.spot?.name ?? "Unknwon")
-                    DetailView(title: "Sport", value: session.name)
-                    DetailView(title: "When", value: toString(from: session.date ?? Date()))
-                    let distance = Measurement(value: session.distance, unit: UnitLength.meters)
-                        .formatted(.measurement(width: .abbreviated, usage: .road))
-                    DetailView(title: "Distance", value: distance)
-                    let maxSpeed = Measurement(value: session.maxspeed, unit: UnitSpeed.metersPerSecond)
-                        .formatted()
-                    DetailView(title: "Max Speed", value: maxSpeed)
-                    HStack {
-                        Text("Duration")
-                        Spacer()
-                        DurationView(duration: session.duration)
+        Form {
+            if editMode?.wrappedValue.isEditing == true {
+                EditEntityPickerView(title: "Spot", selection: $session.spot, values: spots)
+                EditStringPickerView(title: "Sport", selection: $session.name)
+                EditDateView(title: "When", date: $session.date)
+                EditDoubleFieldView(title: "Distance", value: $session.distance, unit: "m")
+                EditDoubleFieldView(title: "Max Speed", value: $session.maxspeed, unit: "km/h")
+                EditDurationView(title: "Duration", value: $session.duration, unit: "minutes")
+            } else {
+                DetailView(title: "Spot", value: session.spot?.name ?? "Unknwon")
+                DetailView(title: "Sport", value: session.name)
+                DetailView(title: "When", value: toString(from: session.date ?? Date()))
+                let distance = Measurement(value: session.distance, unit: UnitLength.meters)
+                    .formatted(.measurement(width: .abbreviated, usage: .road))
+                DetailView(title: "Distance", value: distance)
+                let maxSpeed = Measurement(value: session.maxspeed, unit: UnitSpeed.metersPerSecond)
+                    .formatted()
+                DetailView(title: "Max Speed", value: maxSpeed)
+                HStack {
+                    Text("Duration")
+                    Spacer()
+                    DurationView(duration: session.duration)
+                }
+            }
+            
+            Map(
+                coordinateRegion:.constant(
+                    MKCoordinateRegion(
+                        center: locations[0].coordinate.coordinate,
+                        span: MKCoordinateSpan(latitudeDelta: 0.06, longitudeDelta: 0.06))
+                ),
+                annotationItems: locations) { l in
+                    MapAnnotation(coordinate: l.coordinate.coordinate) {
+                        Circle()
+                            .stroke(.red, lineWidth: 3)
+                            .frame(width: 44, height: 44)
                     }
                 }
-                Map(coordinateRegion: .constant(
-                    MKCoordinateRegion(
-                        center: locations[0].coordinate,
-                        span: MKCoordinateSpan(latitudeDelta: 0.06, longitudeDelta: 0.06))
-                    ),
-                    interactionModes: []
-                )
                 .frame(height: 200)
         }
         .navigationTitle("Your Session")
