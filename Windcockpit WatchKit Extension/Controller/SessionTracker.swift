@@ -24,6 +24,9 @@ class SessionTracker: NSObject, ObservableObject, CLLocationManagerDelegate {
                 if let currentSession = currentSession {
                     currentSession.distance = workout?.totalDistance?.doubleValue(for: .meter()) ?? hkDistance
                     currentSession.duration = builder?.elapsedTime ?? 0
+                    currentSession.locations = try! NSKeyedArchiver.archivedData(
+                        withRootObject: locationList,
+                        requiringSecureCoding: false)
                     try! PersistenceController.shared.container.viewContext.save()
                 }
                 reset()

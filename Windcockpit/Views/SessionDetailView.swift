@@ -79,6 +79,15 @@ struct SessionDetailView: View {
             }
         })
     }
+    
+    func locations(session: SessionEntity) -> [CLLocationCoordinate2D] {
+        if let locations = session.locations {
+            if let locationsArr = try! NSKeyedUnarchiver.unarchivedObject(ofClass: NSArray.self, from: locations) as? [CLLocation] {
+                return locationsArr.map({l in return l.coordinate})
+            }
+        }
+        return []
+    }    
 }
 
 struct DetailView: View {
