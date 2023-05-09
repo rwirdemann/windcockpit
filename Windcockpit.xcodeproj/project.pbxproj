@@ -43,6 +43,7 @@
 		BF7B77D628AD2F21006484FF /* WatchConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B77D528AD2F21006484FF /* WatchConnectivityManager.swift */; };
 		BF7B77D728AD2F21006484FF /* WatchConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B77D528AD2F21006484FF /* WatchConnectivityManager.swift */; };
 		BF83FD5728B77A6C00699C53 /* EditSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF83FD5628B77A6C00699C53 /* EditSessionView.swift */; };
+		BF8742582A0A4D5C004EA831 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8742572A0A4D5C004EA831 /* MapView.swift */; };
 		BF9A5DAC289967DD009F438D /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9A5DAB289967DD009F438D /* Formatters.swift */; };
 		BFAB602328A6786500CC6276 /* SessionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAB602228A6786500CC6276 /* SessionListView.swift */; };
 		BFAB602628A678CC00CC6276 /* WindcockpitCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BFAB602428A678CC00CC6276 /* WindcockpitCoreData.xcdatamodeld */; };
@@ -123,6 +124,7 @@
 		BF7B77D528AD2F21006484FF /* WatchConnectivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityManager.swift; sourceTree = "<group>"; };
 		BF83FD5628B77A6C00699C53 /* EditSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSessionView.swift; sourceTree = "<group>"; };
 		BF8463772944F27000C4A49B /* Windcockpit-WatchKit-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Windcockpit-WatchKit-App-Info.plist"; sourceTree = SOURCE_ROOT; };
+		BF8742572A0A4D5C004EA831 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		BF9A5DAB289967DD009F438D /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
 		BFAB602228A6786500CC6276 /* SessionListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionListView.swift; sourceTree = "<group>"; };
 		BFAB602528A678CC00CC6276 /* CoreSample.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreSample.xcdatamodel; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 		BF1148AF2892BE7A0081A360 /* Windcockpit */ = {
 			isa = PBXGroup;
 			children = (
+				BF8742562A0A4D3D004EA831 /* Views */,
 				BF3E791F28AE4A8300570B11 /* SessionList */,
 				BFF6AF2C292FE6DF0052F4BC /* LocationList */,
 				BF0A812628A10B16008C4C41 /* Http */,
@@ -287,7 +290,6 @@
 				BF83FD5628B77A6C00699C53 /* EditSessionView.swift */,
 				BF3A3EBE28C0B5A8007BE348 /* CreateSessionView.swift */,
 				BF05045C289AB34A00EEB2AA /* DurationView.swift */,
-				BFF8F8822979A40300206E12 /* SessionDetailView.swift */,
 			);
 			path = SessionList;
 			sourceTree = "<group>";
@@ -316,6 +318,15 @@
 				BF7B77D528AD2F21006484FF /* WatchConnectivityManager.swift */,
 			);
 			path = WatchConnectivity;
+			sourceTree = "<group>";
+		};
+		BF8742562A0A4D3D004EA831 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BF8742572A0A4D5C004EA831 /* MapView.swift */,
+				BFF8F8822979A40300206E12 /* SessionDetailView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		BFCCCDC229EAE9B400460B01 /* Unused */ = {
@@ -467,6 +478,7 @@
 				BFAB602328A6786500CC6276 /* SessionListView.swift in Sources */,
 				BF441B7D29EC4AAD0038E653 /* Constants.swift in Sources */,
 				BF05045D289AB34A00EEB2AA /* DurationView.swift in Sources */,
+				BF8742582A0A4D5C004EA831 /* MapView.swift in Sources */,
 				BFF0504C292E71EB00BA1DF8 /* HttpUtil.swift in Sources */,
 				BF9A5DAC289967DD009F438D /* Formatters.swift in Sources */,
 				BFF8F8832979A40300206E12 /* SessionDetailView.swift in Sources */,

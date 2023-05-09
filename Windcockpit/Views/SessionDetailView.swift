@@ -56,20 +56,13 @@ struct SessionDetailView: View {
                 }
             }
             
-            Map(
-                coordinateRegion:.constant(
-                    MKCoordinateRegion(
-                        center: locations[0].coordinate.coordinate,
-                        span: MKCoordinateSpan(latitudeDelta: 0.06, longitudeDelta: 0.06))
-                ),
-                annotationItems: locations) { l in
-                    MapAnnotation(coordinate: l.coordinate.coordinate) {
-                        Circle()
-                            .stroke(.red, lineWidth: 3)
-                            .frame(width: 44, height: 44)
-                    }
-                }
-                .frame(height: 200)
+            MapView(region: MKCoordinateRegion(
+                center: locations[0].coordinate.coordinate,
+                span: MKCoordinateSpan(latitudeDelta: 0.06, longitudeDelta: 0.06)), lineCoordinates: locations.map( {
+                    l in return l.coordinate.coordinate
+                }))
+            .frame(height: 200)
+            
         }
         .navigationTitle("Your Session")
         .toolbar{
